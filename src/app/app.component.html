@@ -4,9 +4,18 @@
   <app-operation-toolbar></app-operation-toolbar>
 
   <div class="mail row">
-    
+
     <app-list></app-list>
-    <app-view-container></app-view-container>
+
+    <div class="inbox col-sm-10">
+      <ul class="list-unstyled">
+
+        <router-outlet></router-outlet>
+
+
+      </ul>
+    </div>
+
 
   </div>
 </div>

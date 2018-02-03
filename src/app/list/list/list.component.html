@@ -1,19 +1,34 @@
 <div class="sidebar col-sm-2">
+  
   <button class="compose btn btn-danger">
     Compose
   </button>
 
   <ul class="inbox-sections list-unstyled">
+
     <li class="active">
-      Inbox (100)
+      <a routerLink="/inbox">Inbox (100)</a>
     </li>
-    <li>Sent Mail</li>
+
+    <li>
+      <a routerLink="/starred">Starred</a>
+    </li>
+
+    <li>
+      <a routerLink="/important">Important</a>
+    </li>
+
+    <li>
+      <a routerLink="/sent">Sent Mail</a>
+    </li>
+
     <li class="pending">
-      Drafts (7)
+      <a routerLink="/drafts">Drafts (7)</a>
     </li>
-    <li>All Mail</li>
+
     <li class="pending">
-      Spam (1)
+      <a routerLink="/spam">Spam (1)</a>
     </li>
+
   </ul>
 </div>

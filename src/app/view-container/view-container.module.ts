@@ -4,13 +4,18 @@ import { ViewContainerComponent } from './view-container/view-container.componen
 import { ViewContainerService } from './view-container.service';
 import { InboxComponent } from './inbox/inbox.component';
 import { RouterModule } from '@angular/router';
+import { StarredComponent } from './starred/starred.component';
+import { ImportantComponent } from './important/important.component';
+import { SentComponent } from './sent/sent.component';
+import { DraftsComponent } from './drafts/drafts.component';
+import { SpamComponent } from './spam/spam.component';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule
   ],
-  declarations: [ViewContainerComponent, InboxComponent],
+  declarations: [ViewContainerComponent, InboxComponent, StarredComponent, ImportantComponent, SentComponent, DraftsComponent, SpamComponent],
   exports: [
     ViewContainerComponent
   ],

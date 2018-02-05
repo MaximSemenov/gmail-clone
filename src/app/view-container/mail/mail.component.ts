@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewContainerService, Mail } from '../view-container.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/skipWhile';
 
@@ -14,7 +13,7 @@ export class MailComponent implements OnInit {
 
   public inboxList: Mail[];
 
-  constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
+  constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit() {

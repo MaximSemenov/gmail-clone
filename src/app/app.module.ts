@@ -14,16 +14,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainToolBarComponent } from './main-toolbar/main-toolbar/main-toolbar.component';
 import { DraftsComponent } from './view-container/drafts/drafts.component';
 import { SpamComponent } from './view-container/spam/spam.component';
+import { MailComponent } from './view-container/mail/mail.component';
 
 const appRoutes: Routes = [
 
-  { path: '', redirectTo: 'inbox', pathMatch: 'full' },
-  { path: 'inbox', component: InboxComponent },
-  { path: 'starred', component: StarredComponent },
-  { path: 'important', component: ImportantComponent },
-  { path: 'sent', component: SentComponent },
-  { path: 'drafts', component: DraftsComponent },
-  { path: 'spam', component: SpamComponent }
+  { path: '', redirectTo: 'mail', pathMatch: 'full' },
+  { path: 'mail', component: MailComponent },
+  { path: 'mail/:box', component: MailComponent }
+  // { path: 'inbox', component: InboxComponent },
+  // { path: 'starred', component: StarredComponent },
+  // { path: 'important', component: ImportantComponent },
+  // { path: 'sent', component: SentComponent },
+  // { path: 'drafts', component: DraftsComponent },
+  // { path: 'spam', component: SpamComponent }
 ];
 
 

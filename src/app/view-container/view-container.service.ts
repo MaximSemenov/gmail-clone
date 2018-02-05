@@ -1,8 +1,10 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
-export type BoxList = [
+export type Mail = [
 
   {
     sender: string;
@@ -12,16 +14,33 @@ export type BoxList = [
   }
 ];
 
+
+
 @Injectable()
 export class ViewContainerService {
+
+  private _mailList$$: Subject<Mail[]> = new Subject();
+
+  private _snapshotUrls = {
+    inbox: './assets/data/inbox-list.json',
+    sent: './assets/data/sent-list.json'
+  };
+
 
   constructor(private _http: HttpClient) { }
 
 
-  getOverviewData(): Observable<BoxList[]> {
+  getMailList(): Observable<Mail[]> {
 
-    return this._http.get<BoxList[]>('./assets/data/inbox-list.json');
-
+    return this._mailList$$.asObservable();
   }
 
+  loadMailList(mailBoxName) {
+
+    // this._mailList$$.next(this._http.get<Mail[]>(this._snapshotUrls[mailBoxName['box']]));
+    this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => this._mailList$$.next(mailList));
+  }
+
+
 }
+

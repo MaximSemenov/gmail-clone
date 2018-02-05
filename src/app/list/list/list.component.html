@@ -1,33 +1,33 @@
 <div class="sidebar col-sm-2">
-  
+
   <button class="compose btn btn-danger">
     Compose
   </button>
 
   <ul class="inbox-sections list-unstyled">
 
-    <li class="active">
-      <a routerLink="/inbox">Inbox (100)</a>
+    <li class="menu">
+      <a [routerLink]="['mail', 'inbox']" id="inbox" routerLinkActive="active" class="bold">Inbox ({{inboxListLength}})</a> 
     </li>
 
-    <li>
-      <a routerLink="/starred">Starred</a>
+    <li class="menu">
+      <a [routerLink]="['mail', 'starred']" routerLinkActive="active">Starred</a>
     </li>
 
-    <li>
-      <a routerLink="/important">Important</a>
+    <li class="menu">
+      <a [routerLink]="['mail', 'important']" routerLinkActive="active">Important</a>
     </li>
 
-    <li>
-      <a routerLink="/sent">Sent Mail</a>
+    <li class="menu">
+      <a [routerLink]="['mail', 'sent']" routerLinkActive="active">Sent Mail</a>
     </li>
 
-    <li class="pending">
-      <a routerLink="/drafts">Drafts (7)</a>
+    <li class="menu pending">
+      <a [routerLink]="['mail', 'drafts']" routerLinkActive="active">Drafts (7)</a>
     </li>
 
-    <li class="pending">
-      <a routerLink="/spam">Spam (1)</a>
+    <li class="menu pending">
+      <a [routerLink]="['mail', 'spam']" routerLinkActive="active">Spam (1)</a>
     </li>
 
   </ul>

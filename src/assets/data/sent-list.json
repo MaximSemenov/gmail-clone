@@ -1,0 +1,62 @@
+[
+    {
+        "sender": "Sent Mail Works!",
+        "title": "Sent Mail Works!",
+        "body": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
+        "isRead": true
+    },
+    {
+        "sender": "Sent Mail Works!",
+        "title": "Sent Mail Works!",
+        "body": "Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.",
+        "isRead": false
+    },
+    {
+        "sender": "Pattie Gerty",
+        "title": "Customer-focused object-oriented methodology",
+        "body": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+        "isRead": true
+    },
+    {
+        "sender": "Tammara Gossop",
+        "title": "Triple-buffered mission-critical leverage",
+        "body": "Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam vel augue. Vestibulum rutrum rutrum neque.",
+        "isRead": true
+    },
+    {
+        "sender": "Chevy Roughan",
+        "title": "Quality-focused hybrid infrastructure",
+        "body": "Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
+        "isRead": false
+    },
+    {
+        "sender": "Chrissie Rudsdell",
+        "title": "Customizable tangible alliance",
+        "body": "Donec dapibus. Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros.",
+        "isRead": true
+    },
+    {
+        "sender": "Sena Kibard",
+        "title": "Operative local firmware",
+        "body": "Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti. Nullam porttitor lacus at turpis.",
+        "isRead": true
+    },
+    {
+        "sender": "Georgie Eunson",
+        "title": "Synergized full-range contingency",
+        "body": "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit. Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
+        "isRead": false
+    },
+    {
+        "sender": "Gilbert Renfree",
+        "title": "Customizable encompassing software",
+        "body": "Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus.",
+        "isRead": false
+    },
+    {
+        "sender": "Lucretia Hillett",
+        "title": "Mandatory mobile parallelism",
+        "body": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl. Aenean lectus.",
+        "isRead": false
+    }
+]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewContainerService } from '../../view-container/view-container.service';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  public inboxListLength: number;
 
-  ngOnInit() {
-  }
+  constructor(private _viewContainerService: ViewContainerService) { }
+
+  ngOnInit(): void {
+  //   this._viewContainerService.getMailBoxSnapshot('inbox').subscribe(inboxList => this.inboxListLength = inboxList.length);
+   }
 
 }

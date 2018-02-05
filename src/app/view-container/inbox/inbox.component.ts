@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewContainerService, BoxList } from '../view-container.service';
+import { ViewContainerService} from '../view-container.service';
 
 @Component({
   selector: 'app-inbox',
@@ -9,12 +9,12 @@ import { ViewContainerService, BoxList } from '../view-container.service';
 
 export class InboxComponent implements OnInit {
 
-  public inboxList: BoxList[];
+  public inboxList;
 
   constructor(private _viewContainerService: ViewContainerService) { }
 
   ngOnInit() {
-    this._viewContainerService.getOverviewData().subscribe(inboxList => this.inboxList = inboxList);
+    // this._viewContainerService.getMailBoxSnapshot('inbox').subscribe(inboxList => this.inboxList = inboxList);
 
 
   }

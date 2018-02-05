@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
   constructor(private _viewContainerService: ViewContainerService) { }
 
   ngOnInit(): void {
-  //   this._viewContainerService.getMailBoxSnapshot('inbox').subscribe(inboxList => this.inboxListLength = inboxList.length);
-   }
+    this._viewContainerService.getMailBoxLength('inbox').subscribe((length: number) => this.inboxListLength = length);
+  }
 
 }

@@ -1,7 +1,4 @@
-import { SentComponent } from './view-container/sent/sent.component';
-import { ImportantComponent } from './view-container/important/important.component';
-import { StarredComponent } from './view-container/starred/starred.component';
-import { InboxComponent } from './view-container/inbox/inbox.component';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -12,8 +9,6 @@ import { ViewContainerModule } from './view-container/view-container.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MainToolBarComponent } from './main-toolbar/main-toolbar/main-toolbar.component';
-import { DraftsComponent } from './view-container/drafts/drafts.component';
-import { SpamComponent } from './view-container/spam/spam.component';
 import { MailComponent } from './view-container/mail/mail.component';
 
 const appRoutes: Routes = [
@@ -21,12 +16,7 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'mail', pathMatch: 'full' },
   { path: 'mail', component: MailComponent },
   { path: 'mail/:box', component: MailComponent }
-  // { path: 'inbox', component: InboxComponent },
-  // { path: 'starred', component: StarredComponent },
-  // { path: 'important', component: ImportantComponent },
-  // { path: 'sent', component: SentComponent },
-  // { path: 'drafts', component: DraftsComponent },
-  // { path: 'spam', component: SpamComponent }
+
 ];
 
 

@@ -1,4 +1,4 @@
-import { Router, ActivatedRoute } from '@angular/router';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -37,7 +37,17 @@ export class ViewContainerService {
 
   loadMailList(mailBoxName) {
     // this._mailList$$.next(this._http.get<Mail[]>(this._snapshotUrls[mailBoxName['box']]));
-    this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => this._mailList$$.next(mailList));
+    // this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => this._mailList$$.next(mailList));
+    this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => {
+
+      let x = [];
+      mailList.forEach((item: Mail) => x.push(item.id));
+
+      console.log(x.join(', '))
+
+      return this._mailList$$.next(mailList);
+
+    });
   }
 
   getMailBoxLength(mailBoxName: string): Observable<number> {

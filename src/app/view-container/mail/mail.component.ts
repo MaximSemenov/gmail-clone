@@ -11,7 +11,8 @@ import 'rxjs/add/operator/skipWhile';
 })
 export class MailComponent implements OnInit {
 
-  public inboxList: Mail[];
+  public mailList: Mail[];
+  public mailBoxName: string;
 
   constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute) { }
 
@@ -21,34 +22,13 @@ export class MailComponent implements OnInit {
     this._activatedRoute.params
       .skipWhile(param => !param['box'])
       .pluck('box')
-      .subscribe(param => {
+      .subscribe((param: string) => {
+
+        this.mailBoxName = param;
         this._viewContainerService.loadMailList(param);
       });
 
-    this._viewContainerService.getMailList().subscribe((mailList: Mail[]) => this.inboxList = mailList);
-
-
-
-
-
-
-    // this._viewContainerService.loadMailSnapshot().subscribe(inboxList => console.log(inboxList));
-
-    // this._activatedRoute.params.subscribe(params => console.log(params));
-    //  this._viewContainerService.loadMailSnapshot();
-
-
-
-    // this._activatedRoute.params
-    //   .skipWhile(param => !param['box'])
-    //   .switchMap(param => {
-    //     return this._viewContainerService.getMailList(param);
-
-    //   }).subscribe(inboxList => this.inboxList = inboxList);
-
-    // this._activatedRoute.params.skipWhile(param => !param['box']).subscribe((s) => console.log(s));
-
-
+    this._viewContainerService.getMailList().subscribe((mailList: Mail[]) => this.mailList = mailList);
 
 
   }

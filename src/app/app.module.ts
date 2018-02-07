@@ -1,3 +1,4 @@
+import { OpenLetterComponent } from './view-container/mail/open-letter/open-letter.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -15,7 +16,9 @@ const appRoutes: Routes = [
 
   { path: '', redirectTo: 'mail', pathMatch: 'full' },
   { path: 'mail', component: MailComponent },
-  { path: 'mail/:box', component: MailComponent }
+  { path: 'mail/:box', component: MailComponent },
+  { path: 'mail/:box/:id', component: OpenLetterComponent }
+  // { path: 'letter/:id', component: OpenLetterComponent }
 
 ];
 

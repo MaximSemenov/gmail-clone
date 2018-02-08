@@ -37,22 +37,15 @@ export class ViewContainerService {
 
   loadMailList(mailBoxName) {
     // this._mailList$$.next(this._http.get<Mail[]>(this._snapshotUrls[mailBoxName['box']]));
-    // this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => this._mailList$$.next(mailList));
-    this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => {
-
-      let x = [];
-      mailList.forEach((item: Mail) => x.push(item.id));
-
-      console.log(x.join(', '))
-
-      return this._mailList$$.next(mailList);
-
-    });
+    this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => this._mailList$$.next(mailList));
   }
 
   getMailBoxLength(mailBoxName: string): Observable<number> {
     return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).map((mailList: Mail[]) => mailList.length);
   }
+
+
+
 
 }
 

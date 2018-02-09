@@ -11,8 +11,8 @@ export class OpenLetterService {
       letterText: '../../../../assets/data/inbox-letters.json'
     },
     sent: {
-      letterData: '',
-      letterText: ''
+      letterData: '../../../../assets/data/sent-list.json',
+      letterText: '../../../../assets/data/sent-letters.json'
     }
   };
 
@@ -32,7 +32,7 @@ export class OpenLetterService {
         return {
           title: letter.title,
           box: params.box,
-          sender: letter.sender,
+          name: letter.name,
         };
       });
   }

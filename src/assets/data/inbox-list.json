@@ -1,73 +1,122 @@
- [
+[
     {
-        "sender": "Ebenezer Gannon",
-        "title": "aggregate holistic e-tailers",
-        "body": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-        "isRead": false,
-        "id": "ab10f310-9ea5-41df-9aa1-034a56dcdec1"
-    },
-    {
-        "sender": "Haily Plumley",
-        "title": "transform real-time metrics",
-        "body": "Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio.",
+        "id": "b1967276-9541-4049-8592-1645f9bd3322",
+        "name": "Levi Bilson",
+        "title": "seize one-to-one functionalities",
+        "body": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
         "isRead": true,
-        "id": "d4039a7c-da22-454c-93ee-4f1e0b486a10"
+        "email": "lbilson0@yahoo.com"
     },
     {
-        "sender": "Fianna Ellingsworth",
-        "title": "integrate viral interfaces",
-        "body": "Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh. Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-        "isRead": true,
-        "id": "d09bf3f7-f9cc-46c8-8c15-4ae1f50c41ee"
-    },
-    {
-        "sender": "Kylie Binks",
-        "title": "maximize frictionless schemas",
-        "body": "Curabitur convallis. Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis.",
-        "isRead": true,
-        "id": "b5a2b23c-e0d6-49e4-b705-2e6f2791816a"
-    },
-    {
-        "sender": "Emera Golagley",
-        "title": "transition cross-platform portals",
-        "body": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam.",
+        "id": "09987c85-cd9e-40fc-a8f9-4511c471dea9",
+        "name": "Bamby Kauffman",
+        "title": "mesh user-centric solutions",
+        "body": "Praesent lectus.",
         "isRead": false,
-        "id": "7d09b890-a288-40e4-b2c6-d4b28f857d58"
+        "email": "bkauffman1@imgur.com"
     },
     {
-        "sender": "Melinda Yeowell",
-        "title": "transform next-generation synergies",
-        "body": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum.",
+        "id": "9b5686eb-913d-4692-ad6c-5e59dd7cff96",
+        "name": "Rosie Willingam",
+        "title": "syndicate out-of-the-box supply-chains",
+        "body": "Pellentesque at nulla.",
         "isRead": false,
-        "id": "bca57381-c83b-4505-bc61-ff04468e8f50"
+        "email": "rwillingam2@furl.net"
     },
     {
-        "sender": "Russ Dmisek",
-        "title": "synthesize collaborative e-services",
-        "body": "Integer ac neque. Duis bibendum.",
+        "id": "876f9eda-987e-4590-8df6-fe2371cf57cb",
+        "name": "Brod Tullis",
+        "title": "generate impactful metrics",
+        "body": "Vestibulum sed magna at nunc commodo placerat. Praesent blandit.",
         "isRead": true,
-        "id": "87378f5c-6cd0-477c-977e-5758a84d4b5b"
+        "email": "btullis3@shinystat.com"
     },
     {
-        "sender": "Isa Phizackerly",
-        "title": "optimize customized interfaces",
-        "body": "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.",
-        "isRead": false,
-        "id": "0f066c1a-05ad-4244-83ed-b0045dd3747e"
-    },
-    {
-        "sender": "Elna Vermer",
-        "title": "syndicate ubiquitous e-markets",
-        "body": "Phasellus in felis. Donec semper sapien a libero.",
-        "isRead": false,
-        "id": "ae9b8511-5398-4018-9cba-e6d68ce9f621"
-    },
-    {
-        "sender": "Fianna McMurthy",
-        "title": "seize real-time markets",
-        "body": "Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+        "id": "0427198e-8718-4613-bf23-8ee05963686e",
+        "name": "Granville Rapson",
+        "title": "deploy vertical content",
+        "body": "Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
         "isRead": true,
-        "id": "3daa1a21-4262-4909-a3df-d9ed3370caa6"
+        "email": "grapson4@vistaprint.com"
+    },
+    {
+        "id": "f00fdecd-c103-45e4-96e4-753bcd4a84e9",
+        "name": "Rodolfo Pyvis",
+        "title": "harness back-end interfaces",
+        "body": "Vivamus tortor.",
+        "isRead": true,
+        "email": "rpyvis5@techcrunch.com"
+    },
+    {
+        "id": "f138183b-0235-4d96-8eb6-878dcc753ad8",
+        "name": "Bee Dunridge",
+        "title": "implement wireless synergies",
+        "body": "Pellentesque at nulla. Suspendisse potenti.",
+        "isRead": true,
+        "email": "bdunridge6@princeton.edu"
+    },
+    {
+        "id": "f4896ba6-04f2-4d98-8a00-517e924611b3",
+        "name": "Corey Van den Bosch",
+        "title": "mesh granular mindshare",
+        "body": "Morbi porttitor lorem id ligula.",
+        "isRead": false,
+        "email": "cvan7@bandcamp.com"
+    },
+    {
+        "id": "d7e8c46c-fef1-49ca-9a56-9f2306dc7bfe",
+        "name": "Maryanna Miguel",
+        "title": "scale intuitive interfaces",
+        "body": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+        "isRead": true,
+        "email": "mmiguel8@topsy.com"
+    },
+    {
+        "id": "008a6fd6-d0a6-40d0-85b5-a541a7e42890",
+        "name": "Alvin Jenteau",
+        "title": "mesh cutting-edge schemas",
+        "body": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
+        "isRead": false,
+        "email": "ajenteau9@skype.com"
+    },
+    {
+        "id": "e3e16232-cab8-40fc-9956-e4f379859e74",
+        "name": "Joyann Weathey",
+        "title": "synthesize efficient systems",
+        "body": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
+        "isRead": false,
+        "email": "jweatheya@google.cn"
+    },
+    {
+        "id": "4807d563-b501-4476-8bef-7c4f500984be",
+        "name": "Flin Donnersberg",
+        "title": "maximize sticky markets",
+        "body": "Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
+        "isRead": false,
+        "email": "fdonnersbergb@deliciousdays.com"
+    },
+    {
+        "id": "36605a5a-adfc-428e-9fec-0a03c120639f",
+        "name": "Burr Truggian",
+        "title": "repurpose sticky action-items",
+        "body": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+        "isRead": true,
+        "email": "btruggianc@unc.edu"
+    },
+    {
+        "id": "7d4eb8dd-ca92-4557-b396-2dd1bc4b489a",
+        "name": "Art Flook",
+        "title": "evolve revolutionary applications",
+        "body": "Nulla ut erat id mauris vulputate elementum. Nullam varius.",
+        "isRead": false,
+        "email": "aflookd@eepurl.com"
+    },
+    {
+        "id": "5ebb01d6-77ea-42b4-8bd5-fa757a13f150",
+        "name": "Giselbert Boissier",
+        "title": "optimize 24/365 synergies",
+        "body": "Suspendisse accumsan tortor quis turpis. Sed ante.",
+        "isRead": true,
+        "email": "gboissiere@usatoday.com"
     }
-] 
-
+]

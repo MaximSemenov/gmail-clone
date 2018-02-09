@@ -8,10 +8,12 @@ import 'rxjs/add/operator/map';
 export type Mail = [
 
   {
-    sender: string;
+    id: string;
+    name: string;
     title: string;
     body: string;
     isRead: boolean;
+    email: string;
   }
 ];
 
@@ -36,8 +38,7 @@ export class ViewContainerService {
   }
 
   loadMailList(mailBoxName) {
-    // this._mailList$$.next(this._http.get<Mail[]>(this._snapshotUrls[mailBoxName['box']]));
-    this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => this._mailList$$.next(mailList));
+     this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => this._mailList$$.next(mailList));
   }
 
   getMailBoxLength(mailBoxName: string): Observable<number> {

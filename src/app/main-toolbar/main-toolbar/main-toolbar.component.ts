@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ViewContainerService } from '../../view-container/view-container.service';
 
 @Component({
   selector: 'app-main-toolbar',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-toolbar.component.css']
 })
 export class MainToolBarComponent implements OnInit {
-
-  constructor() { }
+  public searchControl = new FormControl('');
+  constructor(private _viewContainerService: ViewContainerService) { }
 
   ngOnInit() {
+    this.searchControl.valueChanges.subscribe((value: string) => this._viewContainerService.liveMailSearch(value));
   }
+
+
+
 
 }

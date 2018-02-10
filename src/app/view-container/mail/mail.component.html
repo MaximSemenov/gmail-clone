@@ -16,7 +16,7 @@
       </ul>
 
       <span class="people-names">
-        <span *ngIf="letter.sentTo".>To:</span>
+        <span *ngIf="mailBoxName === 'sent'">To:</span>
         {{letter.name}}
       </span>
 

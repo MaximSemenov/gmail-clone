@@ -32,7 +32,7 @@ export class ViewContainerService {
   };
 
 
-  constructor(private _http: HttpClient) { 
+  constructor(private _http: HttpClient) {
 
   }
 
@@ -44,9 +44,7 @@ export class ViewContainerService {
   loadMailList(mailBoxName: string, query: string): Observable<Mail[]> {
     return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName])
       .map(this._filterMail(query))
-
       .do((mailList: Mail[]) => {
-        console.log('from do ' + mailList);
         this._mailList$$.next(mailList);
       });
   }
@@ -56,13 +54,10 @@ export class ViewContainerService {
   }
 
 
-  // private _filterMail(mailList: Mail[], value: string): Mail[] {
-private _filterMail(query: string): (mailList: Mail[]) => Mail[] {
+  private _filterMail(query: string): (mailList: Mail[]) => Mail[] {
 
-    console.log('my query = ' + query);
+    return (mailList): Mail[] => {
 
-    return (mailList) => {
-      console.log('from filter ' + mailList);
       if (!query) {
         return mailList;
       }

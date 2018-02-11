@@ -12,11 +12,8 @@ export class MainToolBarComponent implements OnInit {
   constructor(private _viewContainerService: ViewContainerService) { }
 
   ngOnInit() {
-    // this.searchControl.valueChanges.subscribe((value: string) => this._viewContainerService.liveMailSearch(value));
-    this.searchControl.valueChanges.subscribe((value: string) => {
-      console.log('call loadMailList from mail toolbar');
-      this._viewContainerService.loadMailList('inbox', value);
-    });
+
+    this.searchControl.valueChanges.subscribe((value: string) => this._viewContainerService.loadMailList('inbox', value).subscribe());
   }
 
 

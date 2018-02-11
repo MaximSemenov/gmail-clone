@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/do';
 
 export type Mail = [
 
@@ -31,46 +32,52 @@ export class ViewContainerService {
   };
 
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) { 
+
+  }
 
 
   getMailList(): Observable<Mail[]> {
     return this._mailList$$.asObservable();
   }
 
-  loadMailList(mailBoxName: string): void {
-    this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).subscribe((mailList: Mail[]) => this._mailList$$.next(mailList));
+  loadMailList(mailBoxName: string, query: string): Observable<Mail[]> {
+    return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName])
+      .map(this._filterMail(query))
+
+      .do((mailList: Mail[]) => {
+        console.log('from do ' + mailList);
+        this._mailList$$.next(mailList);
+      });
   }
 
   getMailBoxLength(mailBoxName: string): Observable<number> {
     return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).map((mailList: Mail[]) => mailList.length);
   }
 
-  liveMailSearch(value: string): void {
 
-    this._mailList$$.take(1).subscribe((mailList: Mail[]) => {
-      this.filterMail(mailList, value);
-    });
+  // private _filterMail(mailList: Mail[], value: string): Mail[] {
+private _filterMail(query: string): (mailList: Mail[]) => Mail[] {
 
-    this.loadMailList('inbox');
+    console.log('my query = ' + query);
 
-  }
+    return (mailList) => {
+      console.log('from filter ' + mailList);
+      if (!query) {
+        return mailList;
+      }
 
-
-  filterMail(mailList: Mail[], value: string): void {
-
-
-    const filteredMail = mailList.filter(item => {
-      let result = false;
-      ['name', 'email', 'title', 'body'].forEach(key => {
-        if (item[key].toLowerCase().includes(value.toLowerCase())) {
-          result = true;
-        }
+      return mailList.filter((mail: Mail) => {
+        let result = false;
+        ['name', 'email', 'title', 'body'].forEach(key => {
+          if (mail[key].toLowerCase().includes(query.toLowerCase())) {
+            result = true;
+          }
+        });
+        return result;
       });
-      return result;
-    });
+    };
 
-    this._mailList$$.next(filteredMail);
   }
 
 

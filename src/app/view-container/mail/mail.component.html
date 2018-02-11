@@ -1,4 +1,4 @@
-<li *ngFor="let letter of mailList" [ngClass]="{'email-item': true,'row': true, 'unread': !letter.isRead}">
+<li *ngFor="let letter of mailList$" [ngClass]="{'email-item': true,'row': true, 'unread': !letter.isRead}">
   <a [routerLink]="['/mail', mailBoxName, letter.id]">
     <div class="people col-sm-3">
 

@@ -1,3 +1,5 @@
+
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { ViewContainerService, Mail } from '../view-container.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +13,7 @@ import 'rxjs/add/operator/skipWhile';
 })
 export class MailComponent implements OnInit {
 
-  public mailList: Mail[];
+  public mailList$: Mail[];
   public mailBoxName: string;
 
   constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute) { }
@@ -20,15 +22,19 @@ export class MailComponent implements OnInit {
   ngOnInit() {
 
     this._activatedRoute.params
-      .skipWhile(param => !param['box'])
+      // .skipWhile(param => !param['box'])
       .pluck('box')
-      .subscribe((param: string) => {
+      .filter(Boolean)
+      .switchMap((box: string): Observable<Mail[]> => {
 
-        this.mailBoxName = param;
-        this._viewContainerService.loadMailList(param);
-      });
+        this.mailBoxName = box;
+        return this._viewContainerService.loadMailList(box, 'Levi');
+      }).subscribe();
 
-    this._viewContainerService.getMailList().subscribe((mailList: Mail[]) => this.mailList = mailList);
+   this._viewContainerService.getMailList().subscribe(mailList => {
+    //  console.log(mailList)
+     this.mailList$ = mailList;
+   });
 
 
   }

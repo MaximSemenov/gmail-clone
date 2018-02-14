@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs/Rx';
-
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { ViewContainerService, Mail } from '../view-container.service';
@@ -26,7 +24,6 @@ export class MailComponent implements OnInit {
       .pluck('box')
       .filter(Boolean)
       .switchMap((box: string): Observable<Mail[]> => {
-
         this.mailBoxName = box;
         return this._viewContainerService.loadMailList(box, null);
       }).subscribe();

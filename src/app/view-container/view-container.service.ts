@@ -25,6 +25,7 @@ export type Mail = [
 export class ViewContainerService {
 
   private _mailList$$: Subject<Mail[]> = new Subject();
+  private _currentMailBoxName$$: Subject<string> = new Subject();
 
   private _snapshotUrls = {
     inbox: './assets/data/inbox-list.json',
@@ -36,6 +37,10 @@ export class ViewContainerService {
 
   }
 
+  getCurrentBoxName (): Observable<string> {
+    return this._currentMailBoxName$$.asObservable();
+  }
+
 
   getMailList(): Observable<Mail[]> {
     return this._mailList$$.asObservable();
@@ -45,6 +50,7 @@ export class ViewContainerService {
     return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName])
       .map(this._filterMail(query))
       .do((mailList: Mail[]) => {
+        this._currentMailBoxName$$.next(mailBoxName);
         this._mailList$$.next(mailList);
       });
   }

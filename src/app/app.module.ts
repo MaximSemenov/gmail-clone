@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { MainToolBarComponent } from './main-toolbar/main-toolbar/main-toolbar.component';
 import { MailComponent } from './view-container/mail/mail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const appRoutes: Routes = [
 
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
     OperationToolbarModule,
     ViewContainerModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
   ],
 

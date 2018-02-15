@@ -6,6 +6,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/delay';
 
 export type Mail = [
 
@@ -27,6 +28,7 @@ export class ViewContainerService {
   private _mailList$$: Subject<Mail[]> = new Subject();
   private _currentMailBoxName$$: Subject<string> = new Subject();
 
+
   private _snapshotUrls = {
     inbox: './assets/data/inbox-list.json',
     sent: './assets/data/sent-list.json'
@@ -37,7 +39,7 @@ export class ViewContainerService {
 
   }
 
-  getCurrentBoxName (): Observable<string> {
+  getCurrentBoxName(): Observable<string> {
     return this._currentMailBoxName$$.asObservable();
   }
 
@@ -49,6 +51,7 @@ export class ViewContainerService {
   loadMailList(mailBoxName: string, query: string): Observable<Mail[]> {
     return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName])
       .map(this._filterMail(query))
+      .delay(1500)
       .do((mailList: Mail[]) => {
         this._currentMailBoxName$$.next(mailBoxName);
         this._mailList$$.next(mailList);

@@ -27,6 +27,7 @@ export class ViewContainerService {
 
   private _mailList$$: Subject<Mail[]> = new Subject();
   private _currentMailBoxName$$: Subject<string> = new Subject();
+  private _currentPage$$: Subject<number> = new Subject();
 
 
   private _snapshotUrls = {
@@ -39,6 +40,10 @@ export class ViewContainerService {
 
   }
 
+  getCurrentPage(): Observable<number> {
+    return this._currentPage$$.asObservable();
+  }
+
   getCurrentBoxName(): Observable<string> {
     return this._currentMailBoxName$$.asObservable();
   }
@@ -48,12 +53,14 @@ export class ViewContainerService {
     return this._mailList$$.asObservable();
   }
 
-  loadMailList(mailBoxName: string, query: string): Observable<Mail[]> {
+  loadMailList(mailBoxName: string, query: string, query2: number): Observable<Mail[]> {
     return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName])
       .map(this._filterMail(query))
+      .map(this._filterMailByPage(query2))
       .delay(1500)
       .do((mailList: Mail[]) => {
         this._currentMailBoxName$$.next(mailBoxName);
+        this._currentPage$$.next(query2);
         this._mailList$$.next(mailList);
       });
   }
@@ -82,6 +89,13 @@ export class ViewContainerService {
       });
     };
 
+  }
+
+  private _filterMailByPage(page): (mailList: Mail[]) => Mail[] {
+
+    return (mailList): Mail[] => {
+      return mailList = mailList.slice(page * 5 - 5, page * 5);
+    };
   }
 
 

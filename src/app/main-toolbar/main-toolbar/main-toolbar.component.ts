@@ -13,17 +13,21 @@ import 'rxjs/add/operator/filter';
 export class MainToolBarComponent implements OnInit {
 
   public mailBoxName: string;
+  public currentPage: number;
   public searchControl = new FormControl('');
 
   constructor(private _router: Router, private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this._viewContainerService.getCurrentBoxName().subscribe((mailBoxName: string) => this.mailBoxName = mailBoxName);
+    this._viewContainerService.getCurrentPage().subscribe((page: number) => this.currentPage = page);
 
     this.searchControl.valueChanges
       .subscribe((value: string) => this._viewContainerService
-        .loadMailList(this.mailBoxName, value)
+        .loadMailList(this.mailBoxName, value, this.currentPage)
         .subscribe());
+
+
   }
 
 

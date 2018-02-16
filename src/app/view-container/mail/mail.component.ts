@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { ViewContainerService, Mail } from '../view-container.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import 'rxjs/add/operator/pluck';
-import 'rxjs/add/operator/skipWhile';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-mail',
@@ -18,7 +18,7 @@ import 'rxjs/add/operator/skipWhile';
       state('done', style({
         opacity: 1
       })),
-      transition('notDone => done', animate('2000ms'))
+      transition('notDone => done', animate('400ms'))
     ])
 
   ]
@@ -29,8 +29,9 @@ export class MailComponent implements OnInit {
   public mailList$: Observable<Mail[]>;
   public mailBoxName: string;
   public isMailListLoaded = 'notDone';
+  public page = 1;
 
-  constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
 
 
   ngOnInit() {
@@ -38,14 +39,22 @@ export class MailComponent implements OnInit {
     this._activatedRoute.params
       .pluck('box')
       .filter(Boolean)
-      .switchMap((box: string): Observable<Mail[]> => {
+      .do((box: string) => {
         this.mailBoxName = box;
+        this._router.navigate([''], { queryParams: { page: 1 } });
+      })
+      .switchMap((box: string): Observable<Mail[]> => {
 
-        return this._viewContainerService.loadMailList(box, null);
+        return this._viewContainerService.loadMailList(box, null, 1);
       }).subscribe(() => this.isMailListLoaded = 'done');
 
     this.mailList$ = this._viewContainerService.getMailList();
 
+    this._activatedRoute
+      .queryParams
+      .subscribe(queryParams => {
+        this.page = queryParams.page;
+      });
 
   }
 

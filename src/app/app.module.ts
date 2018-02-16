@@ -17,10 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const appRoutes: Routes = [
 
   { path: '', redirectTo: 'mail/inbox', pathMatch: 'full' },
-  // { path: 'mail', component: MailComponent },
+  { path: 'mail', redirectTo: 'mail/inbox', pathMatch: 'full' },
   { path: 'mail/:box', component: MailComponent },
   { path: 'mail/:box/:id', component: OpenLetterComponent }
-  // { path: 'letter/:id', component: OpenLetterComponent }
+
 
 ];
 

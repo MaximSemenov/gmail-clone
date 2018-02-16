@@ -29,7 +29,6 @@ export class MailComponent implements OnInit {
   public mailList$: Observable<Mail[]>;
   public mailBoxName: string;
   public isMailListLoaded = 'notDone';
-  public page = 1;
 
   constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
 
@@ -41,19 +40,24 @@ export class MailComponent implements OnInit {
       .filter(Boolean)
       .do((box: string) => {
         this.mailBoxName = box;
-        this._router.navigate([''], { queryParams: { page: 1 } });
+        // this._router.navigate([''], { queryParams: { page: 1 } });
       })
       .switchMap((box: string): Observable<Mail[]> => {
 
-        return this._viewContainerService.loadMailList(box, null, 1);
-      }).subscribe(() => this.isMailListLoaded = 'done');
+        return this._activatedRoute.queryParams.switchMap(queryParams => {
+          return this._viewContainerService.loadMailList(box, null, queryParams.page);
+        });
+
+      })
+      .subscribe(() => this.isMailListLoaded = 'done');
 
     this.mailList$ = this._viewContainerService.getMailList();
 
     this._activatedRoute
       .queryParams
       .subscribe(queryParams => {
-        this.page = queryParams.page;
+        console.log(queryParams);
+
       });
 
   }

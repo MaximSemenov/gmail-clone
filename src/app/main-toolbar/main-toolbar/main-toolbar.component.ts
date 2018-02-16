@@ -27,7 +27,6 @@ export class MainToolBarComponent implements OnInit {
         .loadMailList(this.mailBoxName, value, this.currentPage)
         .subscribe());
 
-
   }
 
 

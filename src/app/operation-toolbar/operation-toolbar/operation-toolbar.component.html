@@ -12,8 +12,8 @@
           <div>
             <div class="G-tF">
               <div class="G-Ni J-J5-Ji">
-                <div id=":30" class="T-I J-J5-Ji T-Pm T-I-ax7 L3 J-JN-M-I G-as3" role="button" tabindex="0" aria-haspopup="true"
-                  aria-expanded="false" data-tooltip="Select" aria-label="Select" style="user-select: none;">
+                <div id=":30" class="T-I J-J5-Ji T-Pm T-I-ax7 L3 J-JN-M-I G-as3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false"
+                  data-tooltip="Select" aria-label="Select" style="user-select: none;">
                   <div class="J-J5-Ji J-JN-M-I-Jm">
                     <span class="T-Jo J-J5-Ji T-Jo-aMF" aria-checked="false" role="checkbox" dir="ltr" style="user-select: none;">
                       <div class="T-Jo-auh" role="presentation"></div>
@@ -24,8 +24,8 @@
                 </div>
               </div>
               <div class="G-Ni J-J5-Ji" style="display: none;">
-                <div class="T-I J-J5-Ji lR T-I-ax7  T-I-Js-IF ar7" act="7" role="button" tabindex="0" data-tooltip="Archive"
-                  aria-label="Archive" style="user-select: none;">
+                <div class="T-I J-J5-Ji lR T-I-ax7  T-I-Js-IF ar7" act="7" role="button" tabindex="0" data-tooltip="Archive" aria-label="Archive"
+                  style="user-select: none;">
                   <div class="asa">
                     <div class="ar8 T-I-J3 J-J5-Ji"></div>
                   </div>
@@ -36,23 +36,23 @@
                     <div class="asl T-I-J3 J-J5-Ji"></div>
                   </div>
                 </div>
-                <div class="T-I J-J5-Ji nX T-I-ax7 T-I-Js-Gs ar7" act="10" role="button" tabindex="0" data-tooltip="Delete"
-                  aria-label="Delete" style="user-select: none;">
+                <div class="T-I J-J5-Ji nX T-I-ax7 T-I-Js-Gs ar7" act="10" role="button" tabindex="0" data-tooltip="Delete" aria-label="Delete"
+                  style="user-select: none;">
                   <div class="asa">
                     <div class="ar9 T-I-J3 J-J5-Ji"></div>
                   </div>
                 </div>
               </div>
               <div class="G-Ni J-J5-Ji" style="display: none;">
-                <div id=":31" class="T-I J-J5-Ji T-I-Js-IF ar7 ns T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="false"
-                  aria-expanded="false" data-tooltip="Move to" aria-label="Move to" style="user-select: none;">
+                <div id=":31" class="T-I J-J5-Ji T-I-Js-IF ar7 ns T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="false" aria-expanded="false"
+                  data-tooltip="Move to" aria-label="Move to" style="user-select: none;">
                   <div class="asa">
                     <div class="ase T-I-J3 J-J5-Ji"></div>
                   </div>
                   <div class="G-asx T-I-J3 J-J5-Ji" aria-hidden="true">&nbsp;</div>
                 </div>
-                <div id=":32" class="T-I J-J5-Ji T-I-Js-Gs ar7 mw T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true"
-                  aria-expanded="false" data-tooltip="Labels" aria-label="Labels" style="user-select: none;">
+                <div id=":32" class="T-I J-J5-Ji T-I-Js-Gs ar7 mw T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false"
+                  data-tooltip="Labels" aria-label="Labels" style="user-select: none;">
                   <div class="asa">
                     <div class="asb T-I-J3 J-J5-Ji"></div>
                   </div>
@@ -60,8 +60,7 @@
                 </div>
               </div>
               <div class="G-Ni J-J5-Ji" style="">
-                <div class="T-I J-J5-Ji nu T-I-ax7 L3" act="20" role="button" tabindex="0" data-tooltip="Refresh" aria-label="Refresh"
-                  style="user-select: none;">
+                <div class="T-I J-J5-Ji nu T-I-ax7 L3" act="20" role="button" tabindex="0" data-tooltip="Refresh" aria-label="Refresh" style="user-select: none;">
                   <div class="asa">
                     <div class="asf T-I-J3 J-J5-Ji"></div>
                   </div>
@@ -105,26 +104,25 @@
         <div class="Cr aqJ">
           <div class="ar5 J-J5-Ji">
             <span class="Di">
-              <div id=":h7" class="J-J5-Ji amH J-JN-I" role="button" aria-expanded="false" tabindex="0" aria-haspopup="true"
-                style="user-select: none;">
+              <div id=":h7" class="J-J5-Ji amH J-JN-I" role="button" aria-expanded="false" tabindex="0" aria-haspopup="true" style="user-select: none;">
                 <span class="Dj">
                   <span>
-                    <span class="ts">1</span>–
-                    <span class="ts">50</span>
+                    <span class="ts">{{firstLetter}}</span>–
+                   <span class="ts">{{lastLetter}}</span>
                   </span> of
-                  <span class="ts">713</span>
+                  <span class="ts">{{numberOfLetters}}</span>
                 </span>
               </div>
-              <div id=":h9" class="T-I J-J5-Ji amD T-I-awG amE T-I-ax7 T-I-Js-IF T-I-JE L3" role="button" aria-disabled="true"
-                data-tooltip="Newer" aria-label="Newer" style="user-select: none;">
+              <a routerLink="" [queryParams]="{page: currentPage === 1  ? currentPage : currentPage - 1}"><div id=":h9" class="T-I J-J5-Ji amD T-I-awG amE T-I-ax7 T-I-Js-IF T-I-JE L3" role="button" aria-disabled="true" data-tooltip="Newer"
+                aria-label="Newer" style="user-select: none;">
                 <span class="amF" aria-hidden="true">&nbsp;</span>
                 <img class="amI T-I-J3" src="../../../assets/img/cleardot.gif" alt="">
-              </div>
-              <div id=":ha" class="T-I J-J5-Ji amD T-I-awG T-I-ax7 T-I-Js-Gs L3" role="button" tabindex="0" data-tooltip="Older"
-                aria-label="Older" style="user-select: none;">
+              </div></a>
+              <a routerLink="" [queryParams]="{page: currentPage !== numberOfLetters / 5  ? currentPage + 1 : currentPage}"><div id=":ha" class="T-I J-J5-Ji amD T-I-awG T-I-ax7 T-I-Js-Gs L3" role="button" tabindex="0" data-tooltip="Older" aria-label="Older"
+                style="user-select: none;">
                 <span class="amF" aria-hidden="true">&nbsp;</span>
                 <img class="amJ T-I-J3" src="../../../assets/img/cleardot.gif" alt="">
-              </div>
+              </div></a>
             </span>
             <div class="amG J-M jQjAxd" role="menu" aria-haspopup="true" style="user-select: none; display: none;">
               <div class="SK AX" style="user-select: none;">
@@ -138,8 +136,8 @@
             </div>
           </div>
           <div class="G-Ni J-J5-Ji" gh="s">
-            <div id=":28" class="T-I J-J5-Ji ash T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false"
-              data-tooltip="Settings" aria-label="Settings" style="user-select: none;">
+            <div id=":28" class="T-I J-J5-Ji ash T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" data-tooltip="Settings"
+              aria-label="Settings" style="user-select: none;">
               <div class="asa">
                 <div class="aos T-I-J3 J-J5-Ji"></div>
               </div>

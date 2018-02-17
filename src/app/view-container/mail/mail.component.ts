@@ -44,9 +44,9 @@ export class MailComponent implements OnInit {
       })
       .switchMap((box: string): Observable<Mail[]> => {
 
-        return this._activatedRoute.queryParams.switchMap(queryParams => {
-          return this._viewContainerService.loadMailList(box, null, queryParams.page);
-        });
+        // return this._activatedRoute.queryParams.switchMap(queryParams => {
+          return this._viewContainerService.loadMailList(box, null, 1);
+        // });
 
       })
       .subscribe(() => this.isMailListLoaded = 'done');

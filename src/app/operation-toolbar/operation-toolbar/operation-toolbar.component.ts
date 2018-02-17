@@ -13,8 +13,8 @@ export class OperationToolbarComponent implements OnInit {
 
   public currentPage: number;
   public numberOfLetters: number;
-  public firstLetter: number;
-  public lastLetter: number;
+  public firstLetter = 1;
+  public lastLetter = 5;
 
   constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute) { }
 
@@ -24,22 +24,65 @@ export class OperationToolbarComponent implements OnInit {
       .switchMap((mailBoxName: string) => {
         return this._viewContainerService.getMailBoxLength(mailBoxName);
       })
-      .subscribe((numberOfLetters: number) => {
+      .switchMap((numberOfLetters: number) => {
         this.numberOfLetters = numberOfLetters;
+        if (numberOfLetters <= 5) {
+          this.firstLetter = numberOfLetters - numberOfLetters + 1;
+          this.lastLetter = numberOfLetters;
+        }
+
+
+        return this._viewContainerService.getCurrentPage();
+      })
+      .subscribe();
+
+
+    // this._viewContainerService.getCurrentPage()
+    //   .subscribe((currentPage: number) => {
+    //     this.currentPage = currentPage;
+
+    //   });
+
+    this._activatedRoute.queryParams
+      .subscribe(currentPage => {
+        this.currentPage = +currentPage.page;
+
       });
 
-    this._viewContainerService.getCurrentPage()
-      .subscribe((currentPage: number) => {
+    this._activatedRoute.queryParams.switchMap((queryParams: { page: number }) => {
+      console.log(queryParams);
+      return this._viewContainerService.loadMailList('inbox', this._viewContainerService.getLastSearch(), queryParams.page);
+    }
 
-        this.currentPage = currentPage;
-        this.firstLetter = currentPage * 5 - 5;
-        this.lastLetter = currentPage * 5;
-      });
+    ).subscribe();
 
-    this._activatedRoute.queryParams.subscribe(queryParams => {
-      this._viewContainerService.loadMailList('inbox', null, queryParams.page);
-    });
+
+
+  }
+  goNextPage(page) {
+
+    if (this.numberOfLetters / this.currentPage < 5 || page >= this.numberOfLetters / 5) {
+      return;
+    }
+
+    if (this.numberOfLetters < 10) {
+      this.firstLetter = Math.ceil(this.numberOfLetters / 2);
+      this.lastLetter = this.numberOfLetters;
+      return;
+    }
+
+    this.lastLetter = this.lastLetter + 5;
+    this.firstLetter = this.firstLetter + 5;
+
 
   }
 
+  // goPreviousPage() {
+
+  //   if (this.firstLetter === 1) {
+  //     return;
+  //   }
+  //   this.lastLetter = this.lastLetter - 5;
+  //   this.firstLetter = this.firstLetter - 5;
+  // }
 }

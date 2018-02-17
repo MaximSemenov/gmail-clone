@@ -28,6 +28,8 @@ export class ViewContainerService {
   private _mailList$$: Subject<Mail[]> = new Subject();
   private _currentMailBoxName$$: Subject<string> = new Subject();
   private _currentPage$$: Subject<number> = new Subject();
+  private _mailBoxLength$$: Subject<number> = new Subject();
+  private _lastSearch;
 
 
   private _snapshotUrls = {
@@ -39,6 +41,15 @@ export class ViewContainerService {
   constructor(private _http: HttpClient) {
 
   }
+
+  setLastSearch(value) {
+    this._lastSearch = value;
+  }
+
+  getLastSearch() {
+    return this._lastSearch;
+  }
+
 
   getCurrentPage(): Observable<number> {
     return this._currentPage$$.asObservable();
@@ -55,10 +66,11 @@ export class ViewContainerService {
 
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
     return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName])
-      .map(this._filterMail(query))
+      .map(this._filterMailBySearch(query))
       .map(this._filterMailByPage(page))
       .delay(300)
       .do((mailList: Mail[]) => {
+        this._lastSearch = query;
         this._currentMailBoxName$$.next(mailBoxName);
         this._currentPage$$.next(+page);
         this._mailList$$.next(mailList);
@@ -66,17 +78,20 @@ export class ViewContainerService {
   }
 
   getMailBoxLength(mailBoxName: string): Observable<number> {
-    return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).map((mailList: Mail[]) => mailList.length);
+    // return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).map((mailList: Mail[]) => mailList.length);
+    return this._mailBoxLength$$.asObservable();
   }
 
 
-  private _filterMail(query: string): (mailList: Mail[]) => Mail[] {
+  private _filterMailBySearch(query: string): (mailList: Mail[]) => Mail[] {
 
     return (mailList): Mail[] => {
 
       if (!query) {
+
         return mailList;
       }
+
 
       return mailList.filter((mail: Mail) => {
         let result = false;
@@ -85,6 +100,7 @@ export class ViewContainerService {
             result = true;
           }
         });
+
         return result;
       });
     };
@@ -94,9 +110,21 @@ export class ViewContainerService {
   private _filterMailByPage(page): (mailList: Mail[]) => Mail[] {
 
     return (mailList): Mail[] => {
+
+      this._mailBoxLength$$.next(mailList.length);
+
       if (!page || mailList.length < 6) {
         return mailList;
       }
+
+      if (+page === 1) {
+        return mailList = mailList.slice(0, 5);
+      }
+
+      if (mailList.length < 10) {
+        return mailList = mailList.slice(5, mailList.length);
+      }
+
       return mailList = mailList.slice(page * 5 - 5, page * 5);
     };
   }

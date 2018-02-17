@@ -315,6 +315,12 @@
     background: no-repeat url(https://ssl.gstatic.com/mail/sprites/general_black-2eb471de5e5ea7371fa18ebc5339694d.png) 0 -417px;
 }
 
+.inactive{
+    filter: alpha(opacity=33);
+    opacity: .333;
+    cursor: not-allowed;
+}
+
 @media (min-resolution:144dpi),
 (-webkit-min-device-pixel-ratio:1.5) {
     .asf {

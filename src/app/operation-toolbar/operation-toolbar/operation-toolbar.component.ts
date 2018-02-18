@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ViewContainerService } from '../../view-container/view-container.service';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/pluck';
+
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -49,12 +51,13 @@ export class OperationToolbarComponent implements OnInit {
 
       });
 
-    this._activatedRoute.queryParams.switchMap((queryParams: { page: number }) => {
-      console.log(queryParams);
-      return this._viewContainerService.loadMailList('inbox', this._viewContainerService.getLastSearch(), queryParams.page);
-    }
-
-    ).subscribe();
+    this._activatedRoute.queryParams
+      .pluck('page')
+      .switchMap((page: number) => {
+        console.log(page);
+        return this._viewContainerService.loadMailList('inbox', this._viewContainerService.getLastSearch(), page);
+      })
+      .subscribe();
 
 
 

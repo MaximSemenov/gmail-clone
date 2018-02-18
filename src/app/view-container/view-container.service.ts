@@ -67,6 +67,9 @@ export class ViewContainerService {
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
     return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName])
       .map(this._filterMailBySearch(query))
+      .do((mailList: Mail[]) => {
+        this._mailBoxLength$$.next(mailList.length);
+      })
       .map(this._filterMailByPage(page))
       .delay(300)
       .do((mailList: Mail[]) => {
@@ -111,19 +114,13 @@ export class ViewContainerService {
 
     return (mailList): Mail[] => {
 
-      this._mailBoxLength$$.next(mailList.length);
-
       if (!page || mailList.length < 6) {
         return mailList;
       }
 
-      if (+page === 1) {
-        return mailList = mailList.slice(0, 5);
-      }
-
-      if (mailList.length < 10) {
-        return mailList = mailList.slice(5, mailList.length);
-      }
+      // if (+page === 1) {
+      //   return mailList = mailList.slice(0, 5);
+      // }
 
       return mailList = mailList.slice(page * 5 - 5, page * 5);
     };

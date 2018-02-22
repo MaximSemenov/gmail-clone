@@ -53,12 +53,12 @@ export class MailComponent implements OnInit {
 
     this.mailList$ = this._viewContainerService.getMailList();
 
-    this._activatedRoute
-      .queryParams
-      .subscribe(queryParams => {
-        console.log(queryParams);
+    // this._activatedRoute
+    //   .queryParams
+    //   .subscribe(queryParams => {
+    //     console.log(queryParams);
 
-      });
+    //   });
 
   }
 

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
@@ -26,10 +27,10 @@ export type Mail = [
 export class ViewContainerService {
 
   private _mailList$$: Subject<Mail[]> = new Subject();
-  private _currentMailBoxName$$: Subject<string> = new Subject();
-  private _currentPage$$: Subject<number> = new Subject();
-  private _mailBoxLength$$: Subject<number> = new Subject();
-  private _lastSearch;
+  private _currentMailBoxName$$: BehaviorSubject<string> = new BehaviorSubject('inbox');
+  private _currentPage$$: BehaviorSubject<number> = new BehaviorSubject(0);
+  private _mailBoxLength$$: BehaviorSubject<number> = new BehaviorSubject(0);
+  private _lastSearch$$: Subject<string> = new BehaviorSubject(null);
 
 
   private _snapshotUrls = {
@@ -42,12 +43,13 @@ export class ViewContainerService {
 
   }
 
-  setLastSearch(value) {
-    this._lastSearch = value;
-  }
+  // setLastSearch(value) {
+  //   this._lastSearch = value;
+  // }
 
   getLastSearch() {
-    return this._lastSearch;
+    
+    return this._lastSearch$$.asObservable();
   }
 
 
@@ -73,7 +75,7 @@ export class ViewContainerService {
       .map(this._filterMailByPage(page))
       .delay(300)
       .do((mailList: Mail[]) => {
-        this._lastSearch = query;
+        this._lastSearch$$.next(query);
         this._currentMailBoxName$$.next(mailBoxName);
         this._currentPage$$.next(+page);
         this._mailList$$.next(mailList);

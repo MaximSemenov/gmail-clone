@@ -31,15 +31,21 @@ export class OperationToolbarComponent implements OnInit {
 
     this._viewContainerService.getCurrentBoxName()
       .switchMap((mailBoxName: string) => {
-        // console.log('я тут в mailbox');
+
         return this._viewContainerService.getMailBoxLength(mailBoxName);
       })
+      .filter(Boolean)
       .subscribe((numberOfLetters: number) => {
+        console.log(numberOfLetters);
         this.numberOfLetters = numberOfLetters;
         if (numberOfLetters <= 5) {
           this.firstLetter = numberOfLetters - numberOfLetters + 1;
           this.lastLetter = numberOfLetters;
         }
+
+
+
+
       });
 
 
@@ -77,14 +83,13 @@ export class OperationToolbarComponent implements OnInit {
         this.currentPage = +page;
       })
       .switchMap((page: string) => {
-        console.log('again in params');
-    
+
         return combineLatest(
           this._viewContainerService.getCurrentBoxName().first(),
           this._viewContainerService.getLastSearch().first(),
           Observable.of(page),
           (mailBoxName, lastSearch, page) => {
-            console.log(lastSearch);
+
             return {
               mailBoxName,
               lastSearch,
@@ -93,10 +98,8 @@ export class OperationToolbarComponent implements OnInit {
           }
         );
       })
-      .delay(1000)
       .switchMap((queryObject) => {
 
-        console.log(queryObject);
         return this._viewContainerService.loadMailList(
           queryObject.mailBoxName,
           queryObject.lastSearch,
@@ -109,17 +112,15 @@ export class OperationToolbarComponent implements OnInit {
 
 
   }
-  goNextPage(page) {
+  goNextPage(page: number): void {
 
-    if (this.numberOfLetters / this.currentPage < 5 || page >= this.numberOfLetters / 5) {
-      return;
-    }
+    if (this.numberOfLetters / page < 5 || page >= this.numberOfLetters / 5) {
 
-    if (this.numberOfLetters < 10) {
-      this.firstLetter = Math.ceil(this.numberOfLetters / 2);
+      this.firstLetter = 5 * (page - 1) + 1;
       this.lastLetter = this.numberOfLetters;
       return;
     }
+
 
     this.lastLetter = this.lastLetter + 5;
     this.firstLetter = this.firstLetter + 5;
@@ -127,12 +128,14 @@ export class OperationToolbarComponent implements OnInit {
 
   }
 
-  // goPreviousPage() {
+  goPreviousPage(): void {
 
-  //   if (this.firstLetter === 1) {
-  //     return;
-  //   }
-  //   this.lastLetter = this.lastLetter - 5;
-  //   this.firstLetter = this.firstLetter - 5;
-  // }
+    if (this.firstLetter === 1) {
+      return;
+    }
+
+    this.lastLetter = 5 * (this.currentPage - 1);
+    this.firstLetter = this.firstLetter - 5;
+
+  }
 }

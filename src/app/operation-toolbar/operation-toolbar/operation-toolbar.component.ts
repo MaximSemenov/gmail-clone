@@ -114,17 +114,14 @@ export class OperationToolbarComponent implements OnInit {
   }
   goNextPage(page: number): void {
 
-    if (this.numberOfLetters / page < 5 || page >= this.numberOfLetters / 5) {
-
-      this.firstLetter = 5 * (page - 1) + 1;
-      this.lastLetter = this.numberOfLetters;
+    if (this.lastLetter === this.numberOfLetters) {
       return;
     }
 
-
-    this.lastLetter = this.lastLetter + 5;
     this.firstLetter = this.firstLetter + 5;
-
+    this.lastLetter = this.numberOfLetters - this.firstLetter < 5 ?
+      (this.numberOfLetters - this.firstLetter) + this.firstLetter : this.firstLetter + 5;
+    return;
 
   }
 

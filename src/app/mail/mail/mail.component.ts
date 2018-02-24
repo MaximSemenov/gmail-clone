@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
-import { ViewContainerService, Mail } from '../view-container.service';
+import { MailService, Mail } from '../mail.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import 'rxjs/add/operator/pluck';
@@ -30,7 +30,7 @@ export class MailComponent implements OnInit {
   public mailBoxName: string;
   public isMailListLoaded = 'notDone';
 
-  constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
+  constructor(private _mailService: MailService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
 
 
   ngOnInit() {
@@ -45,13 +45,13 @@ export class MailComponent implements OnInit {
       .switchMap((box: string): Observable<Mail[]> => {
 
         // return this._activatedRoute.queryParams.switchMap(queryParams => {
-          return this._viewContainerService.loadMailList(box, null, 1);
+          return this._mailService.loadMailList(box, null, 1);
         // });
 
       })
       .subscribe(() => this.isMailListLoaded = 'done');
 
-    this.mailList$ = this._viewContainerService.getMailList();
+    this.mailList$ = this._mailService.getMailList();
 
     // this._activatedRoute
     //   .queryParams

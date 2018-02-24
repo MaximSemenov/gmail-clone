@@ -25,7 +25,7 @@ export type Mail = [
 
 
 @Injectable()
-export class ViewContainerService {
+export class MailService {
 
   private _mailList$$: Subject<Mail[]> = new Subject();
   private _currentMailBoxName$$: BehaviorSubject<string> = new BehaviorSubject('inbox');
@@ -49,7 +49,7 @@ export class ViewContainerService {
   // }
 
   getLastSearch() {
-    
+
     return this._lastSearch$$.asObservable();
   }
 

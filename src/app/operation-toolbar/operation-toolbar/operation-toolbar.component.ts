@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewContainerService } from '../../view-container/view-container.service';
+import { MailService } from '../../mail/mail.service';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/pluck';
@@ -25,14 +25,14 @@ export class OperationToolbarComponent implements OnInit {
   public obj;
 
 
-  constructor(private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _mailService: MailService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
-    this._viewContainerService.getCurrentBoxName()
+    this._mailService.getCurrentBoxName()
       .switchMap((mailBoxName: string) => {
 
-        return this._viewContainerService.getMailBoxLength(mailBoxName);
+        return this._mailService.getMailBoxLength(mailBoxName);
       })
       .filter(Boolean)
       .subscribe((numberOfLetters: number) => {
@@ -50,9 +50,9 @@ export class OperationToolbarComponent implements OnInit {
 
 
     // Observable.combineLatest(
-    //   this._viewContainerService.getCurrentBoxName(),
+    //   this._mailService.getCurrentBoxName(),
     //   Observable.of([1, 2, 4, 6, 7]),
-    //   this._viewContainerService.getMailBoxLength('inbox'),
+    //   this._mailService.getMailBoxLength('inbox'),
     //   Observable.of([11, 22, 44, 65, 76]),
     //   (mailboxName, length) => {
     //     return {
@@ -70,7 +70,7 @@ export class OperationToolbarComponent implements OnInit {
     //   }).switchMap(page => {
     //     console.log(page.page);
     //     console.log('ready to involke function')
-    //     return this._viewContainerService.loadMailList(this.obj.mailboxName, this._viewContainerService.getLastSearch(), page.page);
+    //     return this._mailService.loadMailList(this.obj.mailboxName, this._mailService.getLastSearch(), page.page);
     //   })
     //   .subscribe();
 
@@ -85,8 +85,8 @@ export class OperationToolbarComponent implements OnInit {
       .switchMap((page: string) => {
 
         return combineLatest(
-          this._viewContainerService.getCurrentBoxName().first(),
-          this._viewContainerService.getLastSearch().first(),
+          this._mailService.getCurrentBoxName().first(),
+          this._mailService.getLastSearch().first(),
           Observable.of(page),
           (mailBoxName, lastSearch, page) => {
 
@@ -100,7 +100,7 @@ export class OperationToolbarComponent implements OnInit {
       })
       .switchMap((queryObject) => {
 
-        return this._viewContainerService.loadMailList(
+        return this._mailService.loadMailList(
           queryObject.mailBoxName,
           queryObject.lastSearch,
           +queryObject.page);

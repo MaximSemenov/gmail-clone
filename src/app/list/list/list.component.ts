@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewContainerService } from '../../view-container/view-container.service';
+import { MailService } from '../../mail/mail.service';
 
 @Component({
   selector: 'app-list',
@@ -10,10 +10,10 @@ export class ListComponent implements OnInit {
 
   public inboxListLength: number;
 
-  constructor(private _viewContainerService: ViewContainerService) { }
+  constructor(private _mailService: MailService) { }
 
   ngOnInit(): void {
-    this._viewContainerService.getMailBoxLength('inbox').subscribe((length: number) => this.inboxListLength = length);
+    this._mailService.getMailBoxLength('inbox').subscribe((length: number) => this.inboxListLength = length);
   }
 
 }

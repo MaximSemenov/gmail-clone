@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ViewContainerService } from './view-container.service';
+import { MailService } from './mail.service';
 import { RouterModule } from '@angular/router';
 import { MailComponent } from './mail/mail.component';
 import { OpenLetterComponent } from './mail/open-letter/open-letter.component';
@@ -18,6 +18,6 @@ import { OpenLetterService } from './mail/open-letter/open-letter.service';
   exports: [
 
   ],
-  providers: [ViewContainerService, OpenLetterService]
+  providers: [MailService, OpenLetterService]
 })
-export class ViewContainerModule { }
+export class MailModule { }

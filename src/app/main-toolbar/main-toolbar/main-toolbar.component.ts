@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ViewContainerService } from '../../view-container/view-container.service';
+import { MailService } from '../../mail/mail.service';
 import { ActivatedRoute, Router, RoutesRecognized, ActivatedRouteSnapshot, NavigationEnd } from '@angular/router';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/filter';
@@ -16,14 +16,14 @@ export class MainToolBarComponent implements OnInit {
   public currentPage: number;
   public searchControl = new FormControl('');
 
-  constructor(private _router: Router, private _viewContainerService: ViewContainerService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _router: Router, private _mailService: MailService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this._viewContainerService.getCurrentBoxName().subscribe((mailBoxName: string) => this.mailBoxName = mailBoxName);
-    this._viewContainerService.getCurrentPage().subscribe((page: number) => this.currentPage = page);
+    this._mailService.getCurrentBoxName().subscribe((mailBoxName: string) => this.mailBoxName = mailBoxName);
+    this._mailService.getCurrentPage().subscribe((page: number) => this.currentPage = page);
 
     this.searchControl.valueChanges
-      .subscribe((value: string) => this._viewContainerService
+      .subscribe((value: string) => this._mailService
         .loadMailList(this.mailBoxName, value, this.currentPage)
         .subscribe());
 

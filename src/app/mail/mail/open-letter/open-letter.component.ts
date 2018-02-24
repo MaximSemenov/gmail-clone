@@ -9,7 +9,7 @@ import 'rxjs/add/operator/concat';
 import 'rxjs/add/observable/forkJoin';
 // import 'rxjs/add/operator/pipe';
 import { OpenLetterService } from './open-letter.service';
-import { ViewContainerService } from '../../view-container.service';
+import { MailService } from '../../mail.service';
 
 @Component({
   selector: 'app-open-letter',
@@ -24,7 +24,7 @@ export class OpenLetterComponent implements OnInit {
   constructor(
     private _openLetterService: OpenLetterService,
     private _activatedRoute: ActivatedRoute,
-    private _viewContainerService: ViewContainerService
+    private _mailService: MailService
   ) { }
 
   ngOnInit() {

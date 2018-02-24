@@ -44,9 +44,6 @@ export class MailService {
 
   }
 
-  // setLastSearch(value) {
-  //   this._lastSearch = value;
-  // }
 
   getLastSearch() {
 
@@ -120,10 +117,6 @@ export class MailService {
       if (!page || mailList.length < 6) {
         return mailList;
       }
-
-      // if (+page === 1) {
-      //   return mailList = mailList.slice(0, 5);
-      // }
 
       return mailList = mailList.slice(page * 5 - 5, page * 5);
     };

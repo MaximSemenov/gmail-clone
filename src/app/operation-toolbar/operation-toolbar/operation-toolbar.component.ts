@@ -3,11 +3,8 @@ import { MailService } from '../../mail/mail.service';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/pluck';
-import 'rxjs/add/observable/forkJoin';
 import { Observable } from 'rxjs/Observable';
 import { concat } from 'rxjs/observable/concat';
-// import {forkJoin} from 'rxjs/observable/forkJoin';
-
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 

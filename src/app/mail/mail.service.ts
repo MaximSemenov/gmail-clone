@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
+import 'rxjs/add/operator/first';
 
 export type Mail = [
 
@@ -33,7 +34,7 @@ export class MailService {
   private _mailBoxLength$$: BehaviorSubject<number> = new BehaviorSubject(0);
   private _lastSearch$$: BehaviorSubject<string> = new BehaviorSubject(null);
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
-
+  private _mailListCache$: Observable<Mail[]>;
 
   private _snapshotUrls = {
     inbox: './assets/data/inbox-list.json',
@@ -67,7 +68,12 @@ export class MailService {
   }
 
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
-    return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName])
+
+    if (!this._mailListCache$) {
+      this._mailListCache$ = this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]);
+    }
+
+    return this._mailListCache$
       .map(this._filterMailBySearch(query))
       .do((mailList: Mail[]) => {
         this._mailBoxLength$$.next(mailList.length);
@@ -84,7 +90,7 @@ export class MailService {
 
 
   getMailBoxLength(mailBoxName: string): Observable<number> {
-    // return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).map((mailList: Mail[]) => mailList.length);
+
     return this._mailBoxLength$$.asObservable();
   }
 

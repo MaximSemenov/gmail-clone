@@ -17,6 +17,7 @@ export type Mail = [
     title: string;
     body: string;
     isRead: boolean;
+    isChecked: boolean;
     email: string;
   }
 ];

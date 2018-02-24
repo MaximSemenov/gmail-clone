@@ -94,3 +94,10 @@ td.apU .T-KT {
     padding-right: 0;
     padding-left: 0;
 }
+
+
+.checked {
+
+    background: url(//ssl.gstatic.com/ui/v1/menu/checkmark.png) no-repeat -5px -3px;
+    background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/menu/checkmark.png) 1x, url(//ssl.gstatic.com/ui/v1/menu/checkmark_2x.png) 2x);
+}

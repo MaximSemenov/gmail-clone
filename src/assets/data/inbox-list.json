@@ -5,6 +5,7 @@
         "title": "seize one-to-one functionalities",
         "body": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue.",
         "isRead": true,
+        "isChecked": false,
         "email": "lbilson0@yahoo.com"
     },
     {
@@ -13,6 +14,7 @@
         "title": "mesh user-centric solutions",
         "body": "Praesent lectus.",
         "isRead": false,
+        "isChecked": false,
         "email": "bkauffman1@imgur.com"
     },
     {
@@ -21,6 +23,7 @@
         "title": "syndicate out-of-the-box supply-chains",
         "body": "Pellentesque at nulla.",
         "isRead": false,
+        "isChecked": false,
         "email": "rwillingam2@furl.net"
     },
     {
@@ -29,6 +32,7 @@
         "title": "generate impactful metrics",
         "body": "Vestibulum sed magna at nunc commodo placerat. Praesent blandit.",
         "isRead": true,
+        "isChecked": false,
         "email": "btullis3@shinystat.com"
     },
     {
@@ -37,6 +41,7 @@
         "title": "deploy vertical content",
         "body": "Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
         "isRead": true,
+        "isChecked": false,
         "email": "grapson4@vistaprint.com"
     },
     {
@@ -45,6 +50,7 @@
         "title": "harness back-end interfaces",
         "body": "Vivamus tortor.",
         "isRead": true,
+        "isChecked": false,
         "email": "rpyvis5@techcrunch.com"
     },
     {
@@ -53,6 +59,7 @@
         "title": "implement wireless synergies",
         "body": "Pellentesque at nulla. Suspendisse potenti.",
         "isRead": true,
+        "isChecked": false,
         "email": "bdunridge6@princeton.edu"
     },
     {
@@ -61,6 +68,7 @@
         "title": "mesh granular mindshare",
         "body": "Morbi porttitor lorem id ligula.",
         "isRead": false,
+        "isChecked": false,
         "email": "cvan7@bandcamp.com"
     },
     {
@@ -69,6 +77,7 @@
         "title": "scale intuitive interfaces",
         "body": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
         "isRead": true,
+        "isChecked": false,
         "email": "mmiguel8@topsy.com"
     },
     {
@@ -77,6 +86,7 @@
         "title": "mesh cutting-edge schemas",
         "body": "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
         "isRead": false,
+        "isChecked": false,
         "email": "ajenteau9@skype.com"
     },
     {
@@ -85,6 +95,7 @@
         "title": "synthesize efficient systems",
         "body": "Aenean lectus. Pellentesque eget nunc. Donec quis orci eget orci vehicula condimentum.",
         "isRead": false,
+        "isChecked": false,
         "email": "jweatheya@google.cn"
     },
     {
@@ -93,6 +104,7 @@
         "title": "maximize sticky markets",
         "body": "Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
         "isRead": false,
+        "isChecked": false,
         "email": "fdonnersbergb@deliciousdays.com"
     },
     {
@@ -101,6 +113,7 @@
         "title": "repurpose sticky action-items",
         "body": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
         "isRead": true,
+        "isChecked": false,
         "email": "btruggianc@unc.edu"
     },
     {
@@ -109,6 +122,7 @@
         "title": "evolve revolutionary applications",
         "body": "Nulla ut erat id mauris vulputate elementum. Nullam varius.",
         "isRead": false,
+        "isChecked": false,
         "email": "aflookd@eepurl.com"
     },
     {
@@ -117,6 +131,7 @@
         "title": "optimize 24/365 synergies",
         "body": "Suspendisse accumsan tortor quis turpis. Sed ante.",
         "isRead": true,
+        "isChecked": false,
         "email": "gboissiere@usatoday.com"
     }
 ]

@@ -39,12 +39,7 @@ export class OperationToolbarComponent implements OnInit {
           this.firstLetter = numberOfLetters - numberOfLetters + 1;
           this.lastLetter = numberOfLetters;
         }
-
-
-
-
       });
-
 
     // Observable.combineLatest(
     //   this._mailService.getCurrentBoxName(),
@@ -70,8 +65,6 @@ export class OperationToolbarComponent implements OnInit {
     //     return this._mailService.loadMailList(this.obj.mailboxName, this._mailService.getLastSearch(), page.page);
     //   })
     //   .subscribe();
-
-
 
     this._activatedRoute.queryParams
       .pluck('page')
@@ -102,10 +95,10 @@ export class OperationToolbarComponent implements OnInit {
           queryObject.lastSearch,
           +queryObject.page);
 
-      })
+      }).subscribe();
 
-      .subscribe();
 
+    this._mailService.getCheckedLetter().subscribe(x => console.log(x));
 
 
   }
@@ -132,4 +125,6 @@ export class OperationToolbarComponent implements OnInit {
     this.firstLetter = this.firstLetter - 5;
 
   }
+
+
 }

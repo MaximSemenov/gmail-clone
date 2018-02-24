@@ -31,7 +31,8 @@ export class MailService {
   private _currentMailBoxName$$: BehaviorSubject<string> = new BehaviorSubject('inbox');
   private _currentPage$$: BehaviorSubject<number> = new BehaviorSubject(0);
   private _mailBoxLength$$: BehaviorSubject<number> = new BehaviorSubject(0);
-  private _lastSearch$$: Subject<string> = new BehaviorSubject(null);
+  private _lastSearch$$: BehaviorSubject<string> = new BehaviorSubject(null);
+  private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
 
 
   private _snapshotUrls = {
@@ -41,12 +42,13 @@ export class MailService {
 
 
   constructor(private _http: HttpClient) {
-
   }
 
+  getCheckedLetter() {
+    return this._currentlyCheckedLetter$$.asObservable();
+  }
 
   getLastSearch() {
-
     return this._lastSearch$$.asObservable();
   }
 
@@ -79,6 +81,7 @@ export class MailService {
         this._mailList$$.next(mailList);
       });
   }
+
 
   getMailBoxLength(mailBoxName: string): Observable<number> {
     // return this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).map((mailList: Mail[]) => mailList.length);
@@ -120,6 +123,11 @@ export class MailService {
 
       return mailList = mailList.slice(page * 5 - 5, page * 5);
     };
+  }
+
+
+  checkLetter(letter) {
+    this._currentlyCheckedLetter$$.next(letter);
   }
 
 

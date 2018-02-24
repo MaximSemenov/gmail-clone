@@ -53,4 +53,9 @@ export class MailComponent implements OnInit {
 
   }
 
+  checkLetters(letter) {
+    letter.isChecked = !letter.isChecked;
+    this._mailService.checkLetter(letter);
+  }
+
 }

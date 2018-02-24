@@ -1,3 +1,7 @@
+.T-Jo-Jp {
+    background: url(//ssl.gstatic.com/ui/v1/menu/checkmark.png) no-repeat -5px -3px;
+    background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/menu/checkmark.png) 1x, url(//ssl.gstatic.com/ui/v1/menu/checkmark_2x.png) 2x);
+}
 
 .J-J5-Ji {
     display: -moz-inline-box;
@@ -315,7 +319,7 @@
     background: no-repeat url(https://ssl.gstatic.com/mail/sprites/general_black-2eb471de5e5ea7371fa18ebc5339694d.png) 0 -417px;
 }
 
-.inactive{
+.inactive {
     filter: alpha(opacity=33);
     opacity: .333;
     cursor: not-allowed;

@@ -10,18 +10,15 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/first';
 
-export type Mail = [
-
-  {
-    id: string;
-    name: string;
-    title: string;
-    body: string;
-    isRead: boolean;
-    isChecked: boolean;
-    email: string;
-  }
-];
+export type Mail = {
+  id: string;
+  name: string;
+  title: string;
+  body: string;
+  isRead: boolean;
+  isChecked: boolean;
+  email: string;
+};
 
 
 
@@ -35,6 +32,7 @@ export class MailService {
   private _lastSearch$$: BehaviorSubject<string> = new BehaviorSubject(null);
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
   private _mailListCache$: Observable<Mail[]>;
+  private _checkedLetters: Mail[] = [];
 
   private _snapshotUrls = {
     inbox: './assets/data/inbox-list.json',
@@ -70,7 +68,7 @@ export class MailService {
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
 
     if (!this._mailListCache$) {
-      this._mailListCache$ = this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]);
+      this._mailListCache$ = this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).first();
     }
 
     return this._mailListCache$
@@ -132,8 +130,14 @@ export class MailService {
   }
 
 
-  checkLetter(letter) {
-    this._currentlyCheckedLetter$$.next(letter);
+  storeCheckedLetters(letter: Mail, isCheked: boolean): void {
+
+    if (!isCheked) {
+      this._checkedLetters = this._checkedLetters.filter((storedLetter: Mail) => storedLetter.id !== letter.id);
+      return;
+    }
+
+    this._checkedLetters.push(letter);
   }
 
 

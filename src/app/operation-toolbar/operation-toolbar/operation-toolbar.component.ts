@@ -98,7 +98,7 @@ export class OperationToolbarComponent implements OnInit {
       }).subscribe();
 
 
-    this._mailService.getCheckedLetter().subscribe(x => console.log(x));
+
 
 
   }

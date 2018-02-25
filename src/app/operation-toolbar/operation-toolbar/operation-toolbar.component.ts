@@ -126,5 +126,9 @@ export class OperationToolbarComponent implements OnInit {
 
   }
 
+  deleteLetter () {
+this._mailService.deleteLetter()
+  }
+
 
 }

@@ -9,6 +9,7 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/first';
+import 'rxjs/add/operator/take';
 
 export type Mail = {
   id: string;
@@ -140,6 +141,31 @@ export class MailService {
     this._checkedLetters.push(letter);
   }
 
+  deleteLetter() {
+    this._mailListCache$
+      .map(mail => {
+        return mail.filter(letter => {
+
+          let result = false;
+
+          this._checkedLetters.forEach(checkedLetter => {
+            if (letter.id.includes(checkedLetter.id)) {
+              result = true;
+            }
+          });
+
+          return !result;
+
+        });
+      })
+      .subscribe(editedMailList => {
+
+        this._mailListCache$ = Observable.of(editedMailList);
+        this.loadMailList('inbox', null, 1).subscribe();
+
+      });
+
+  }
+
 
 }
-

@@ -15,17 +15,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './authorization/login/login.component';
 import { AuthGuard } from './authorization/auth.guard';
 import { AuthService } from './authorization/auth.service';
+import { HomeComponent } from './home/home.component';
+
 
 
 const appRoutes: Routes = [
 
-
+  // { path: '', canActivate: [AuthGuard], redirectTo: 'mail/inbox', pathMatch: 'full' },
   // { path: '', redirectTo: 'login', pathMatch: 'full' },
   // { path: 'login', component: LoginComponent },
+  // { path: '',  redirectTo: 'mail/inbox', pathMatch: 'full' },
   { path: '', redirectTo: 'mail/inbox', pathMatch: 'full' },
-  { path: 'mail', redirectTo: 'mail/inbox', pathMatch: 'full' },
-  { path: 'mail/:box', canActivate: [AuthGuard], component: MailComponent },
-  { path: 'mail/:box/:id', component: OpenLetterComponent }
+  // { path: 'home', component: HomeComponent },
+  { path: 'mail/:box/:id', component: OpenLetterComponent },
+  // { path: 'mail', redirectTo: 'mail/inbox', pathMatch: 'full' },
+  { path: 'mail/:box', component: MailComponent },
+
 
 
 ];
@@ -34,7 +39,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

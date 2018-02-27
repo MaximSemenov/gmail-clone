@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._authService.isAuth().subscribe((loginStatus: boolean) => {
+    this._authService.isAuth({ login: null, password: null }).subscribe((loginStatus: boolean) => {
       this.isLogin = loginStatus;
     });
   }

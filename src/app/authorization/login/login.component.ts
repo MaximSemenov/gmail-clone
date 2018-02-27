@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginGroupControl: FormGroup;
+
+  constructor(private _authService: AuthService) { }
 
   ngOnInit() {
+    this.loginGroupControl = new FormGroup({
+
+      login: new FormControl,
+      password: new FormControl
+
+    });
+
+    // this.loginGroupControl.valueChanges.subscribe(x => console.log(x));
+
+  }
+
+  submitLogin() {
+
+
+    this._authService.isAuth(this.loginGroupControl.value);
+
+    console.log(this.loginGroupControl.value);
+
+
+  
   }
 
 }

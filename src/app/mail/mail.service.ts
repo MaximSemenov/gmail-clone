@@ -28,7 +28,7 @@ export class MailService {
 
   private _mailList$$: Subject<Mail[]> = new Subject();
   private _currentMailBoxName$$: BehaviorSubject<string> = new BehaviorSubject('inbox');
-  private _currentPage$$: BehaviorSubject<number> = new BehaviorSubject(0);
+  private _currentPage$$: BehaviorSubject<number> = new BehaviorSubject(1);
   private _mailBoxLength$$: BehaviorSubject<number> = new BehaviorSubject(0);
   private _lastSearch$$: BehaviorSubject<string> = new BehaviorSubject(null);
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
@@ -68,6 +68,8 @@ export class MailService {
 
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
 
+    console.log(mailBoxName, query, page);
+
     if (!this._mailListCache$) {
       this._mailListCache$ = this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).first();
     }
@@ -78,14 +80,18 @@ export class MailService {
         this._mailBoxLength$$.next(mailList.length);
       })
       .map(this._filterMailByPage(page))
-      .delay(300)
+      .delay(500)
       .do((mailList: Mail[]) => {
-        this._lastSearch$$.next(query);
-        this._currentMailBoxName$$.next(mailBoxName);
-        this._currentPage$$.next(+page);
         this._mailList$$.next(mailList);
       });
   }
+
+
+
+  updateLastSearch(query) {
+    this._lastSearch$$.next(query);
+  }
+
 
 
   getMailBoxLength(mailBoxName: string): Observable<number> {

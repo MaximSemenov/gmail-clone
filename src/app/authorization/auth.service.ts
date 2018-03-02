@@ -9,14 +9,17 @@ export class AuthService {
 
 
   isAuth(loginObject) {
-    // return Observable.of(Math.random() >= 0.8);
+    // return Observable.of(Math.random() >= 0.1);
+    console.log(loginObject);
     if (loginObject['login'] === 'demo' && loginObject['password'] === 'demo') {
       return Observable.of(true);
     }
-    return Observable.of(false);
+    return Observable.of(true);
   }
 
 
 
 
 }
+
+

@@ -33,7 +33,7 @@ export class OperationToolbarComponent implements OnInit {
       })
       .filter(Boolean)
       .subscribe((numberOfLetters: number) => {
-        console.log(numberOfLetters);
+        // console.log(numberOfLetters);
         this.numberOfLetters = numberOfLetters;
         if (numberOfLetters <= 5) {
           this.firstLetter = numberOfLetters - numberOfLetters + 1;
@@ -41,61 +41,63 @@ export class OperationToolbarComponent implements OnInit {
         }
       });
 
-    // Observable.combineLatest(
-    //   this._mailService.getCurrentBoxName(),
-    //   Observable.of([1, 2, 4, 6, 7]),
-    //   this._mailService.getMailBoxLength('inbox'),
-    //   Observable.of([11, 22, 44, 65, 76]),
-    //   (mailboxName, length) => {
-    //     return {
-    //       mailboxName,
-    //       length,
-    //     };
-    //   }
-    // ).do(obj => {
-    //   console.log('Object');
-    //   console.log(obj);
-    //   this.obj = obj;
-    // })
-    //   .switchMap(obj => {
-    //     return this._activatedRoute.queryParams;
-    //   }).switchMap(page => {
-    //     console.log(page.page);
-    //     console.log('ready to involke function')
-    //     return this._mailService.loadMailList(this.obj.mailboxName, this._mailService.getLastSearch(), page.page);
-    //   })
-    //   .subscribe();
+
 
     this._activatedRoute.queryParams
       .pluck('page')
       .filter(Boolean)
-      .do((page: string) => {
+      .subscribe((page: string) => {
         this.currentPage = +page;
-      })
-      .switchMap((page: string) => {
+      });
 
-        return combineLatest(
-          this._mailService.getCurrentBoxName().first(),
-          this._mailService.getLastSearch().first(),
-          Observable.of(page),
-          (mailBoxName, lastSearch, page) => {
 
-            return {
-              mailBoxName,
-              lastSearch,
-              page
-            };
-          }
-        );
-      })
-      .switchMap((queryObject) => {
+    Observable.combineLatest(
+      this._mailService.getCurrentBoxName(),
+      this._mailService.getLastSearch(),
+      this._activatedRoute.queryParams.pluck('page').filter(Boolean),
+      (mailboxName, lastSearch, page) => {
+        return {
+          mailboxName,
+          lastSearch,
+          page
+        };
+      }
+    ).switchMap(obj => {
+      // console.log(obj);
+      return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
+    })
+      .subscribe();
 
-        return this._mailService.loadMailList(
-          queryObject.mailBoxName,
-          queryObject.lastSearch,
-          +queryObject.page);
+    // this._activatedRoute.queryParams
+    //   .pluck('page')
+    //   .filter(Boolean)
+    //   .do((page: string) => {
+    //     this.currentPage = +page;
+    //   })
+    //   .switchMap((page: string) => {
 
-      }).subscribe();
+    //     return combineLatest(
+    //       this._mailService.getCurrentBoxName().first(),
+    //       this._mailService.getLastSearch().first(),
+    //       Observable.of(page),
+    //       (mailBoxName, lastSearch, page) => {
+
+    //         return {
+    //           mailBoxName,
+    //           lastSearch,
+    //           page
+    //         };
+    //       }
+    //     );
+    //   })
+    //   .switchMap((queryObject) => {
+
+    //     return this._mailService.loadMailList(
+    //       queryObject.mailBoxName,
+    //       queryObject.lastSearch,
+    //       +queryObject.page);
+
+    //   }).subscribe();
 
 
 
@@ -126,8 +128,8 @@ export class OperationToolbarComponent implements OnInit {
 
   }
 
-  deleteLetter () {
-this._mailService.deleteLetter()
+  deleteLetter() {
+    this._mailService.deleteLetter();
   }
 
 

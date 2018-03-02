@@ -22,14 +22,14 @@ export class MainToolBarComponent implements OnInit {
     this._mailService.getCurrentBoxName().subscribe((mailBoxName: string) => this.mailBoxName = mailBoxName);
     this._mailService.getCurrentPage().subscribe((page: number) => this.currentPage = page);
 
+
     this.searchControl.valueChanges
-      .subscribe((value: string) => this._mailService
-        .loadMailList(this.mailBoxName, value, this.currentPage)
-        .subscribe());
+      .subscribe((value: string) => {
+        this._mailService.updateLastSearch(value);
+      });
+
 
   }
-
-
 
 
 }

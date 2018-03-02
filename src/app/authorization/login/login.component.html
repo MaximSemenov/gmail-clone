@@ -1,7 +1,7 @@
 <div id="login">
-
   <mat-card>
     <mat-card-title>Login</mat-card-title>
+
     <form [formGroup]="loginGroupControl" (ngSubmit)="submitLogin()">
       <mat-form-field>
         <input formControlName="login" matInput placeholder="Login">
@@ -17,6 +17,12 @@
 
       <button mat-raised-button color="primary" type="submit">Login</button>
     </form>
+    <br>
+    <p *ngIf="loadingIndicator">Loading...</p>
+
+    <div *ngIf="loadingIndicator" id="progressbar">
+      <span id="loading"></span>
+    </div>
   </mat-card>
 
 </div>

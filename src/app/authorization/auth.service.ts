@@ -1,12 +1,12 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/observable/of';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 
 @Injectable()
 export class AuthService {
 
-  private _checkStatus$$: Subject<boolean> = new Subject();
+  private _checkStatus$$: BehaviorSubject<boolean> = new BehaviorSubject(undefined);
 
   constructor() { }
 

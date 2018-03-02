@@ -9,7 +9,8 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginGroupControl: FormGroup;
+  public loginGroupControl: FormGroup;
+  public loadingIndicator = false;
 
   constructor(private _authService: AuthService) { }
 
@@ -21,17 +22,27 @@ export class LoginComponent implements OnInit {
 
     });
 
-    // this.loginGroupControl.valueChanges.subscribe(x => console.log(x));
+    this._authService
+      .isAuth()
+      .subscribe((authStatus: boolean) => {
+        console.log(authStatus);
+        if (!authStatus) {
+
+          this.loadingIndicator = false;
+        }
+
+        console.log(this.loadingIndicator);
+      });
 
   }
 
   submitLogin() {
 
-
     this._authService.checkPassword(this.loginGroupControl.value);
-
-    console.log(this.loginGroupControl.value);
-
+    this.loadingIndicator = !this.loadingIndicator;
   }
+
+
+
 
 }

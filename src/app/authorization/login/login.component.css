@@ -14,3 +14,33 @@ button {
     justify-content: center;
     margin-top: 10px;
 }
+
+
+#progressbar {
+    height: 16px;
+    width: 100%;
+    background: rgba(159, 159, 159, 0.5);
+    border-radius: 10px;
+
+}
+
+#loading {
+    transition: all 500ms ease;
+    height: 10px;
+    width: calc(100% - 10px);
+    border-radius: 8px;
+    background: #3f51b5;
+    margin: 3px;
+    display: inline-block;
+    animation: load 2.5s ease infinite;
+}
+
+
+@keyframes load {
+    0% {
+        width: 2%;
+    }
+    10% {
+        width: 10%;
+    }
+}

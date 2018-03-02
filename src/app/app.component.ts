@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './authorization/auth.service';
+import 'rxjs/add/operator/delay';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +19,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this._authService
       .isAuth()
+      .delay(2500)
       .subscribe((loginStatus: boolean) => {
-
-        console.log(loginStatus);
 
         this.isLogin = loginStatus;
       });

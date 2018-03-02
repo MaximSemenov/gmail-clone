@@ -17,10 +17,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this._authService
-      .isAuth({ login: null, password: null })
+      .isAuth()
       .subscribe((loginStatus: boolean) => {
 
-
+        console.log(loginStatus);
 
         this.isLogin = loginStatus;
       });

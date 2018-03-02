@@ -28,12 +28,10 @@ export class LoginComponent implements OnInit {
   submitLogin() {
 
 
-    this._authService.isAuth(this.loginGroupControl.value);
+    this._authService.checkPassword(this.loginGroupControl.value);
 
     console.log(this.loginGroupControl.value);
 
-
-  
   }
 
 }

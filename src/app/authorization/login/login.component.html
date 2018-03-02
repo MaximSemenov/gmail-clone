@@ -1,9 +1,7 @@
 <div id="login">
 
   <mat-card>
-    <!-- <mat-card-header> -->
     <mat-card-title>Login</mat-card-title>
-    <!-- </mat-card-header> -->
     <form [formGroup]="loginGroupControl" (ngSubmit)="submitLogin()">
       <mat-form-field>
         <input formControlName="login" matInput placeholder="Login">
@@ -13,7 +11,9 @@
         <input formControlName="password" type="password" matInput placeholder="Password">
       </mat-form-field>
 
-      <p><small>Please enter your login and password</small></p>
+      <p>
+        <small>Please enter your login and password</small>
+      </p>
 
       <button mat-raised-button color="primary" type="submit">Login</button>
     </form>

@@ -80,7 +80,7 @@ export class MailService {
         this._mailBoxLength$$.next(mailList.length);
       })
       .map(this._filterMailByPage(page))
-      .delay(500)
+      .delay(800)
       .do((mailList: Mail[]) => {
         this._mailList$$.next(mailList);
       });

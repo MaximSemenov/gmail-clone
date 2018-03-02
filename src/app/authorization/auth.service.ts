@@ -1,25 +1,27 @@
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
 
 @Injectable()
 export class AuthService {
 
+  private _checkStatus$$: Subject<boolean> = new Subject();
+
   constructor() { }
 
 
-  isAuth(loginObject) {
-    // return Observable.of(Math.random() >= 0.1);
-    console.log(loginObject);
+  checkPassword(loginObject): void {
     if (loginObject['login'] === 'demo' && loginObject['password'] === 'demo') {
-      return Observable.of(true);
+      this._checkStatus$$.next(true);
+      return;
     }
-    return Observable.of(true);
+    this._checkStatus$$.next(false);
   }
 
+  isAuth(): Observable<boolean> {
 
+    return this._checkStatus$$.asObservable();
 
-
+  }
 }
-
-

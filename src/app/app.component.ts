@@ -9,7 +9,7 @@ import 'rxjs/add/operator/delay';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-
+  public kickback;
   public isLogin = false;
 
   constructor(private _authService: AuthService) {
@@ -19,11 +19,13 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this._authService
       .isAuth()
-      .delay(2500)
       .subscribe((loginStatus: boolean) => {
 
         this.isLogin = loginStatus;
       });
+
+    this._authService.phpRequest().subscribe(x => this.kickback = x);
+
   }
 
 }

@@ -15,13 +15,11 @@ button {
     margin-top: 10px;
 }
 
-
 #progressbar {
     height: 16px;
     width: 100%;
     background: rgba(159, 159, 159, 0.5);
     border-radius: 10px;
-
 }
 
 #loading {
@@ -35,7 +33,6 @@ button {
     animation: load 2.5s ease infinite;
 }
 
-
 @keyframes load {
     0% {
         width: 2%;
@@ -43,4 +40,8 @@ button {
     10% {
         width: 10%;
     }
+}
+
+.wrongPasswordMessage {
+    padding: 5px;
 }

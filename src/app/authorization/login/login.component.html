@@ -15,9 +15,12 @@
         <small>Please enter your login and password</small>
       </p>
 
-      <button mat-raised-button color="primary" type="submit">Login</button>
+      <button mat-raised-button color="primary" type="submit" (click)="loadingIndicator = true;">Login</button>
     </form>
     <br>
+    <div *ngIf="isWrongLoginShown" class="alert alert-danger wrongPasswordMessage">
+      <small>Either the Logon ID or password entered is incorrect. Try again please.</small>
+    </div>
     <p *ngIf="loadingIndicator">Loading...</p>
 
     <div *ngIf="loadingIndicator" id="progressbar">

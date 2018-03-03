@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
 
   public loginGroupControl: FormGroup;
   public loadingIndicator = false;
+  public isWrongLoginShown = false;
+
 
   constructor(private _authService: AuthService) { }
 
@@ -26,9 +28,9 @@ export class LoginComponent implements OnInit {
       .isAuth()
       .subscribe((authStatus: boolean) => {
         console.log(authStatus);
-        if (!authStatus) {
-
+        if (authStatus === false) {
           this.loadingIndicator = false;
+          this.isWrongLoginShown = true;
         }
 
         console.log(this.loadingIndicator);
@@ -39,7 +41,7 @@ export class LoginComponent implements OnInit {
   submitLogin() {
 
     this._authService.checkPassword(this.loginGroupControl.value);
-    this.loadingIndicator = !this.loadingIndicator;
+
   }
 
 

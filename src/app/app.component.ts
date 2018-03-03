@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
         this.isLogin = loginStatus;
       });
 
-    this._authService.phpRequest().subscribe(x => this.kickback = x);
+
 
   }
 

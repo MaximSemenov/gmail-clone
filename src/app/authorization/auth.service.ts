@@ -29,7 +29,7 @@ export class AuthService {
 
 
   phpRequest(): Observable<any> {
-    return this._http.get('http://localhost/first.php', { responseType: 'text' });
+    return this._http.get('http://localhost/first.php');
   }
 
 }

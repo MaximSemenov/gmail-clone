@@ -1,4 +1,5 @@
 
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -25,6 +26,8 @@ export type Mail = {
 
 @Injectable()
 export class MailService {
+
+  private baseUrl: string = environment.apiUrl;
 
   private _mailList$$: Subject<Mail[]> = new Subject();
   private _currentMailBoxName$$: BehaviorSubject<string> = new BehaviorSubject('inbox');
@@ -71,7 +74,7 @@ export class MailService {
     console.log(mailBoxName, query, page);
 
     if (!this._mailListCache$) {
-      this._mailListCache$ = this._http.get<Mail[]>(this._snapshotUrls[mailBoxName]).first();
+      this._mailListCache$ = this._http.get<Mail[]>(this.baseUrl).first();
     }
 
     return this._mailListCache$

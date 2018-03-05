@@ -1,0 +1,1 @@
+Here is going to be a description about how to set up the server part of the app. It is going to be PHP that I picked due to educational reason. 

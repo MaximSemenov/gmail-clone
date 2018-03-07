@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost/first.php',
+  apiUrl: 'http://localhost/getMail.php',
   hashState: false
 };

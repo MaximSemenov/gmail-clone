@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: http://localhost:4200");
 
 
-$link = mysqli_connect("127.0.0.1:3306", "root", "", "gmail")
+$link = mysqli_connect("127.0.0.1:3306", "root", "Magneto22&", "gmail")
     or die("There is a problem with connection to the database: " . mysql_error() . ":(");
 
     $result = mysqli_query($link, "SELECT * from gmail");

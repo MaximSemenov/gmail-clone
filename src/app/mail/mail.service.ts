@@ -71,8 +71,6 @@ export class MailService {
 
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
 
-    console.log(mailBoxName, query, page);
-
     if (!this._mailListCache$) {
       this._mailListCache$ = this._http.get<Mail[]>(this.baseUrl).first();
     }
@@ -83,8 +81,17 @@ export class MailService {
         this._mailBoxLength$$.next(mailList.length);
       })
       .map(this._filterMailByPage(page))
+      .map((filteredMailList: Mail[]) => {
+
+        return filteredMailList.map(letterObj => {
+          letterObj.isChecked = !!+letterObj.isChecked;
+          letterObj.isRead = !!+letterObj.isRead;
+          return letterObj;
+        });
+      })
       .delay(800)
       .do((mailList: Mail[]) => {
+
         this._mailList$$.next(mailList);
       });
   }

@@ -138,11 +138,11 @@ export class MailService {
 
     return (mailList): Mail[] => {
 
-      if (!page || mailList.length < 6) {
+      if (!page || mailList.length < 10) {
         return mailList;
       }
 
-      return mailList = mailList.slice(page * 5 - 5, page * 5);
+      return mailList = mailList.slice(page * 10 - 10, page * 10);
     };
   }
 

@@ -18,7 +18,7 @@ export class OperationToolbarComponent implements OnInit {
   public currentPage = 1;
   public numberOfLetters: number;
   public firstLetter = 1;
-  public lastLetter = 5;
+  public lastLetter = 10;
   public obj;
 
 
@@ -33,9 +33,9 @@ export class OperationToolbarComponent implements OnInit {
       })
       .filter(Boolean)
       .subscribe((numberOfLetters: number) => {
-        // console.log(numberOfLetters);
+
         this.numberOfLetters = numberOfLetters;
-        if (numberOfLetters <= 5) {
+        if (numberOfLetters <= 10) {
           this.firstLetter = numberOfLetters - numberOfLetters + 1;
           this.lastLetter = numberOfLetters;
         }
@@ -110,9 +110,9 @@ export class OperationToolbarComponent implements OnInit {
       return;
     }
 
-    this.firstLetter = this.firstLetter + 5;
-    this.lastLetter = this.numberOfLetters - this.firstLetter < 5 ?
-      (this.numberOfLetters - this.firstLetter) + this.firstLetter : this.firstLetter + 5;
+    this.firstLetter = this.firstLetter + 10;
+    this.lastLetter = this.numberOfLetters - this.firstLetter < 10 ?
+      (this.numberOfLetters - this.firstLetter) + this.firstLetter : this.firstLetter + 10;
     return;
 
   }
@@ -123,9 +123,8 @@ export class OperationToolbarComponent implements OnInit {
       return;
     }
 
-    this.lastLetter = 5 * (this.currentPage - 1);
-    this.firstLetter = this.firstLetter - 5;
-
+    this.firstLetter = this.firstLetter - 10;
+    this.lastLetter = this.firstLetter === 1 ? 10 * (this.currentPage - 1) : 10 * (this.currentPage - 1) + 1;
   }
 
   deleteLetter() {

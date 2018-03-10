@@ -28,7 +28,7 @@ export class MailComponent implements OnInit {
 
   public mailList$: Observable<Mail[]>;
   public mailBoxName: string;
-  public isMailListLoaded = 'notDone';
+  public isMailListLoaded = 'done';
 
   constructor(private _mailService: MailService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
 

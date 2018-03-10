@@ -19,7 +19,7 @@ export class OperationToolbarComponent implements OnInit {
   public numberOfLetters: number;
   public firstLetter = 1;
   public lastLetter = 10;
-  public obj;
+
 
 
   constructor(private _mailService: MailService, private _activatedRoute: ActivatedRoute) { }
@@ -50,6 +50,11 @@ export class OperationToolbarComponent implements OnInit {
         this.currentPage = +page;
       });
 
+    this._mailService.getCurrentBoxName().subscribe(x => console.log(x));
+    this._mailService.getLastSearch().subscribe(x => console.log(x));
+    this._activatedRoute.queryParams.pluck('page').filter(Boolean).subscribe(x => console.log(x));
+
+
 
     Observable.combineLatest(
       this._mailService.getCurrentBoxName(),
@@ -63,43 +68,27 @@ export class OperationToolbarComponent implements OnInit {
         };
       }
     ).switchMap(obj => {
-      // console.log(obj);
       return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
     })
       .subscribe();
 
-    // this._activatedRoute.queryParams
-    //   .pluck('page')
-    //   .filter(Boolean)
-    //   .do((page: string) => {
-    //     this.currentPage = +page;
-    //   })
-    //   .switchMap((page: string) => {
 
-    //     return combineLatest(
-    //       this._mailService.getCurrentBoxName().first(),
-    //       this._mailService.getLastSearch().first(),
-    //       Observable.of(page),
-    //       (mailBoxName, lastSearch, page) => {
-
-    //         return {
-    //           mailBoxName,
-    //           lastSearch,
-    //           page
-    //         };
-    //       }
-    //     );
-    //   })
-    //   .switchMap((queryObject) => {
-
-    //     return this._mailService.loadMailList(
-    //       queryObject.mailBoxName,
-    //       queryObject.lastSearch,
-    //       +queryObject.page);
-
-    //   }).subscribe();
-
-
+    Observable.combineLatest(
+      this._mailService.getCurrentBoxName(),
+      this._mailService.getLastSearch(),
+      this._activatedRoute.queryParams.pluck('page').filter(Boolean),
+      this._mailService.deletingLetters(),
+      (mailboxName, lastSearch, page) => {
+        return {
+          mailboxName,
+          lastSearch,
+          page
+        };
+      }
+    ).switchMap(obj => {
+      return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
+    })
+      .subscribe();
 
 
 
@@ -128,6 +117,7 @@ export class OperationToolbarComponent implements OnInit {
   }
 
   deleteLetter() {
+
     this._mailService.deleteLetter();
   }
 

@@ -13,7 +13,7 @@ import 'rxjs/add/operator/first';
 import 'rxjs/add/operator/take';
 
 export type Mail = {
-  id: string;
+  id: number;
   name: string;
   title: string;
   body: string;
@@ -36,7 +36,8 @@ export class MailService {
   private _lastSearch$$: BehaviorSubject<string> = new BehaviorSubject(null);
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
   private _mailListCache$: Observable<Mail[]>;
-  private _checkedLetters: Mail[] = [];
+  private _checkedLetters: number[] = [];
+  private _deletedLetter$$: Subject<any> = new Subject();
 
   private _snapshotUrls = {
     inbox: './assets/data/inbox-list.json',
@@ -45,6 +46,10 @@ export class MailService {
 
 
   constructor(private _http: HttpClient) {
+  }
+
+  deletingLetters() {
+    return this._deletedLetter$$.asObservable();
   }
 
   getCheckedLetter() {
@@ -147,39 +152,42 @@ export class MailService {
   }
 
 
-  storeCheckedLetters(letter: Mail, isCheked: boolean): void {
+  storeCheckedLetters(letter: Mail, isChecked: boolean): void {
 
-    if (!isCheked) {
-      this._checkedLetters = this._checkedLetters.filter((storedLetter: Mail) => storedLetter.id !== letter.id);
+    if (!isChecked) {
+      this._checkedLetters = this._checkedLetters.filter((id: number) => id !== letter.id);
       return;
     }
 
-    this._checkedLetters.push(letter);
+    this._checkedLetters.push(letter.id);
   }
 
   deleteLetter() {
-    this._mailListCache$
+
+    console.log(this._checkedLetters);
+
+    this._mailListCache$ = this._mailListCache$
       .map(mail => {
+
         return mail.filter(letter => {
 
-          let result = false;
-
-          this._checkedLetters.forEach(checkedLetter => {
-            if (letter.id.includes(checkedLetter.id)) {
-              result = true;
-            }
-          });
-
-          return !result;
+          if (this._checkedLetters.includes(letter.id)) {
+            return false;
+          }
+          return true;
 
         });
-      })
-      .subscribe(editedMailList => {
-
-        this._mailListCache$ = Observable.of(editedMailList);
-        this.loadMailList('inbox', null, 1).subscribe();
-
       });
+
+      this._deletedLetter$$.next();
+
+      // .subscribe(editedMailList => {
+      //   console.log(editedMailList);
+      //   // this._mailList$$.next(editedMailList);
+      //   this._mailListCache$ = Observable.of(editedMailList);
+      //   this.loadMailList('inbox', null, 1).subscribe();
+
+      // });
 
   }
 

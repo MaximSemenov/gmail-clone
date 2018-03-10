@@ -29,14 +29,15 @@ export class MailService {
 
   private baseUrl: string = environment.apiUrl;
 
-  private _mailList$$: Subject<Mail[]> = new Subject();
+  //  private _mailList$$: Subject<Mail[]> = new Subject();
+  private _mailList$$: BehaviorSubject<any> = new BehaviorSubject(false);
   private _currentMailBoxName$$: BehaviorSubject<string> = new BehaviorSubject('inbox');
   private _currentPage$$: BehaviorSubject<number> = new BehaviorSubject(1);
   private _mailBoxLength$$: BehaviorSubject<number> = new BehaviorSubject(0);
   private _lastSearch$$: BehaviorSubject<string> = new BehaviorSubject(null);
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
   private _mailListCache$: Observable<Mail[]>;
-  private _checkedLetters: number[] = [];
+  private _selectedLetters: number[] = [];
   private _deletedLetter$$: Subject<any> = new Subject();
 
   private _snapshotUrls = {
@@ -155,23 +156,31 @@ export class MailService {
   storeCheckedLetters(letter: Mail, isChecked: boolean): void {
 
     if (!isChecked) {
-      this._checkedLetters = this._checkedLetters.filter((id: number) => id !== letter.id);
+      this._selectedLetters = this._selectedLetters.filter((id: number) => id !== letter.id);
       return;
     }
 
-    this._checkedLetters.push(letter.id);
+    this._selectedLetters.push(letter.id);
   }
+
+
+  storeSelectedLettersAll(mailList: Mail[]): void {
+    mailList.forEach(letter => {
+      this._selectedLetters.push(letter.id);
+    });
+  }
+
 
   deleteLetter() {
 
-    console.log(this._checkedLetters);
+    console.log(this._selectedLetters);
 
     this._mailListCache$ = this._mailListCache$
       .map(mail => {
 
         return mail.filter(letter => {
 
-          if (this._checkedLetters.includes(letter.id)) {
+          if (this._selectedLetters.includes(letter.id)) {
             return false;
           }
           return true;
@@ -179,15 +188,16 @@ export class MailService {
         });
       });
 
-      this._deletedLetter$$.next();
+    this._deletedLetter$$.next();
 
-      // .subscribe(editedMailList => {
-      //   console.log(editedMailList);
-      //   // this._mailList$$.next(editedMailList);
-      //   this._mailListCache$ = Observable.of(editedMailList);
-      //   this.loadMailList('inbox', null, 1).subscribe();
 
-      // });
+    // .subscribe(editedMailList => {
+    //   console.log(editedMailList);
+    //   // this._mailList$$.next(editedMailList);
+    //   this._mailListCache$ = Observable.of(editedMailList);
+    //   this.loadMailList('inbox', null, 1).subscribe();
+
+    // });
 
   }
 

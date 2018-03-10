@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MailService } from '../../mail/mail.service';
+import { MailService, Mail } from '../../mail/mail.service';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/pluck';
@@ -19,12 +19,20 @@ export class OperationToolbarComponent implements OnInit {
   public numberOfLetters: number;
   public firstLetter = 1;
   public lastLetter = 10;
-
+  public isSelectAllActive = false;
+  public mailList: Mail[];
 
 
   constructor(private _mailService: MailService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+
+    this._mailService.getMailList().subscribe((mailList: Mail[]) => {
+
+      this.mailList = mailList;
+
+    });
 
     this._mailService.getCurrentBoxName()
       .switchMap((mailBoxName: string) => {
@@ -119,7 +127,16 @@ export class OperationToolbarComponent implements OnInit {
   deleteLetter() {
 
     this._mailService.deleteLetter();
+    setTimeout(() => this.isSelectAllActive = false, 800);
+
   }
 
+  selectAllLetters() {
+    this.isSelectAllActive = !this.isSelectAllActive;
+    this.mailList.forEach(letter => {
+      letter.isChecked = !letter.isChecked;
+    });
+    this._mailService.storeSelectedLettersAll(this.mailList);
+  }
 
 }

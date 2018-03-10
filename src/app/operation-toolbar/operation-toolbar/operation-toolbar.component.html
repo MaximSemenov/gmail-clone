@@ -16,7 +16,7 @@
                   data-tooltip="Select" aria-label="Select" style="user-select: none;">
                   <div class="J-J5-Ji J-JN-M-I-Jm">
                     <span class="T-Jo J-J5-Ji T-Jo-aMF" aria-checked="true" role="checkbox" dir="ltr" style="user-select: none;">
-                      <div class="T-Jo-auh T-Jo-Jp" role="presentation"></div>
+                      <div [ngClass]="{'T-Jo-auh': true, 'checked': isSelectAllActive}" (click)="selectAllLetters()"></div>
                     </span>
                     <div class="G-asx T-I-J3 J-J5-Ji" aria-hidden="true">&nbsp;</div>
                   </div>

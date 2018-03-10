@@ -50,7 +50,6 @@
     margin-left: 5px;
 }
 
-
 .T-KT {
     display: inline-block;
     height: 19px;
@@ -59,8 +58,8 @@
     padding: 2px;
     background: url(//ssl.gstatic.com/ui/v1/star/star4.png) no-repeat;
     background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star4_2x.png) 2x);
-
 }
+
 
 /* .T-KT:before {
     content: url(//ssl.gstatic.com/ui/v1/star/star4.png);
@@ -90,14 +89,16 @@ td.apU .T-KT {
     margin: -4px 0;
 }
 
-.list-of-mail > li {
+.list-of-mail>li {
     padding-right: 0;
     padding-left: 0;
 }
 
-
 .checked {
-
     background: url(//ssl.gstatic.com/ui/v1/menu/checkmark.png) no-repeat -5px -3px;
     background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/menu/checkmark.png) 1x, url(//ssl.gstatic.com/ui/v1/menu/checkmark_2x.png) 2x);
+}
+
+.selected {
+    background-color: #ffffcc;
 }

@@ -173,7 +173,6 @@ export class MailService {
 
   deleteLetter() {
 
-    console.log(this._selectedLetters);
 
     this._mailListCache$ = this._mailListCache$
       .map(mail => {

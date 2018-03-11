@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish": "ng b -prod --base-href='https://maximsemenov.github.io/gmail-clone/'"
+    "publish": "ng b -prod --base-href='https://maximsemenov.github.io/gmail-clone'"
   },
   "private": false,
   "dependencies": {

@@ -20,6 +20,7 @@ export class OperationToolbarComponent implements OnInit {
   public firstLetter = 1;
   public lastLetter = 10;
   public isSelectAllActive = false;
+  public isOperationMenuShown = false;
   public mailList: Mail[];
 
 
@@ -27,12 +28,23 @@ export class OperationToolbarComponent implements OnInit {
 
   ngOnInit() {
 
-
     this._mailService.getMailList().subscribe((mailList: Mail[]) => {
-
       this.mailList = mailList;
+    });
+
+    this._mailService.getOperationMenuStatus().subscribe((status: number) => {
+
+      if (!status) {
+        this.isOperationMenuShown = false;
+      } else {
+        this.isOperationMenuShown = true;
+      }
+
+
 
     });
+
+
 
     this._mailService.getCurrentBoxName()
       .switchMap((mailBoxName: string) => {

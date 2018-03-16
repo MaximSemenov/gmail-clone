@@ -25,7 +25,7 @@
       <a [routerLink]="['/mail', mailBoxName, letter.id]">
         <span class="people-names">
           <span *ngIf="mailBoxName === 'sent'">To:</span>
-          {{letter.name}}
+          {{letter.fullname}}
         </span>
 
       </a>

@@ -80,11 +80,16 @@ export class MailService {
   }
 
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
-
+    this._http.get<Mail[]>(this.baseUrl).subscribe(x => console.log(x));
     if (!this._mailListCache$) {
-      this._mailListCache$ = this._http.get<Mail[]>(this.baseUrl).first();
-    }
+      this._mailListCache$ = this._http.get<Mail[]>(this.baseUrl, {
+        params: { 'box': 'inbox' }
+      }).first();
 
+    }
+    //   params?: HttpParams | {
+    //     [param: string]: string | string[];
+    // };
     return this._mailListCache$
       .map(this._filterMailBySearch(query))
       .do((mailList: Mail[]) => {

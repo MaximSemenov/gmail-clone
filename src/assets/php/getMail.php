@@ -1,7 +1,7 @@
 <?php 
 header("Access-Control-Allow-Origin: http://localhost:4200");
 
-// $param = $_GET['box'];
+$param = $_GET['box'];
 // $param = mysql_real_escape_string($param);
 $link = mysqli_connect("127.0.0.1:3306", "root", "Magneto22&", "mydb")
     or die("There is a problem with connection to the database: " . mysql_error() . ":(");
@@ -14,7 +14,7 @@ t2.letter_isRead as isRead,
 t2.letter_date as datestamp, 
 t3.person_email as email, 
 t3.person_fullname as fullname
-    FROM inbox  as t1
+    FROM '$param'  as t1
     INNER JOIN letters as t2 ON t1.letters_letter_id = t2.letter_id
     INNER JOIN person as t3 ON t3.person_id = t2.person_person_id");
 

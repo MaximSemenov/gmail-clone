@@ -40,12 +40,6 @@ export class MailService {
   private _selectedLetters: number[] = [];
   private _deletedLetter$$: Subject<any> = new Subject();
 
-  private _snapshotUrls = {
-    inbox: './assets/data/inbox-list.json',
-    sent: './assets/data/sent-list.json'
-  };
-
-
   constructor(private _http: HttpClient) {
   }
 
@@ -80,17 +74,10 @@ export class MailService {
   }
 
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
-    // this._http.get<Mail[]>(this.baseUrl).subscribe(x => console.log(x));
-    if (!this._mailListCache$) {
-      this._mailListCache$ = this._http.get<Mail[]>(this.baseUrl, {
-        params: { 'box': 'inbox' }
-      }).first();
 
-    }
-    //   params?: HttpParams | {
-    //     [param: string]: string | string[];
-    // };
-    return this._mailListCache$
+    return this._http.get<Mail[]>(this.baseUrl, {
+      params: { 'box': mailBoxName }
+    })
       .map(this._filterMailBySearch(query))
       .do((mailList: Mail[]) => {
         this._mailBoxLength$$.next(mailList.length);

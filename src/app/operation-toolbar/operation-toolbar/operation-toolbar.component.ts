@@ -5,7 +5,7 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/pluck';
 import { Observable } from 'rxjs/Observable';
 import { concat } from 'rxjs/observable/concat';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs/observable/combineLatest';
 
 @Component({
@@ -22,11 +22,17 @@ export class OperationToolbarComponent implements OnInit {
   public isSelectAllActive = false;
   public isOperationMenuShown = false;
   public mailList: Mail[];
+  public mailBoxName: string;
 
 
   constructor(private _mailService: MailService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this._mailService.getCurrentBoxName().subscribe((mailBoxName: string) => {
+      this.mailBoxName = mailBoxName;
+    });
+
 
     this._mailService.getMailList().subscribe((mailList: Mail[]) => {
       this.mailList = mailList;
@@ -70,9 +76,6 @@ export class OperationToolbarComponent implements OnInit {
         this.currentPage = +page;
       });
 
-    this._mailService.getCurrentBoxName().subscribe(x => console.log(x));
-    this._mailService.getLastSearch().subscribe(x => console.log(x));
-    this._activatedRoute.queryParams.pluck('page').filter(Boolean).subscribe(x => console.log(x));
 
 
 
@@ -105,9 +108,10 @@ export class OperationToolbarComponent implements OnInit {
           page
         };
       }
-    ).switchMap(obj => {
-      return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
-    })
+    ).delay(500) // TODO: fake delay to have time to refresh the database it needs to be done by observable approach
+      .switchMap(obj => {
+        return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
+      })
       .subscribe();
 
 
@@ -138,10 +142,14 @@ export class OperationToolbarComponent implements OnInit {
 
   deleteLetter() {
 
-    this._mailService.deleteLetter();
-    setTimeout(() => this.isSelectAllActive = false, 800);
-
+    this._mailService.transferLetter(this.mailBoxName, 'trash').subscribe(status => {
+      console.log(status);
+      setTimeout(() => {
+        this.isSelectAllActive = false;
+      }, 500);
+    });
   }
+
 
   selectAllLetters() {
     this.isSelectAllActive = !this.isSelectAllActive;

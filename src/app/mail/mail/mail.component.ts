@@ -38,9 +38,11 @@ export class MailComponent implements OnInit {
     this._activatedRoute.params
       .pluck('box')
       .filter(Boolean)
-      .do((box: string) => {
-        this.mailBoxName = box;
-        // this._router.navigate([''], { queryParams: { page: 1 } });
+      .do((mailBoxName: string) => {
+        this.mailBoxName = mailBoxName;
+        this._mailService.updateCurrentMailBoxName(mailBoxName);
+
+        this._router.navigate([], { queryParams: { page: 1 }, relativeTo: this._activatedRoute });
       })
       .switchMap((box: string): Observable<Mail[]> => {
 

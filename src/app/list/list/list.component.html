@@ -7,15 +7,11 @@
   <ul class="inbox-sections list-unstyled">
 
     <li class="menu">
-      <a [routerLink]="['mail', 'inbox']" id="inbox" routerLinkActive="active" class="bold">Inbox ({{inboxListLength}})</a> 
+      <a [routerLink]="['mail', 'inbox']" id="inbox" routerLinkActive="active" class="bold">Inbox ({{inboxListLength}})</a>
     </li>
 
     <li class="menu">
       <a [routerLink]="['mail', 'starred']" routerLinkActive="active">Starred</a>
-    </li>
-
-    <li class="menu">
-      <a [routerLink]="['mail', 'important']" routerLinkActive="active">Important</a>
     </li>
 
     <li class="menu">
@@ -26,8 +22,16 @@
       <a [routerLink]="['mail', 'drafts']" routerLinkActive="active">Drafts (7)</a>
     </li>
 
+    <li class="menu">
+      <a [routerLink]="['mail', 'important']" routerLinkActive="active">Important</a>
+    </li>
+
     <li class="menu pending">
       <a [routerLink]="['mail', 'spam']" routerLinkActive="active">Spam (1)</a>
+    </li>
+
+    <li class="menu pending">
+      <a [routerLink]="['mail', 'trash']"  routerLinkActive="active">Trash</a>
     </li>
 
   </ul>

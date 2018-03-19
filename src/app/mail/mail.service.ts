@@ -26,9 +26,10 @@ export type Mail = {
 @Injectable()
 export class MailService {
 
-  private baseUrl: string = environment.apiUrl;
+  private baseUrl: string = environment.baseUrl;
+  private getMailUrl = 'getMail.php';
+  private transferMailUrl = 'mailTransfer.php';
 
-  //  private _mailList$$: Subject<Mail[]> = new Subject();
   private _operationMenuStatus$$: Subject<number> = new Subject();
   private _mailList$$: BehaviorSubject<any> = new BehaviorSubject([]);
   private _currentMailBoxName$$: BehaviorSubject<string> = new BehaviorSubject('inbox');
@@ -73,9 +74,18 @@ export class MailService {
     return this._mailList$$.asObservable();
   }
 
+  updateLastSearch(query) {
+    this._lastSearch$$.next(query);
+  }
+
+  updateCurrentMailBoxName(mailBoxName: string) {
+    this._currentMailBoxName$$.next(mailBoxName);
+  }
+
+
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
 
-    return this._http.get<Mail[]>(this.baseUrl, {
+    return this._http.get<Mail[]>(this.baseUrl + this.getMailUrl, {
       params: { 'box': mailBoxName }
     })
       .map(this._filterMailBySearch(query))
@@ -97,12 +107,6 @@ export class MailService {
         this._mailList$$.next(mailList);
       });
   }
-
-
-  updateLastSearch(query) {
-    this._lastSearch$$.next(query);
-  }
-
 
   getMailBoxLength(mailBoxName: string): Observable<number> {
 
@@ -171,24 +175,46 @@ export class MailService {
 
   }
 
+  transferLetter(fromBox: string, toBox: string) {
+
+    this._deletedLetter$$.next();
+    return this._http.get<any>(this.baseUrl + this.transferMailUrl, {
+      params: {
+        'transferFrom': fromBox,
+        'transferTo': toBox,
+        'id': this._selectedLetters.map(String)
+      }
+    });
+
+
+
+  }
+
 
   deleteLetter() {
 
+    // const mailBoxName = this.getCurrentBoxName();
 
-    this._mailListCache$ = this._mailListCache$
-      .map(mail => {
 
-        return mail.filter(letter => {
 
-          if (this._selectedLetters.includes(letter.id)) {
-            return false;
-          }
-          return true;
+    // this._http.get<Mail[]>(this.baseUrl, {
+    //   params: { 'box': mailBoxName }
+    // })
 
-        });
-      });
+    // this._mailListCache$ = this._mailListCache$
+    //   .map(mail => {
 
-    this._deletedLetter$$.next();
+    //     return mail.filter(letter => {
+
+    //       if (this._selectedLetters.includes(letter.id)) {
+    //         return false;
+    //       }
+    //       return true;
+
+    //     });
+    //   });
+
+    // this._deletedLetter$$.next();
 
   }
 

@@ -10,9 +10,7 @@ import { OpenLetterService } from './mail/open-letter/open-letter.service';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-
-
+    RouterModule
   ],
   declarations: [
     MailComponent,

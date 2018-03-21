@@ -7,6 +7,58 @@
     padding-left: 30px;
 }
 
+.popupmenu {
+    user-select: none;
+    left: 0px;
+    top: 40px;
+    max-width: 400px;
+    max-height: 360px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .2);
+    cursor: default;
+    font-size: 13px;
+    margin: 0;
+    outline: none;
+    position: absolute;
+}
+
+.popup-link {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.popup-input {
+    border: 0;
+
+}
+
+.popup-input-container {
+    border: 1px solid;
+    border-color: #888 #ccc #ccc #ccc;
+    margin: 6px 8px;
+    padding-right: 10px;
+
+    /* height: 15px; */
+}
+
+.search-icon {
+    color: #777;
+    padding: 7px;
+    right: 10px;
+    top: .9em;
+    background: url(//ssl.gstatic.com/ui/v1/icons/mail/skinnable/vertical_1x.png) -84px 50% no-repeat;
+    width: 7px;
+    height: 10px;
+    /* overflow: hidden; */
+
+}
+
+/* .popup-search-bar {
+    height: 100%;
+    margin: 0;
+} */
+
 .J-J5-Ji {
     display: -moz-inline-box;
     display: inline-block;

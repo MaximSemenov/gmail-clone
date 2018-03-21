@@ -13,9 +13,9 @@
             <div class="G-tF">
               <div class="G-Ni J-J5-Ji">
                 <div id=":30" class="T-I J-J5-Ji T-Pm T-I-ax7 L3 J-JN-M-I G-as3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false"
-                  data-tooltip="Select" aria-label="Select" style="user-select: none;">
+                  data-tooltip="Select" aria-label="Select">
                   <div class="J-J5-Ji J-JN-M-I-Jm">
-                    <span class="T-Jo J-J5-Ji T-Jo-aMF" aria-checked="true" role="checkbox" dir="ltr" style="user-select: none;">
+                    <span class="T-Jo J-J5-Ji T-Jo-aMF" aria-checked="true" role="checkbox" dir="ltr">
                       <div [ngClass]="{'T-Jo-auh': true, 'checked': isSelectAllActive}" (click)="selectAllLetters()"></div>
                     </span>
                     <div class="G-asx T-I-J3 J-J5-Ji" aria-hidden="true">&nbsp;</div>
@@ -26,14 +26,13 @@
 
 
               <div *ngIf="isSelectAllActive || isOperationMenuShown" class="G-Ni J-J5-Ji">
-                <div class="T-I J-J5-Ji lR T-I-ax7  T-I-Js-IF ar7" act="7" role="button" tabindex="0" data-tooltip="Archive" aria-label="Archive"
-                  style="user-select: none;">
+                <div class="T-I J-J5-Ji lR T-I-ax7  T-I-Js-IF ar7" act="7" role="button" tabindex="0" data-tooltip="Archive" aria-label="Archive">
                   <div class="asa">
                     <div class="ar8 T-I-J3 J-J5-Ji"></div>
                   </div>
                 </div>
                 <div class="T-I J-J5-Ji nN T-I-ax7 T-I-Js-Gs T-I-Js-IF ar7" act="9" role="button" tabindex="0" data-tooltip="Report spam"
-                  aria-label="Report spam" style="user-select: none;">
+                  aria-label="Report spam">
                   <div class="asa">
                     <div class="asl T-I-J3 J-J5-Ji"></div>
                   </div>
@@ -48,14 +47,61 @@
                 
                 <div class="G-Ni J-J5-Ji"> -->
                 <div id=":31" class="T-I J-J5-Ji T-I-Js-IF ar7 ns T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="false" aria-expanded="false"
-                  data-tooltip="Move to" aria-label="Move to" style="user-select: none;">
+                  data-tooltip="Move to" aria-label="Move to">
                   <div class="asa">
                     <div class="ase T-I-J3 J-J5-Ji"></div>
                   </div>
                   <div class="G-asx T-I-J3 J-J5-Ji" aria-hidden="true">&nbsp;</div>
+                  <!-- <div class="popupmenu"> <ul><li class="menu"><a class="popup-link">Hello</a></li><li class="menu"><a class="popup-link">Buy</a></li><li class="menu"><a class="popup-link">See you</a></li></ul></div> -->
+                  <div class="popupmenu J-M agd aYO jQjAxd aX2">
+                    <div class="SK AX">
+                      <div class="asc">Move to:
+                      </div>
+
+                      <div class="popup-input-container">
+                        <!-- <div style="user-select: none; visibility: visible;"></div> -->
+                        <input class="popup-input" type="text" maxlength="225">
+                        <i class="search-icon"></i>
+                      </div>
+
+                      <div class="J-M-Jz aXjCH">
+                        <ul class="list-unstyled">
+                          <li class="menu">
+                            <a class="popup-link">Notes</a>
+                          </li>
+                          <li class="menu">
+                            <a class="popup-link">Work</a>
+                          </li>
+                          <li class="menu">
+                            <a class="popup-link">Social</a>
+                          </li>
+                          <li class="menu">
+                            <a class="popup-link">Promotions</a>
+                          </li>
+                          <li class="menu">
+                            <a class="popup-link">Work</a>
+                          </li>
+                          <li class="menu">
+                            <a class="popup-link">Spam</a>
+                          </li>
+                          <li class="menu">
+                            <a class="popup-link">Trash</a>
+                          </li>
+                          <li class="menu">
+                            <a class="popup-link">Create New</a>
+                          </li>
+                        </ul>
+
+                      </div>
+
+
+                    </div>
+                  </div>
                 </div>
+
+
                 <div id=":32" class="T-I J-J5-Ji T-I-Js-Gs ar7 mw T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false"
-                  data-tooltip="Labels" aria-label="Labels" style="user-select: none;">
+                  data-tooltip="Labels" aria-label="Labels">
                   <div class="asa">
                     <div class="asb T-I-J3 J-J5-Ji"></div>
                   </div>
@@ -65,7 +111,7 @@
 
 
               <div class="G-Ni J-J5-Ji">
-                <div class="T-I J-J5-Ji nu T-I-ax7 L3" act="20" role="button" tabindex="0" data-tooltip="Refresh" aria-label="Refresh" style="user-select: none;">
+                <div class="T-I J-J5-Ji nu T-I-ax7 L3" act="20" role="button" tabindex="0" data-tooltip="Refresh" aria-label="Refresh">
                   <div class="asa">
                     <div class="asf T-I-J3 J-J5-Ji"></div>
                   </div>
@@ -75,31 +121,30 @@
                 <div class="T9" style="display:none">Fetching mail...</div>
               </div>
               <div class="G-Ni J-J5-Ji">
-                <div id=":33" class="T-I J-J5-Ji ar7 nf T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false"
-                  style="user-select: none;">
+                <div id=":33" class="T-I J-J5-Ji ar7 nf T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">
                   <span class="bjy">More</span>
                   <div class="G-asx T-I-J3 J-J5-Ji">&nbsp;</div>
                 </div>
               </div>
               <div class="J-M jQjAxd" role="menu" aria-haspopup="true" style="display: none; user-select: none;">
-                <div class="SK AX" style="user-select: none;">
-                  <div class="J-N" selector="all" role="menuitem" id=":ip" style="user-select: none;">
-                    <div class="J-N-Jz" style="user-select: none;">All</div>
+                <div class="SK AX">
+                  <div class="J-N" selector="all" role="menuitem" id=":ip">
+                    <div class="J-N-Jz">All</div>
                   </div>
-                  <div class="J-N" selector="none" role="menuitem" id=":iq" style="user-select: none;">
-                    <div class="J-N-Jz" style="user-select: none;">None</div>
+                  <div class="J-N" selector="none" role="menuitem" id=":iq">
+                    <div class="J-N-Jz">None</div>
                   </div>
-                  <div class="J-N" selector="read" role="menuitem" id=":ir" style="user-select: none;">
-                    <div class="J-N-Jz" style="user-select: none;">Read</div>
+                  <div class="J-N" selector="read" role="menuitem" id=":ir">
+                    <div class="J-N-Jz">Read</div>
                   </div>
-                  <div class="J-N" selector="unread" role="menuitem" id=":is" style="user-select: none;">
-                    <div class="J-N-Jz" style="user-select: none;">Unread</div>
+                  <div class="J-N" selector="unread" role="menuitem" id=":is">
+                    <div class="J-N-Jz">Unread</div>
                   </div>
-                  <div class="J-N" selector="starred" role="menuitem" id=":it" style="user-select: none;">
-                    <div class="J-N-Jz" style="user-select: none;">Starred</div>
+                  <div class="J-N" selector="starred" role="menuitem" id=":it">
+                    <div class="J-N-Jz">Starred</div>
                   </div>
-                  <div class="J-N" selector="unstarred" role="menuitem" id=":iu" style="user-select: none;">
-                    <div class="J-N-Jz" style="user-select: none;">Unstarred</div>
+                  <div class="J-N" selector="unstarred" role="menuitem" id=":iu">
+                    <div class="J-N-Jz">Unstarred</div>
                   </div>
                 </div>
               </div>
@@ -109,7 +154,7 @@
         <div class="Cr aqJ">
           <div class="ar5 J-J5-Ji">
             <span class="Di">
-              <div id=":h7" class="J-J5-Ji amH J-JN-I" role="button" aria-expanded="false" tabindex="0" aria-haspopup="true" style="user-select: none;">
+              <div id=":h7" class="J-J5-Ji amH J-JN-I" role="button" aria-expanded="false" tabindex="0" aria-haspopup="true">
                 <span class="Dj">
                   <span>
                     <span class="ts">{{firstLetter}}</span>–
@@ -124,7 +169,8 @@
                   <img class="amI T-I-J3" src="/assets/img/cleardot.gif" alt="">
                 </div>
               </a>
-              <a [routerLink]="['./mail', mailBoxName]" (click)="goNextPage(currentPage >= numberOfLetters / 10 ? currentPage : currentPage + 1 )" [queryParams]="{page: currentPage >= numberOfLetters / 10  ? currentPage : currentPage + 1}">
+              <a [routerLink]="['./mail', mailBoxName]" (click)="goNextPage(currentPage >= numberOfLetters / 10 ? currentPage : currentPage + 1 )"
+                [queryParams]="{page: currentPage >= numberOfLetters / 10  ? currentPage : currentPage + 1}">
                 <div id=":ha" class="T-I J-J5-Ji amD T-I-awG T-I-ax7 T-I-Js-Gs L3" [ngClass]="{'inactive': currentPage >= numberOfLetters / 10 }">
                   <span class="amF" aria-hidden="true">&nbsp;</span>
                   <img class="amJ T-I-J3" src="/assets/img/cleardot.gif" alt="">
@@ -132,19 +178,19 @@
               </a>
             </span>
             <div class="amG J-M jQjAxd" role="menu" aria-haspopup="true" style="user-select: none; display: none;">
-              <div class="SK AX" style="user-select: none;">
-                <div id=":h8" class="J-N J-N-JE" role="menuitem" aria-disabled="true" style="user-select: none;">
-                  <div class="J-N-Jz" style="user-select: none;">Newest</div>
+              <div class="SK AX">
+                <div id=":h8" class="J-N J-N-JE" role="menuitem" aria-disabled="true">
+                  <div class="J-N-Jz">Newest</div>
                 </div>
-                <div id=":hb" class="J-N" role="menuitem" style="user-select: none;">
-                  <div class="J-N-Jz" style="user-select: none;">Oldest</div>
+                <div id=":hb" class="J-N" role="menuitem">
+                  <div class="J-N-Jz">Oldest</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="G-Ni J-J5-Ji" gh="s">
             <div id=":28" class="T-I J-J5-Ji ash T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" data-tooltip="Settings"
-              aria-label="Settings" style="user-select: none;">
+              aria-label="Settings">
               <div class="asa">
                 <div class="aos T-I-J3 J-J5-Ji"></div>
               </div>
@@ -161,26 +207,4 @@
   </div>
 
 
-  <!-- <div class="controls col-sm-10">
-    <ul class="control-list list-inline">
-      <li>
-        <button class="btn btn-control">
-          <input type="checkbox" class="mail-select">
-          <span class="caret"></span>
-        </button>
-      </li>
-      <li>
-        <button class="btn btn-control">
-          <span class="glyphicon glyphicon-repeat"></span>
-        </button>
-      </li>
-      <li>
-        <button class="text-btn btn btn-control">
-          <strong>More</strong>
-          <span class="caret"></span>
-        </button>
-      </li>
-    </ul>
-  </div> -->
-  <!-- controls -->
 </div>

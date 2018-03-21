@@ -31,35 +31,33 @@
                     <div class="ar8 T-I-J3 J-J5-Ji"></div>
                   </div>
                 </div>
-                <div class="T-I J-J5-Ji nN T-I-ax7 T-I-Js-Gs T-I-Js-IF ar7" act="9" role="button" tabindex="0" data-tooltip="Report spam"
-                  aria-label="Report spam">
+                <div (click)="mailTransfer('spam')" class="T-I J-J5-Ji nN T-I-ax7 T-I-Js-Gs T-I-Js-IF ar7">
                   <div class="asa">
                     <div class="asl T-I-J3 J-J5-Ji"></div>
                   </div>
                 </div>
-                <div (click)='deleteLetter()' class="T-I J-J5-Ji nX T-I-ax7 T-I-Js-Gs ar7">
+                <div (click)="mailTransfer('trash')" class="T-I J-J5-Ji nX T-I-ax7 T-I-Js-Gs ar7 ">
                   <div class="asa">
-                    <div class="ar9 T-I-J3 J-J5-Ji"></div>
+                    <div class="ar9 T-I-J3 J-J5-Ji max"></div>
                   </div>
                 </div>
                 <!-- </div>
 
                 
                 <div class="G-Ni J-J5-Ji"> -->
-                <div id=":31" class="T-I J-J5-Ji T-I-Js-IF ar7 ns T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="false" aria-expanded="false"
-                  data-tooltip="Move to" aria-label="Move to">
+                <div (click)="isMoveToMenuShown = !isMoveToMenuShown" id=":31" class="T-I J-J5-Ji T-I-Js-IF ar7 ns T-I-ax7 L3">
                   <div class="asa">
                     <div class="ase T-I-J3 J-J5-Ji"></div>
                   </div>
                   <div class="G-asx T-I-J3 J-J5-Ji" aria-hidden="true">&nbsp;</div>
                   <!-- <div class="popupmenu"> <ul><li class="menu"><a class="popup-link">Hello</a></li><li class="menu"><a class="popup-link">Buy</a></li><li class="menu"><a class="popup-link">See you</a></li></ul></div> -->
-                  <div class="popupmenu J-M agd aYO jQjAxd aX2">
+                  <div *ngIf="isMoveToMenuShown && (isSelectAllActive || isOperationMenuShown)" class="popupmenu J-M agd aYO jQjAxd aX2">
+                    <span (click)="isMoveToMenuShown = true" class="x-close">x</span>
                     <div class="SK AX">
                       <div class="asc">Move to:
                       </div>
 
                       <div class="popup-input-container">
-                        <!-- <div style="user-select: none; visibility: visible;"></div> -->
                         <input class="popup-input" type="text" maxlength="225">
                         <i class="search-icon"></i>
                       </div>
@@ -82,10 +80,10 @@
                             <a class="popup-link">Work</a>
                           </li>
                           <li class="menu">
-                            <a class="popup-link">Spam</a>
+                            <a class="popup-link" (click)="mailTransfer('spam')">Spam</a>
                           </li>
                           <li class="menu">
-                            <a class="popup-link">Trash</a>
+                            <a class="popup-link" (click)="mailTransfer('trash')">Trash</a>
                           </li>
                           <li class="menu">
                             <a class="popup-link">Create New</a>

@@ -30,7 +30,6 @@
 
 .popup-input {
     border: 0;
-
 }
 
 .popup-input-container {
@@ -38,7 +37,6 @@
     border-color: #888 #ccc #ccc #ccc;
     margin: 6px 8px;
     padding-right: 10px;
-
     /* height: 15px; */
 }
 
@@ -51,13 +49,18 @@
     width: 7px;
     height: 10px;
     /* overflow: hidden; */
-
 }
 
-/* .popup-search-bar {
-    height: 100%;
-    margin: 0;
-} */
+.x-close {
+    float: left;
+    padding-left: 10px;
+    font-size: 1.2em;
+}
+
+.x-close:hover {
+    color: #dd4b39;
+    cursor: pointer;
+}
 
 .J-J5-Ji {
     display: -moz-inline-box;

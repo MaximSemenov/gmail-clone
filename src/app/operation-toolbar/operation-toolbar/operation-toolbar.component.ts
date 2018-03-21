@@ -21,6 +21,7 @@ export class OperationToolbarComponent implements OnInit {
   public lastLetter = 10;
   public isSelectAllActive = false;
   public isOperationMenuShown = false;
+  public isMoveToMenuShown = false;
   public mailList: Mail[];
   public mailBoxName: string;
 
@@ -42,6 +43,7 @@ export class OperationToolbarComponent implements OnInit {
 
       if (!status) {
         this.isOperationMenuShown = false;
+        this.isMoveToMenuShown = false;
       } else {
         this.isOperationMenuShown = true;
       }
@@ -140,9 +142,9 @@ export class OperationToolbarComponent implements OnInit {
     this.lastLetter = this.firstLetter === 1 ? 10 * (this.currentPage - 1) : 10 * (this.currentPage - 1) + 1;
   }
 
-  deleteLetter() {
+  mailTransfer(destination: string) {
 
-    this._mailService.transferLetter(this.mailBoxName, 'trash').subscribe(status => {
+    this._mailService.transferLetter(this.mailBoxName, destination).subscribe(status => {
       console.log(status);
       setTimeout(() => {
         this.isSelectAllActive = false;
@@ -153,6 +155,10 @@ export class OperationToolbarComponent implements OnInit {
 
   selectAllLetters() {
     this.isSelectAllActive = !this.isSelectAllActive;
+    if (!this.isSelectAllActive) {
+      this.isMoveToMenuShown = false;
+    }
+
     this.mailList.forEach(letter => {
       letter.isChecked = !letter.isChecked;
     });

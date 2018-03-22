@@ -93,10 +93,10 @@
                           <li *ngIf="mailBoxName !== 'trash'" class="menu">
                             <a class="popup-link" (click)="mailTransfer('trash')">Trash</a>
                           </li>
-                          <li *ngIf="mailBoxName === 'trash'" class="menu">
+                          <li *ngIf="mailBoxName !== 'inbox'" class="menu">
                             <a class="popup-link" (click)="mailTransfer('inbox')">Inbox</a>
                           </li>
-                          <li class="menu">
+                          <li *ngIf="mailBoxName !== 'spam'" class="menu">
                             <a class="popup-link" (click)="mailTransfer('spam')">Spam</a>
                           </li>
                           <li class="separator"></li>

@@ -177,13 +177,15 @@ export class MailService {
 
   transferLetter(fromBox: string, toBox: string) {
 
+    console.log(this._selectedLetters.map(String))
     this._deletedLetter$$.next();
     return this._http.get<any>(this.baseUrl + this.transferMailUrl, {
       params: {
         'transferFrom': fromBox,
         'transferTo': toBox,
-        'id': this._selectedLetters.map(String)
+        'ids[]': this._selectedLetters.map(String)
       }
+
     });
 
 

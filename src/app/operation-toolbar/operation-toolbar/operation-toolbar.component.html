@@ -26,17 +26,26 @@
 
 
               <div *ngIf="isSelectAllActive || isOperationMenuShown" class="G-Ni J-J5-Ji">
-                <div class="T-I J-J5-Ji lR T-I-ax7  T-I-Js-IF ar7" act="7" role="button" tabindex="0" data-tooltip="Archive" aria-label="Archive">
+                <div *ngIf="mailBoxName !== 'trash'" class="T-I J-J5-Ji lR T-I-ax7  T-I-Js-IF ar7">
                   <div class="asa">
                     <div class="ar8 T-I-J3 J-J5-Ji"></div>
                   </div>
                 </div>
+
+                <div *ngIf="mailBoxName === 'trash'" class="G-Ni J-J5-Ji">
+                  <div class="T-I J-J5-Ji aFi T-I-ax7 ar7 T-I-Zf-aw2" act="17" role="button" tabindex="0" style="user-select: none;">
+                    <div class="Bn">Delete forever</div>
+                  </div>
+                </div>
+
                 <div (click)="mailTransfer('spam')" class="T-I J-J5-Ji nN T-I-ax7 T-I-Js-Gs T-I-Js-IF ar7">
                   <div class="asa">
                     <div class="asl T-I-J3 J-J5-Ji"></div>
                   </div>
                 </div>
-                <div (click)="mailTransfer('trash')" class="T-I J-J5-Ji nX T-I-ax7 T-I-Js-Gs ar7 ">
+
+
+                <div *ngIf="mailBoxName !== 'trash'" (click)="mailTransfer('trash')" class="T-I J-J5-Ji nX T-I-ax7 T-I-Js-Gs ar7 ">
                   <div class="asa">
                     <div class="ar9 T-I-J3 J-J5-Ji max"></div>
                   </div>
@@ -79,12 +88,18 @@
                           <li class="menu">
                             <a class="popup-link">Work</a>
                           </li>
+                          <li class="separator"></li>
+
+                          <li *ngIf="mailBoxName !== 'trash'" class="menu">
+                            <a class="popup-link" (click)="mailTransfer('trash')">Trash</a>
+                          </li>
+                          <li *ngIf="mailBoxName === 'trash'" class="menu">
+                            <a class="popup-link" (click)="mailTransfer('inbox')">Inbox</a>
+                          </li>
                           <li class="menu">
                             <a class="popup-link" (click)="mailTransfer('spam')">Spam</a>
                           </li>
-                          <li class="menu">
-                            <a class="popup-link" (click)="mailTransfer('trash')">Trash</a>
-                          </li>
+                          <li class="separator"></li>
                           <li class="menu">
                             <a class="popup-link">Create New</a>
                           </li>

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  baseUrl: './assets/data/inbox-list.json',
+  baseUrl: 'http://173.255.247.60/',
   hashState: true
 };
 

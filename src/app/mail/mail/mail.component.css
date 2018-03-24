@@ -60,20 +60,23 @@
     background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star4_2x.png) 2x);
 }
 
-
-/* .T-KT:before {
-    content: url(//ssl.gstatic.com/ui/v1/star/star4.png);
-    content: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star4_2x.png) 2x);
+.T-KT:hover {
+    cursor: pointer;
+    background: url(//ssl.gstatic.com/ui/v1/star/star-hover4.png) no-repeat;
+    background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star-hover4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star-hover4_2x.png) 2x);
 }
 
-.aXw.T-KT:before {
-    content: url(//ssl.gstatic.com/ui/v1/star/star4.png);
-    content: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star4_2x.png) 2x);
-} */
 
-.aXw.T-KT:active:before {
-    content: url(//ssl.gstatic.com/ui/v1/star/star-active4.png);
-    content: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star-active4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star-active4_2x.png) 2x);
+.T-KT-Starred {
+    cursor: pointer;
+    background: url(//ssl.gstatic.com/ui/v1/star/star-lit4.png) no-repeat;
+    background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star-lit4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star-lit4_2x.png) 2x);
+}
+
+.T-KT-Starred:hover {
+    cursor: pointer;
+    background: url(//ssl.gstatic.com/ui/v1/star/star-lit4.png) no-repeat;
+    background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star-lit4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star-lit4_2x.png) 2x);
 }
 
 td.apU .T-KT {

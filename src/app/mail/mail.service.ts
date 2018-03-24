@@ -18,6 +18,7 @@ export type Mail = {
   body: string;
   isRead: boolean;
   isChecked: boolean;
+  isStarred: boolean;
   email: string;
 };
 
@@ -98,6 +99,7 @@ export class MailService {
         return filteredMailList.map(letterObj => {
           letterObj.isChecked = !!+letterObj.isChecked;
           letterObj.isRead = !!+letterObj.isRead;
+          letterObj.isStarred = !!+letterObj.isStarred;
           return letterObj;
         });
       })

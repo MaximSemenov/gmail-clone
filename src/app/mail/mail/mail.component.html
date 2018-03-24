@@ -16,18 +16,11 @@
 
         <li>
 
-          <span (click)="letter.isStarred = !letter.isStarred" [ngClass]="{'aXw': true, 'T-KT': true, 'T-KT-Starred': letter.isStarred}">
+          <span (click)="letter.isStarred = !letter.isStarred; labelLetter(letter.id)" [ngClass]="{'aXw': true, 'T-KT': true, 'T-KT-Starred': letter.isStarred}">
             <span class="T-Jo-auh"></span>
 
           </span>
         </li>
-
-        <!-- <li>
-            <span class="aXw T-KT T-KT-JW">
-              <span class="T-Jo-auh"></span>
-  
-            </span>
-          </li> -->
 
       </ul>
       <a [routerLink]="['/mail', mailBoxName, letter.id]">

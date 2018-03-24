@@ -40,13 +40,13 @@ export class MailService {
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
   private _mailListCache$: Observable<Mail[]>;
   private _selectedLetters: number[] = [];
-  private _deletedLetter$$: Subject<any> = new Subject();
+  private _transferedLetterd$$: Subject<any> = new Subject();
 
   constructor(private _http: HttpClient) {
   }
 
-  deletingLetters() {
-    return this._deletedLetter$$.asObservable();
+  transferedLetters() {
+    return this._transferedLetterd$$.asObservable();
   }
 
   getOperationMenuStatus() {
@@ -83,6 +83,10 @@ export class MailService {
     this._currentMailBoxName$$.next(mailBoxName);
   }
 
+  updateMailTransfer() {
+    this._transferedLetterd$$.next();
+  }
+
 
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
 
@@ -105,7 +109,6 @@ export class MailService {
       })
       .delay(800)
       .do((mailList: Mail[]) => {
-
         this._mailList$$.next(mailList);
       });
   }
@@ -153,7 +156,7 @@ export class MailService {
   }
 
 
-  storeCheckedLetters(letter: Mail, isChecked: boolean): void {
+  storeSelectedLettersIndividually(letter: Mail, isChecked: boolean): void {
 
     if (!isChecked) {
       this._selectedLetters = this._selectedLetters.filter((id: number) => id !== letter.id);
@@ -179,8 +182,7 @@ export class MailService {
 
   transferLetter(fromBox: string, toBox: string) {
 
-    console.log(this._selectedLetters.map(String))
-    this._deletedLetter$$.next();
+    console.log(this._selectedLetters.map(String));
     return this._http.get<any>(this.baseUrl + this.transferMailUrl, {
       params: {
         'transferFrom': fromBox,
@@ -194,31 +196,13 @@ export class MailService {
 
   }
 
+  clearSelectedLetters(): void {
+    this._selectedLetters.length = 0;
+  }
+
 
   deleteLetter() {
 
-    // const mailBoxName = this.getCurrentBoxName();
-
-
-
-    // this._http.get<Mail[]>(this.baseUrl, {
-    //   params: { 'box': mailBoxName }
-    // })
-
-    // this._mailListCache$ = this._mailListCache$
-    //   .map(mail => {
-
-    //     return mail.filter(letter => {
-
-    //       if (this._selectedLetters.includes(letter.id)) {
-    //         return false;
-    //       }
-    //       return true;
-
-    //     });
-    //   });
-
-    // this._deletedLetter$$.next();
 
   }
 

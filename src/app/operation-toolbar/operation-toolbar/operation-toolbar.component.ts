@@ -102,7 +102,7 @@ export class OperationToolbarComponent implements OnInit {
       this._mailService.getCurrentBoxName(),
       this._mailService.getLastSearch(),
       this._activatedRoute.queryParams.pluck('page').filter(Boolean),
-      this._mailService.deletingLetters(),
+      this._mailService.transferedLetters(),
       (mailboxName, lastSearch, page) => {
         return {
           mailboxName,
@@ -142,14 +142,16 @@ export class OperationToolbarComponent implements OnInit {
     this.lastLetter = this.firstLetter === 1 ? 10 * (this.currentPage - 1) : 10 * (this.currentPage - 1) + 1;
   }
 
-  mailTransfer(destination: string) {
+  mailTransfer(destination: string): void {
 
-    this._mailService.transferLetter(this.mailBoxName, destination).subscribe(status => {
-      console.log(status);
-      setTimeout(() => {
-        this.isSelectAllActive = false;
-      }, 500);
-    });
+    this._mailService.transferLetter(this.mailBoxName, destination)
+      .subscribe(() => {
+        this._mailService.updateMailTransfer();
+        this._mailService.clearSelectedLetters();
+        setTimeout(() => {
+          this.isSelectAllActive = false;
+        }, 500);
+      });
   }
 
 

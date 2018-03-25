@@ -13,7 +13,6 @@ import 'rxjs/add/operator/take';
 
 export type Mail = {
   id: number;
-  name: string;
   title: string;
   body: string;
   isRead: boolean;

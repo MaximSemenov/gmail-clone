@@ -167,4 +167,12 @@ export class OperationToolbarComponent implements OnInit {
     this._mailService.storeSelectedLettersAll(this.mailList);
   }
 
+  labelLetter(labelName: string, state: boolean) {
+    this._mailService.modifyLabels(labelName, state, this.mailBoxName)
+      .subscribe(() => {
+        this._mailService.clearSelectedLetters();
+        this._mailService.updateMailTransfer();
+      });
+  }
+
 }

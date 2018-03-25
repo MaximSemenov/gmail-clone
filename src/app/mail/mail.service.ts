@@ -21,6 +21,7 @@ export type Mail = {
   isStarred: boolean;
   email: string;
   fullName: string;
+  date: string;
 };
 
 
@@ -203,11 +204,12 @@ export class MailService {
   }
 
 
-  modifyLabels(labelName: string, state: boolean): Observable<any> {
+  modifyLabels(labelName: string, state: boolean, mailBoxName: string): Observable<any> {
 
     console.log(this._selectedLetters.map(String));
     return this._http.get<any>(this._baseUrl + this._setLetterLabel, {
       params: {
+        'boxName': mailBoxName,
         'labelName': labelName,
         'state': String(state),
         'ids[]': this._selectedLetters.map(String)

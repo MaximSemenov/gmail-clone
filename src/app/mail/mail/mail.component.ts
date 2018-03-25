@@ -62,7 +62,7 @@ export class MailComponent implements OnInit {
   }
 
   labelLetter(labelName: string, state: boolean) {
-    this._mailService.modifyLabels(labelName, state)
+    this._mailService.modifyLabels(labelName, state, this.mailBoxName)
       .subscribe(() => {
         this._mailService.clearSelectedLetters();
       });

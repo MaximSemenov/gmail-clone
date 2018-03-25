@@ -74,34 +74,31 @@
                       <div class="J-M-Jz aXjCH">
                         <ul class="list-unstyled">
                           <li class="menu">
-                            <a class="popup-link">Notes</a>
+                            <a (click)="labelLetter('notes', true)" class="popup-link ">Notes</a>
                           </li>
                           <li class="menu">
-                            <a class="popup-link">Work</a>
+                            <a (click)="labelLetter('work', true)" class="popup-link ">Work</a>
                           </li>
-                          <li class="menu">
-                            <a class="popup-link">Social</a>
+                          <li class="menu ">
+                            <a (click)="labelLetter('social', true)" class="popup-link ">Social</a>
                           </li>
-                          <li class="menu">
-                            <a class="popup-link">Promotions</a>
+                          <li class="menu ">
+                            <a (click)="labelLetter('promotions', true)" class="popup-link ">Promotions</a>
                           </li>
-                          <li class="menu">
-                            <a class="popup-link">Work</a>
-                          </li>
-                          <li class="separator"></li>
+                          <li class="separator "></li>
 
-                          <li *ngIf="mailBoxName !== 'trash'" class="menu">
-                            <a class="popup-link" (click)="mailTransfer('trash')">Trash</a>
+                          <li *ngIf="mailBoxName !=='trash' " class="menu ">
+                            <a class="popup-link " (click)="mailTransfer( 'trash') ">Trash</a>
                           </li>
-                          <li *ngIf="mailBoxName !== 'inbox'" class="menu">
-                            <a class="popup-link" (click)="mailTransfer('inbox')">Inbox</a>
+                          <li *ngIf="mailBoxName !=='inbox' " class="menu ">
+                            <a class="popup-link " (click)="mailTransfer( 'inbox') ">Inbox</a>
                           </li>
-                          <li *ngIf="mailBoxName !== 'spam'" class="menu">
-                            <a class="popup-link" (click)="mailTransfer('spam')">Spam</a>
+                          <li *ngIf="mailBoxName !=='spam' " class="menu ">
+                            <a class="popup-link " (click)="mailTransfer( 'spam') ">Spam</a>
                           </li>
-                          <li class="separator"></li>
-                          <li class="menu">
-                            <a class="popup-link">Create New</a>
+                          <li class="separator "></li>
+                          <li class="menu ">
+                            <a class="popup-link ">Create New</a>
                           </li>
                         </ul>
 
@@ -113,111 +110,117 @@
                 </div>
 
 
-                <div id=":32" class="T-I J-J5-Ji T-I-Js-Gs ar7 mw T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false"
-                  data-tooltip="Labels" aria-label="Labels">
-                  <div class="asa">
-                    <div class="asb T-I-J3 J-J5-Ji"></div>
+                <div id=":32 " class="T-I J-J5-Ji T-I-Js-Gs ar7 mw T-I-ax7 L3 " role="button " tabindex="0
+                              " aria-haspopup="true " aria-expanded="false "
+                  data-tooltip="Labels " aria-label="Labels ">
+                  <div class="asa ">
+                    <div class="asb T-I-J3 J-J5-Ji "></div>
                   </div>
-                  <div class="G-asx T-I-J3 J-J5-Ji" aria-hidden="true">&nbsp;</div>
+                  <div class="G-asx T-I-J3 J-J5-Ji " aria-hidden="true ">&nbsp;</div>
                 </div>
               </div>
 
 
-              <div class="G-Ni J-J5-Ji">
-                <div class="T-I J-J5-Ji nu T-I-ax7 L3" act="20" role="button" tabindex="0" data-tooltip="Refresh" aria-label="Refresh">
-                  <div class="asa">
-                    <div class="asf T-I-J3 J-J5-Ji"></div>
+              <div class="G-Ni J-J5-Ji ">
+                <div class="T-I J-J5-Ji nu T-I-ax7 L3 " act="20 " role="button " tabindex="0 " data-tooltip="Refresh
+                              " aria-label="Refresh ">
+                  <div class="asa ">
+                    <div class="asf T-I-J3 J-J5-Ji "></div>
                   </div>
                 </div>
               </div>
-              <div class="J-J5-Ji">
-                <div class="T9" style="display:none">Fetching mail...</div>
+              <div class="J-J5-Ji ">
+                <div class="T9 " style="display:none ">Fetching mail...</div>
               </div>
-              <div class="G-Ni J-J5-Ji">
-                <div id=":33" class="T-I J-J5-Ji ar7 nf T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false">
-                  <span class="bjy">More</span>
-                  <div class="G-asx T-I-J3 J-J5-Ji">&nbsp;</div>
+              <div class="G-Ni J-J5-Ji ">
+                <div id=":33 " class="T-I J-J5-Ji ar7 nf T-I-ax7 L3 " role="button " tabindex="0 " aria-haspopup="true
+                              " aria-expanded="false ">
+                  <span class="bjy ">More</span>
+                  <div class="G-asx T-I-J3 J-J5-Ji ">&nbsp;</div>
                 </div>
               </div>
-              <div class="J-M jQjAxd" role="menu" aria-haspopup="true" style="display: none; user-select: none;">
-                <div class="SK AX">
-                  <div class="J-N" selector="all" role="menuitem" id=":ip">
-                    <div class="J-N-Jz">All</div>
+              <div class="J-M jQjAxd " role="menu " aria-haspopup="true " style="display: none; user-select: none; ">
+                <div class="SK AX ">
+                  <div class="J-N " selector="all " role="menuitem " id=":ip ">
+                    <div class="J-N-Jz ">All</div>
                   </div>
-                  <div class="J-N" selector="none" role="menuitem" id=":iq">
-                    <div class="J-N-Jz">None</div>
+                  <div class="J-N " selector="none " role="menuitem " id=":iq ">
+                    <div class="J-N-Jz ">None</div>
                   </div>
-                  <div class="J-N" selector="read" role="menuitem" id=":ir">
-                    <div class="J-N-Jz">Read</div>
+                  <div class="J-N " selector="read " role="menuitem " id=":ir ">
+                    <div class="J-N-Jz ">Read</div>
                   </div>
-                  <div class="J-N" selector="unread" role="menuitem" id=":is">
-                    <div class="J-N-Jz">Unread</div>
+                  <div class="J-N " selector="unread " role="menuitem " id=":is ">
+                    <div class="J-N-Jz ">Unread</div>
                   </div>
-                  <div class="J-N" selector="starred" role="menuitem" id=":it">
-                    <div class="J-N-Jz">Starred</div>
+                  <div class="J-N " selector="starred " role="menuitem " id=":it ">
+                    <div class="J-N-Jz ">Starred</div>
                   </div>
-                  <div class="J-N" selector="unstarred" role="menuitem" id=":iu">
-                    <div class="J-N-Jz">Unstarred</div>
+                  <div class="J-N " selector="unstarred " role="menuitem " id=":iu ">
+                    <div class="J-N-Jz ">Unstarred</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="Cr aqJ">
-          <div class="ar5 J-J5-Ji">
-            <span class="Di">
-              <div id=":h7" class="J-J5-Ji amH J-JN-I" role="button" aria-expanded="false" tabindex="0" aria-haspopup="true">
-                <span class="Dj">
+        <div class="Cr aqJ ">
+          <div class="ar5 J-J5-Ji ">
+            <span class="Di ">
+              <div id=":h7 " class="J-J5-Ji amH J-JN-I " role="button " aria-expanded="false " tabindex="0
+                              " aria-haspopup="true ">
+                <span class="Dj ">
                   <span>
-                    <span class="ts">{{firstLetter}}</span>–
-                    <span class="ts">{{lastLetter}}</span>
+                    <span class="ts ">{{firstLetter}}</span>–
+                    <span class="ts ">{{lastLetter}}</span>
                   </span> of
-                  <span class="ts">{{numberOfLetters}}</span>
+                  <span class="ts ">{{numberOfLetters}}</span>
                 </span>
               </div>
-              <a routerLink="" (click)='goPreviousPage()' [queryParams]="{page: currentPage === 1  ? currentPage : currentPage - 1}">
-                <div id=":h9" class="T-I J-J5-Ji amD T-I-awG amE T-I-ax7 T-I-Js-IF L3" [ngClass]="{'inactive': currentPage === 1}">
-                  <span class="amF" aria-hidden="true">&nbsp;</span>
-                  <img class="amI T-I-J3" src="/assets/img/cleardot.gif" alt="">
+              <a routerLink=" " (click)='goPreviousPage()' [queryParams]="{page: currentPage===1 ? currentPage : currentPage
+                              - 1} ">
+                <div id=":h9 " class="T-I J-J5-Ji amD T-I-awG amE T-I-ax7 T-I-Js-IF L3 " [ngClass]="{ 'inactive': currentPage===1
+                              } ">
+                  <span class="amF " aria-hidden="true ">&nbsp;</span>
+                  <img class="amI T-I-J3 " src="/assets/img/cleardot.gif " alt=" ">
                 </div>
               </a>
-              <a [routerLink]="['./mail', mailBoxName]" (click)="goNextPage(currentPage >= numberOfLetters / 10 ? currentPage : currentPage + 1 )"
-                [queryParams]="{page: currentPage >= numberOfLetters / 10  ? currentPage : currentPage + 1}">
-                <div id=":ha" class="T-I J-J5-Ji amD T-I-awG T-I-ax7 T-I-Js-Gs L3" [ngClass]="{'inactive': currentPage >= numberOfLetters / 10 }">
-                  <span class="amF" aria-hidden="true">&nbsp;</span>
-                  <img class="amJ T-I-J3" src="/assets/img/cleardot.gif" alt="">
-                </div>
-              </a>
-            </span>
-            <div class="amG J-M jQjAxd" role="menu" aria-haspopup="true" style="user-select: none; display: none;">
-              <div class="SK AX">
-                <div id=":h8" class="J-N J-N-JE" role="menuitem" aria-disabled="true">
-                  <div class="J-N-Jz">Newest</div>
-                </div>
-                <div id=":hb" class="J-N" role="menuitem">
-                  <div class="J-N-Jz">Oldest</div>
+              <a [routerLink]="[ './mail', mailBoxName] " (click)="goNextPage(currentPage>= numberOfLetters / 10 ? currentPage : currentPage + 1 )" [queryParams]="{page: currentPage >=
+                              numberOfLetters / 10 ? currentPage : currentPage + 1}">
+                              <div id=":ha" class="T-I J-J5-Ji amD T-I-awG T-I-ax7 T-I-Js-Gs L3" [ngClass]="{'inactive': currentPage >= numberOfLetters / 10 }">
+                                <span class="amF" aria-hidden="true">&nbsp;</span>
+                                <img class="amJ T-I-J3" src="/assets/img/cleardot.gif" alt="">
+                              </div>
+                            </a>
+                            </span>
+                            <div class="amG J-M jQjAxd" role="menu" aria-haspopup="true" style="user-select: none; display: none;">
+                              <div class="SK AX">
+                                <div id=":h8" class="J-N J-N-JE" role="menuitem" aria-disabled="true">
+                                  <div class="J-N-Jz">Newest</div>
+                                </div>
+                                <div id=":hb" class="J-N" role="menuitem">
+                                  <div class="J-N-Jz">Oldest</div>
+                                </div>
+                              </div>
+                            </div>
+                      </div>
+                      <div class="G-Ni J-J5-Ji" gh="s">
+                        <div id=":28" class="T-I J-J5-Ji ash T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" data-tooltip="Settings"
+                          aria-label="Settings">
+                          <div class="asa">
+                            <div class="aos T-I-J3 J-J5-Ji"></div>
+                          </div>
+                          <div class="G-asx T-I-J3 J-J5-Ji" aria-hidden="true">&nbsp;</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="dJ"></div>
+                  </div>
+                  <div class="LQDzGc"></div>
+                  <div class="ciwp4" style="display: none;"></div>
+                  <div class="r0yTaf"></div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="G-Ni J-J5-Ji" gh="s">
-            <div id=":28" class="T-I J-J5-Ji ash T-I-ax7 L3" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" data-tooltip="Settings"
-              aria-label="Settings">
-              <div class="asa">
-                <div class="aos T-I-J3 J-J5-Ji"></div>
-              </div>
-              <div class="G-asx T-I-J3 J-J5-Ji" aria-hidden="true">&nbsp;</div>
-            </div>
-          </div>
-        </div>
-        <div class="dJ"></div>
-      </div>
-      <div class="LQDzGc"></div>
-      <div class="ciwp4" style="display: none;"></div>
-      <div class="r0yTaf"></div>
-    </div>
-  </div>
 
 
-</div>
+            </div>

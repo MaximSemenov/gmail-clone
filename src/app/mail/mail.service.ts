@@ -133,7 +133,7 @@ export class MailService {
 
       return mailList.filter((mail: Mail) => {
         let result = false;
-        ['name', 'email', 'title', 'body'].forEach(key => {
+        ['fullName', 'email', 'title', 'body'].forEach(key => {
           if (mail[key].toLowerCase().includes(query.toLowerCase())) {
             result = true;
           }

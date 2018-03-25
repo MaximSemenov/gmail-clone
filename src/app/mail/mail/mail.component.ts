@@ -55,15 +55,14 @@ export class MailComponent implements OnInit {
 
   }
 
-  checkLetters(letter: Mail): void {
+  checkLetters(letter: Mail, isChecked: boolean): void {
 
-    letter.isChecked = !letter.isChecked;
-    this._mailService.storeSelectedLettersIndividually(letter, letter.isChecked);
+    this._mailService.storeSelectedLettersIndividually(letter, isChecked);
 
   }
 
-  labelLetter(id: number) {
-    console.log(id);
+  labelLetter(labelName: string, status: boolean) {
+
   }
 
 

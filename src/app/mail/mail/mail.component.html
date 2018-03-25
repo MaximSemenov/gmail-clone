@@ -2,13 +2,11 @@
 </i>
 <div [@mymail]="isMailListLoaded">
   <li *ngFor="let letter of (mailList$ | async)" [ngClass]="{'email-item': true,'row': true, 'unread': !letter.isRead, 'selected': letter.isChecked}">
-    <!-- <a [routerLink]="['/mail', mailBoxName, letter.id]"> -->
-
     <div class="people col-sm-3">
 
       <ul class="mail-icons list-inline list-of-mail">
 
-        <li (click)='checkLetters(letter)'>
+        <li (click)='checkLetters(letter, letter.isChecked = !letter.isChecked)'>
           <span class="T-Jo J-J5-Ji T-Jo-aMF">
             <div [ngClass]="{'T-Jo-auh': true,'checked': letter.isChecked}"></div>
           </span>
@@ -16,7 +14,9 @@
 
         <li>
 
-          <span (click)="letter.isStarred = !letter.isStarred; labelLetter(letter.id)" [ngClass]="{'aXw': true, 'T-KT': true, 'T-KT-Starred': letter.isStarred}">
+          <span (click)="letter.isStarred = !letter.isStarred;
+          checkLetters(letter, false);
+          labelLetter('star', letter.isStarred)" [ngClass]="{'aXw': true, 'T-KT': true, 'T-KT-Starred': letter.isStarred}">
             <span class="T-Jo-auh"></span>
 
           </span>
@@ -26,7 +26,7 @@
       <a [routerLink]="['/mail', mailBoxName, letter.id]">
         <span class="people-names">
           <span *ngIf="mailBoxName === 'sent'">To:</span>
-          {{letter.fullname}}
+          {{letter.fullName}}
         </span>
 
       </a>

@@ -20,6 +20,7 @@ export type Mail = {
   isChecked: boolean;
   isStarred: boolean;
   email: string;
+  fullName: string;
 };
 
 
@@ -27,9 +28,10 @@ export type Mail = {
 @Injectable()
 export class MailService {
 
-  private baseUrl: string = environment.baseUrl;
-  private getMailUrl = 'getMail.php';
-  private transferMailUrl = 'mailTransfer.php';
+  private _baseUrl: string = environment.baseUrl;
+  private _getMailUrl = 'getMail.php';
+  private _transferMailUrl = 'mailTransfer.php';
+  private _setLetterLabel = 'labelMail.php';
 
   private _operationMenuStatus$$: Subject<number> = new Subject();
   private _mailList$$: BehaviorSubject<any> = new BehaviorSubject([]);
@@ -90,7 +92,7 @@ export class MailService {
 
   loadMailList(mailBoxName: string, query: string, page: number): Observable<Mail[]> {
 
-    return this._http.get<Mail[]>(this.baseUrl + this.getMailUrl, {
+    return this._http.get<Mail[]>(this._baseUrl + this._getMailUrl, {
       params: { 'box': mailBoxName }
     })
       .map(this._filterMailBySearch(query))
@@ -180,10 +182,10 @@ export class MailService {
 
   }
 
-  transferLetter(fromBox: string, toBox: string) {
+  transferLetter(fromBox: string, toBox: string): Observable<any> {
 
     console.log(this._selectedLetters.map(String));
-    return this._http.get<any>(this.baseUrl + this.transferMailUrl, {
+    return this._http.get<any>(this._baseUrl + this._transferMailUrl, {
       params: {
         'transferFrom': fromBox,
         'transferTo': toBox,
@@ -198,6 +200,21 @@ export class MailService {
 
   clearSelectedLetters(): void {
     this._selectedLetters.length = 0;
+  }
+
+
+  setLabel(labelName: string, status: boolean): Observable<any> {
+
+    console.log(this._selectedLetters.map(String));
+    return this._http.get<any>(this._baseUrl + this._setLetterLabel, {
+      params: {
+        'labelName': labelName,
+        'status': String(status),
+        'id': this._selectedLetters.map(String)
+      }
+
+    });
+
   }
 
 

@@ -203,14 +203,14 @@ export class MailService {
   }
 
 
-  setLabel(labelName: string, status: boolean): Observable<any> {
+  modifyLabels(labelName: string, state: boolean): Observable<any> {
 
     console.log(this._selectedLetters.map(String));
     return this._http.get<any>(this._baseUrl + this._setLetterLabel, {
       params: {
         'labelName': labelName,
-        'status': String(status),
-        'id': this._selectedLetters.map(String)
+        'state': String(state),
+        'ids[]': this._selectedLetters.map(String)
       }
 
     });

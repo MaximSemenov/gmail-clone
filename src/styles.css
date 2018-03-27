@@ -113,6 +113,10 @@ li.menu a:hover {
     background-color: #eeeeee;
 }
 
+#inbox {
+    margin-top: 10px;
+}
+
 #inbox:hover {
     color: #dd4b39;
 }
@@ -140,7 +144,7 @@ li.menu a:hover {
 }
 
 .inbox-sections li {
-    margin-top: 10px;
+    margin-top: 2px;
     font-size: 13px;
 }
 

@@ -39,9 +39,9 @@ export class OperationToolbarComponent implements OnInit {
       this.mailList = mailList;
     });
 
-    this._mailService.getOperationMenuStatus().subscribe((status: number) => {
+    this._mailService.getOperationMenuStatus().subscribe((arrayLength: number) => {
 
-      if (!status) {
+      if (!arrayLength) {
         this.isOperationMenuShown = false;
         this.isMoveToMenuShown = false;
       } else {

@@ -80,21 +80,24 @@
                             <a (click)="labelLetter('work', true)" class="popup-link ">Work</a>
                           </li>
                           <li class="menu ">
-                            <a (click)="labelLetter('social', true)" class="popup-link ">Social</a>
+                            <a (click)="mailTransfer('social')" class="popup-link ">Social</a>
                           </li>
                           <li class="menu ">
-                            <a (click)="labelLetter('promotions', true)" class="popup-link ">Promotions</a>
+                            <a (click)="mailTransfer('promotions')" class="popup-link ">Promotions</a>
                           </li>
+                          <li class="menu ">
+                              <a (click)="mailTransfer('forums')" class="popup-link ">Forums</a>
+                            </li>
                           <li class="separator "></li>
 
                           <li *ngIf="mailBoxName !=='trash' " class="menu ">
-                            <a class="popup-link " (click)="mailTransfer( 'trash') ">Trash</a>
+                            <a class="popup-link " (click)="mailTransfer('trash')">Trash</a>
                           </li>
                           <li *ngIf="mailBoxName !=='inbox' " class="menu ">
-                            <a class="popup-link " (click)="mailTransfer( 'inbox') ">Inbox</a>
+                            <a class="popup-link " (click)="mailTransfer('inbox')">Inbox</a>
                           </li>
                           <li *ngIf="mailBoxName !=='spam' " class="menu ">
-                            <a class="popup-link " (click)="mailTransfer( 'spam') ">Spam</a>
+                            <a class="popup-link " (click)="mailTransfer('spam')">Spam</a>
                           </li>
                           <li class="separator "></li>
                           <li class="menu ">

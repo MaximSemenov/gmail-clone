@@ -41,7 +41,7 @@ export class MailService {
   private _lastSearch$$: BehaviorSubject<string> = new BehaviorSubject(null);
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
   private _mailListCache$: Observable<Mail[]>;
-  private _selectedLetters: number[] = [];
+  public selectedLetters: number[] = []; // temporary public temporary solution!
   private _transferedLetterd$$: Subject<any> = new Subject();
 
   constructor(private _http: HttpClient) {
@@ -161,35 +161,35 @@ export class MailService {
   storeSelectedLettersIndividually(letter: Mail, isChecked: boolean): void {
 
     if (!isChecked) {
-      this._selectedLetters = this._selectedLetters.filter((id: number) => id !== letter.id);
-      this._operationMenuStatus$$.next(this._selectedLetters.length);
+      this.selectedLetters = this.selectedLetters.filter((id: number) => id !== letter.id);
+      this._operationMenuStatus$$.next(this.selectedLetters.length);
       return;
     }
 
-    this._selectedLetters.push(letter.id);
-    this._operationMenuStatus$$.next(this._selectedLetters.length);
+    this.selectedLetters.push(letter.id);
+    this._operationMenuStatus$$.next(this.selectedLetters.length);
   }
 
 
   storeSelectedLettersAll(mailList: Mail[]): void {
     mailList.forEach(letter => {
-      this._selectedLetters.push(letter.id);
+      this.selectedLetters.push(letter.id);
     });
 
     if (!mailList[0].isChecked) {
-      this._selectedLetters.length = 0;
+      this.selectedLetters.length = 0;
     }
 
   }
 
-  transferLetter(fromBox: string, toBox: string): Observable<any> {
 
-    console.log(this._selectedLetters.map(String));
+  transferLetter(fromBox: string, toBox: string): Observable<any> {
+    
     return this._http.get<any>(this._baseUrl + this._transferMailUrl, {
       params: {
         'transferFrom': fromBox,
         'transferTo': toBox,
-        'ids[]': this._selectedLetters.map(String)
+        'ids[]': this.selectedLetters.map(String)
       }
 
     });
@@ -199,19 +199,19 @@ export class MailService {
   }
 
   clearSelectedLetters(): void {
-    this._selectedLetters.length = 0;
+    this.selectedLetters.length = 0;
   }
 
 
   modifyLabels(labelName: string, state: boolean, mailBoxName: string): Observable<any> {
 
-    console.log(this._selectedLetters.map(String));
+    console.log(this.selectedLetters.map(String));
     return this._http.get<any>(this._baseUrl + this._setLetterLabel, {
       params: {
         'boxName': mailBoxName,
         'labelName': labelName,
         'state': String(state),
-        'ids[]': this._selectedLetters.map(String)
+        'ids[]': this.selectedLetters.map(String)
       }
 
     });

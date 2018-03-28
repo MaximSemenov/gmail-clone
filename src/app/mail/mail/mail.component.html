@@ -13,12 +13,22 @@
         </li>
 
         <li>
-            <!-- checkLetters(letter, true);  temporarary removed--> 
+          <!-- checkLetters(letter, true);  temporarary removed-->
           <span (click)="letter.isStarred = !letter.isStarred;
       
           labelLetter('star', letter.isStarred, letter.id)" [ngClass]="{'aXw': true, 'T-KT': true, 'T-KT-Starred': letter.isStarred}">
             <span class="T-Jo-auh"></span>
 
+          </span>
+        </li>
+
+
+        <li>
+          <!-- checkLetters(letter, true);  temporarary removed-->
+          <span (click)="letter.isImportant = !letter.isImportant;
+      
+          labelLetter('important', letter.isImportant, letter.id)" [ngClass]="{'aXw': true, 'important-label': true, 'important-label-active': letter.isImportant}">
+            <span class="T-Jo-auh"></span>
           </span>
         </li>
 

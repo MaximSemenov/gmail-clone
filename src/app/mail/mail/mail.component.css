@@ -66,7 +66,6 @@
     background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star-hover4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star-hover4_2x.png) 2x);
 }
 
-
 .T-KT-Starred {
     cursor: pointer;
     background: url(//ssl.gstatic.com/ui/v1/star/star-lit4.png) no-repeat;
@@ -79,7 +78,26 @@
     background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/star/star-lit4.png) 1x, url(//ssl.gstatic.com/ui/v1/star/star-lit4_2x.png) 2x);
 }
 
-td.apU .T-KT {
+.important-label {
+    display: inline-block;
+    height: 19px;
+    text-align: center;
+    width: 19px;
+    padding: 2px;
+    background: url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance_2x.png) no-repeat;
+    background-image: -webkit-image-set(url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance_2x.png) 1x, url(//ssl.gstatic.com/ui/v1/icons/mail/sprite_importance_2x.png) 2x);
+}
+
+.important-label-active {
+    cursor: pointer;
+    background-position: -38px 0;
+}
+
+.important-label:hover {
+    cursor: pointer;
+}
+
+td.apU {
     position: relative;
     top: 3px;
 }
@@ -89,6 +107,10 @@ td.apU .T-KT {
 }
 
 .T-KT {
+    margin: -4px 0;
+}
+
+.important-label {
     margin: -4px 0;
 }
 

@@ -18,6 +18,7 @@ export type Mail = {
   isRead: boolean;
   isChecked: boolean;
   isStarred: boolean;
+  isImportant: boolean;
   email: string;
   fullName: string;
   date: string;
@@ -106,6 +107,7 @@ export class MailService {
           letterObj.isChecked = !!+letterObj.isChecked;
           letterObj.isRead = !!+letterObj.isRead;
           letterObj.isStarred = !!+letterObj.isStarred;
+          letterObj.isImportant = !!+letterObj.isImportant;
           return letterObj;
         });
       })

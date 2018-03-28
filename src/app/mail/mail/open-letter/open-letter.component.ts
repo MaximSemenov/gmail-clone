@@ -1,6 +1,6 @@
+import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
@@ -18,11 +18,10 @@ import { MailService } from '../../mail.service';
 })
 export class OpenLetterComponent implements OnInit {
 
-  // public text: string;
   public letter;
+  public mailList;
 
   constructor(
-    private _openLetterService: OpenLetterService,
     private _activatedRoute: ActivatedRoute,
     private _mailService: MailService
   ) { }
@@ -30,22 +29,13 @@ export class OpenLetterComponent implements OnInit {
   ngOnInit() {
 
 
-    this._activatedRoute.params
-      // .pluck('id')
-      .switchMap((params: { id: string, box: string }) => {
-        return Observable
-          .forkJoin(
-          this._openLetterService.getLetterText(params),
-          this._openLetterService.getLetterData(params),
-          (a, b) => {
-            return this.letter = {
-              text: a,
-              data: b
-            };
-          });
-      })
-      .subscribe((letter) => this.letter = letter);
+    this._mailService.getMailList().switchMap(mailList => {
+      this.mailList = mailList;
+      return this._activatedRoute.params.pluck('id');
+    }).subscribe(id => {
+      this.letter = this.mailList.find(mail => mail.id === id);
+    });
+
 
   }
-
 }

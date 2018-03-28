@@ -8,7 +8,7 @@
 
     <li class="menu">
 
-      <a [routerLink]="['mail', 'inbox']" id="inbox" routerLinkActive="active" class="bold">Inbox ({{inboxListLength}})</a>
+      <a [routerLink]="['mail', 'inbox']" id="inbox" routerLinkActive="active" class="bold">Inbox ({{inboxUnreadLength}})</a>
     </li>
 
     <li class="menu">
@@ -24,7 +24,7 @@
     </li>
 
     <li class="menu pending">
-      <a [routerLink]="['mail', 'drafts']" routerLinkActive="active">Drafts (7)</a>
+      <a [routerLink]="['mail', 'drafts']" routerLinkActive="active">Drafts (0)</a>
     </li>
 
 
@@ -47,7 +47,7 @@
 
 
     <li class="menu pending">
-      <a [routerLink]="['mail', 'spam']" routerLinkActive="active">Spam (1)</a>
+      <a [routerLink]="['mail', 'spam']" routerLinkActive="active">Spam ({{spamUnreadLength}})</a>
     </li>
 
 

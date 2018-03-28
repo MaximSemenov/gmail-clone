@@ -33,12 +33,14 @@ export class MailService {
   private _getMailUrl = 'getMail.php';
   private _transferMailUrl = 'mailTransfer.php';
   private _setLetterLabel = 'labelMail.php';
+  private _unreadMail = 'getUnreadMail.php';
 
   private _operationMenuStatus$$: Subject<number> = new Subject();
   private _mailList$$: BehaviorSubject<any> = new BehaviorSubject([]);
   private _currentMailBoxName$$: BehaviorSubject<string> = new BehaviorSubject('inbox');
   private _currentPage$$: BehaviorSubject<number> = new BehaviorSubject(1);
   private _mailBoxLength$$: BehaviorSubject<number> = new BehaviorSubject(0);
+  private _unreadLength$$: Subject<any> = new Subject();
   private _lastSearch$$: BehaviorSubject<string> = new BehaviorSubject(null);
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
   private _mailListCache$: Observable<Mail[]>;
@@ -117,11 +119,22 @@ export class MailService {
       });
   }
 
-  getMailBoxLength(mailBoxName: string): Observable<number> {
+  getCurrentMailBoxLength(mailBoxName: string): Observable<number> {
 
     return this._mailBoxLength$$.asObservable();
   }
 
+
+
+  getUnreadMailLength() {
+
+    return this._http.get<any>(this._baseUrl + this._unreadMail, {
+      params: {
+        'boxes[]': ['inbox', 'spam', 'drafts']
+      }
+    });
+
+  }
 
   private _filterMailBySearch(query: string): (mailList: Mail[]) => Mail[] {
 
@@ -186,7 +199,7 @@ export class MailService {
 
 
   transferLetter(fromBox: string, toBox: string): Observable<any> {
-    
+
     return this._http.get<any>(this._baseUrl + this._transferMailUrl, {
       params: {
         'transferFrom': fromBox,

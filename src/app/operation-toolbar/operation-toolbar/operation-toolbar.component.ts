@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { concat } from 'rxjs/observable/concat';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs/observable/combineLatest';
+import 'rxjs/add/observable/combineLatest';
 
 @Component({
   selector: 'app-operation-toolbar',
@@ -57,7 +58,7 @@ export class OperationToolbarComponent implements OnInit {
     this._mailService.getCurrentBoxName()
       .switchMap((mailBoxName: string) => {
 
-        return this._mailService.getMailBoxLength(mailBoxName);
+        return this._mailService.getCurrentMailBoxLength(mailBoxName);
       })
       .filter(Boolean)
       .subscribe((numberOfLetters: number) => {

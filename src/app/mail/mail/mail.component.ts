@@ -52,7 +52,7 @@ export class MailComponent implements OnInit {
       this._activatedRoute.queryParams.pluck('page').filter(Boolean),
       this._activatedRoute.params.pluck('box').filter(Boolean),
       this._mailService.transferedLetters(),
-      (lastSearch, page, mailBoxName, a ) => {
+      (lastSearch, page, mailBoxName, transfer) => {
         return {
           lastSearch,
           page,
@@ -63,11 +63,9 @@ export class MailComponent implements OnInit {
 
       this.mailBoxName = obj.mailBoxName;
       this._mailService.updateCurrentMailBoxName(obj.mailBoxName);
-
     })
       .switchMap((obj: MailLoadData) => {
-        this.mailBoxName = obj.mailBoxName;
-        this._mailService.updateCurrentMailBoxName(obj.mailBoxName);
+
         return this._mailService.loadMailList(obj.mailBoxName, obj.lastSearch, obj.page);
       })
       .subscribe((mailList: Mail[]) => {

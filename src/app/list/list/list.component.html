@@ -8,59 +8,59 @@
 
     <li class="menu">
 
-      <a [routerLink]="['mail', 'inbox']" id="inbox" routerLinkActive="active" class="bold">Inbox ({{inboxUnreadLength}})</a>
+      <a [routerLink]="['mail', 'inbox']" [queryParams]="{page: '1'}" id="inbox" routerLinkActive="active" class="bold">Inbox ({{inboxUnreadLength}})</a>
     </li>
 
     <li class="menu">
-      <a [routerLink]="['mail', 'starred']" routerLinkActive="active">Starred</a>
+      <a [routerLink]="['mail', 'starred']" [queryParams]="{page: '1'}" routerLinkActive="active">Starred</a>
     </li>
 
     <li class="menu">
-      <a [routerLink]="['mail', 'important']" routerLinkActive="active">Important</a>
+      <a [routerLink]="['mail', 'important']" [queryParams]="{page: '1'}" routerLinkActive="active">Important</a>
     </li>
 
     <li class="menu">
-      <a [routerLink]="['mail', 'sent']" routerLinkActive="active">Sent Mail</a>
+      <a [routerLink]="['mail', 'sent']" [queryParams]="{page: '1'}" routerLinkActive="active">Sent Mail</a>
     </li>
 
     <li class="menu pending">
-      <a [routerLink]="['mail', 'drafts']" routerLinkActive="active">Drafts (0)</a>
+      <a [routerLink]="['mail', 'drafts']" [queryParams]="{page: '1'}" routerLinkActive="active">Drafts (0)</a>
     </li>
 
 
     <li class="menu drop-link">
       <a routerLinkActive="active" class="bold carret-link">
         <div class="carret"></div>Categories</a>
-      <a [routerLink]="['mail', 'social']" routerLinkActive="active" class="bold carret-link category-link">
+      <a [routerLink]="['mail', 'social']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
         <div class="category-icon category-icon-social "></div>Social</a>
-      <a [routerLink]="['mail', 'promotions']" routerLinkActive="active" class="bold carret-link category-link">
+      <a [routerLink]="['mail', 'promotions']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
         <div class="category-icon category-icon-promotions "></div>Promotions</a>
-      <a [routerLink]="['mail', 'forums']" routerLinkActive="active" class="bold carret-link category-link">
+      <a [routerLink]="['mail', 'forums']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
         <div class="category-icon category-icon-forums"></div>Forums</a>
     </li>
 
 
 
     <li class="menu">
-      <a [routerLink]="['mail', 'trash']" routerLinkActive="active">All Mail</a>
+      <a [routerLink]="['mail', 'allmail']" [queryParams]="{page: '1'}" routerLinkActive="active">All Mail</a>
     </li>
 
 
     <li class="menu pending">
-      <a [routerLink]="['mail', 'spam']" routerLinkActive="active">Spam ({{spamUnreadLength}})</a>
+      <a [routerLink]="['mail', 'spam']" [queryParams]="{page: '1'}" routerLinkActive="active">Spam ({{spamUnreadLength}})</a>
     </li>
 
 
     <li class="menu pending">
-      <a [routerLink]="['mail', 'trash']" routerLinkActive="active">Trash</a>
+      <a [routerLink]="['mail', 'trash']" [queryParams]="{page: '1'}" routerLinkActive="active">Trash</a>
     </li>
 
     <li class="menu">
-      <a [routerLink]="['mail', 'trash']" routerLinkActive="active">Work</a>
+      <a [routerLink]="['mail', 'work']" [queryParams]="{page: '1'}" routerLinkActive="active">Work</a>
     </li>
 
     <li class="menu">
-      <a [routerLink]="['mail', 'trash']" routerLinkActive="active">Notes</a>
+      <a [routerLink]="['mail', 'notes']" [queryParams]="{page: '1'}" routerLinkActive="active">Notes</a>
     </li>
 
   </ul>

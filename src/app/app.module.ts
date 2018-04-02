@@ -26,17 +26,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
 
-  // { path: '', canActivate: [AuthGuard], redirectTo: 'mail/inbox', pathMatch: 'full' },
-  // { path: '', redirectTo: 'login', pathMatch: 'full' },
-  // { path: 'login', component: LoginComponent },
-  // { path: '',  redirectTo: 'mail/inbox', pathMatch: 'full' },
   { path: '', redirectTo: 'mail/inbox', pathMatch: 'full' },
-  // { path: 'home', component: HomeComponent },
   { path: 'mail/:box/:id', component: OpenLetterComponent },
-  // { path: 'mail', redirectTo: 'mail/inbox', pathMatch: 'full' },
   { path: 'mail/:box', component: MailComponent },
-
-
 
 ];
 

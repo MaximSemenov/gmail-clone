@@ -5,6 +5,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import 'rxjs/add/operator/pluck';
 import 'rxjs/add/operator/do';
+import { combineLatest } from 'rxjs/observable/combineLatest';
+import 'rxjs/add/observable/combineLatest';
+
+
+
+export type MailLoadData = {
+  lastSearch: string | null;
+  page: number;
+  mailBoxName: string;
+};
+
 
 @Component({
   selector: 'app-mail',
@@ -35,25 +46,56 @@ export class MailComponent implements OnInit {
 
   ngOnInit() {
 
-    this._activatedRoute.params
-      .pluck('box')
-      .filter(Boolean)
-      .do((mailBoxName: string) => {
-        this.mailBoxName = mailBoxName;
-        this._mailService.updateCurrentMailBoxName(mailBoxName);
 
-        this._router.navigate([], { queryParams: { page: 1 }, relativeTo: this._activatedRoute });
+    Observable.combineLatest(
+      this._mailService.getLastSearch(),
+      this._activatedRoute.queryParams.pluck('page').filter(Boolean),
+      this._activatedRoute.params.pluck('box').filter(Boolean),
+      (lastSearch, page, mailBoxName) => {
+        return {
+          lastSearch,
+          page,
+          mailBoxName
+        };
+      }
+    ).do((obj: MailLoadData) => {
+
+      this.mailBoxName = obj.mailBoxName;
+      this._mailService.updateCurrentMailBoxName(obj.mailBoxName);
+
+    })
+      .switchMap((obj: MailLoadData) => {
+        this.mailBoxName = obj.mailBoxName;
+        this._mailService.updateCurrentMailBoxName(obj.mailBoxName);
+        return this._mailService.loadMailList(obj.mailBoxName, obj.lastSearch, obj.page);
       })
-      .switchMap((box: string): Observable<Mail[]> => {
+      .subscribe((mailList: Mail[]) => {
 
-        return this._mailService.loadMailList(box, null, 1);
-
-      })
-      .subscribe(() => this.isMailListLoaded = 'done');
+        this.isMailListLoaded = 'done';
+      });
 
     this.mailList$ = this._mailService.getMailList();
 
   }
+  //   this._activatedRoute.params
+  //     .pluck('box')
+  //     .filter(Boolean)
+  //     .do((mailBoxName: string) => {
+  //       this.mailBoxName = mailBoxName;
+  //       this._mailService.updateCurrentMailBoxName(mailBoxName);
+
+  //       this._router.navigate([], { queryParams: { page: 1 }, relativeTo: this._activatedRoute });
+  //     })
+  //     .switchMap((box: string): Observable<Mail[]> => {
+
+  //       return this._mailService.loadMailList(box, null, 1);
+
+  //     })
+  //     .subscribe(() => this.isMailListLoaded = 'done');
+
+  //   this.mailList$ = this._mailService.getMailList();
+
+  // }
 
   checkLetters(letter: Mail, isChecked: boolean): void {
 

@@ -82,21 +82,21 @@ export class OperationToolbarComponent implements OnInit {
 
 
 
-    Observable.combineLatest(
-      this._mailService.getCurrentBoxName(),
-      this._mailService.getLastSearch(),
-      this._activatedRoute.queryParams.pluck('page').filter(Boolean),
-      (mailboxName, lastSearch, page) => {
-        return {
-          mailboxName,
-          lastSearch,
-          page
-        };
-      }
-    ).switchMap(obj => {
-      return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
-    })
-      .subscribe();
+    // Observable.combineLatest(
+    //   this._mailService.getCurrentBoxName(),
+    //   this._mailService.getLastSearch(),
+    //   this._activatedRoute.queryParams.pluck('page').filter(Boolean),
+    //   (mailboxName, lastSearch, page) => {
+    //     return {
+    //       mailboxName,
+    //       lastSearch,
+    //       page
+    //     };
+    //   }
+    // ).switchMap(obj => {
+    //   return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
+    // })
+    //   .subscribe();
 
 
     Observable.combineLatest(

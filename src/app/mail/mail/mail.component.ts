@@ -51,7 +51,8 @@ export class MailComponent implements OnInit {
       this._mailService.getLastSearch(),
       this._activatedRoute.queryParams.pluck('page').filter(Boolean),
       this._activatedRoute.params.pluck('box').filter(Boolean),
-      (lastSearch, page, mailBoxName) => {
+      this._mailService.transferedLetters(),
+      (lastSearch, page, mailBoxName, a ) => {
         return {
           lastSearch,
           page,

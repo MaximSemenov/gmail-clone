@@ -99,23 +99,23 @@ export class OperationToolbarComponent implements OnInit {
     //   .subscribe();
 
 
-    Observable.combineLatest(
-      this._mailService.getCurrentBoxName(),
-      this._mailService.getLastSearch(),
-      this._activatedRoute.queryParams.pluck('page').filter(Boolean),
-      this._mailService.transferedLetters(),
-      (mailboxName, lastSearch, page) => {
-        return {
-          mailboxName,
-          lastSearch,
-          page
-        };
-      }
-    ).delay(500) // TODO: fake delay to have time to refresh the database it needs to be done by observable approach
-      .switchMap(obj => {
-        return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
-      })
-      .subscribe();
+    // Observable.combineLatest(
+    //   this._mailService.getCurrentBoxName(),
+    //   this._mailService.getLastSearch(),
+    //   this._activatedRoute.queryParams.pluck('page').filter(Boolean),
+    //   this._mailService.transferedLetters(),
+    //   (mailboxName, lastSearch, page) => {
+    //     return {
+    //       mailboxName,
+    //       lastSearch,
+    //       page
+    //     };
+    //   }
+    // ).delay(500) // TODO: fake delay to have time to refresh the database it needs to be done by observable approach
+    //   .switchMap(obj => {
+    //     return this._mailService.loadMailList(obj.mailboxName, obj.lastSearch, obj.page);
+    //   })
+    //   .subscribe();
 
 
 

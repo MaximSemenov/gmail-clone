@@ -45,7 +45,8 @@ export class MailService {
   private _currentlyCheckedLetter$$: Subject<Mail | Mail[]> = new Subject();
   private _mailListCache$: Observable<Mail[]>;
   public selectedLetters: number[] = []; // temporary public temporary solution!
-  private _transferedLetterd$$: Subject<any> = new Subject();
+  // private _transferedLetterd$$: Subject<any> = new Subject();
+  private _transferedLetterd$$: BehaviorSubject<string> = new BehaviorSubject(null);
 
   constructor(private _http: HttpClient) {
   }
@@ -89,7 +90,7 @@ export class MailService {
   }
 
   updateMailTransfer() {
-    this._transferedLetterd$$.next();
+    this._transferedLetterd$$.next(null);
   }
 
 

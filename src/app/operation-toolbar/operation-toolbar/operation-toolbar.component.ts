@@ -41,7 +41,7 @@ export class OperationToolbarComponent implements OnInit {
     });
 
     this._mailService.getOperationMenuStatus().subscribe((arrayLength: number) => {
-
+      console.log(arrayLength);
       if (!arrayLength) {
         this.isOperationMenuShown = false;
         this.isMoveToMenuShown = false;
@@ -150,8 +150,9 @@ export class OperationToolbarComponent implements OnInit {
         this._mailService.updateMailTransfer();
         this._mailService.clearSelectedLetters();
         setTimeout(() => {
+          this.isOperationMenuShown = false;
           this.isSelectAllActive = false;
-        }, 500);
+        }, 800);
       });
   }
 

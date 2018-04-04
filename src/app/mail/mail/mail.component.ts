@@ -46,6 +46,7 @@ export class MailComponent implements OnInit {
 
   ngOnInit() {
 
+    this._router.navigate([], { queryParams: { page: 1 }, relativeTo: this._activatedRoute });
 
     Observable.combineLatest(
       this._mailService.getLastSearch(),

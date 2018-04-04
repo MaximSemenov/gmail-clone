@@ -29,14 +29,16 @@
 
 
     <li class="menu drop-link">
-      <a routerLinkActive="active" class="bold carret-link">
+      <a routerLinkActive="active" (click)="isCategoriesMenuOpen = !isCategoriesMenuOpen" class="bold carret-link">
         <div class="carret"></div>Categories</a>
-      <a [routerLink]="['mail', 'social']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
-        <div class="category-icon category-icon-social "></div>Social</a>
-      <a [routerLink]="['mail', 'promotions']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
-        <div class="category-icon category-icon-promotions "></div>Promotions</a>
-      <a [routerLink]="['mail', 'forums']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
-        <div class="category-icon category-icon-forums"></div>Forums</a>
+      <div *ngIf="isCategoriesMenuOpen">
+        <a [routerLink]="['mail', 'social']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
+          <div class="category-icon category-icon-social "></div>Social</a>
+        <a [routerLink]="['mail', 'promotions']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
+          <div class="category-icon category-icon-promotions "></div>Promotions</a>
+        <a [routerLink]="['mail', 'forums']" [queryParams]="{page: '1'}" routerLinkActive="active" class="bold carret-link category-link">
+          <div class="category-icon category-icon-forums"></div>Forums</a>
+      </div>
     </li>
 
 

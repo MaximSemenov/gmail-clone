@@ -3,24 +3,11 @@ import 'rxjs/add/operator/pluck';
 import { Component, OnInit } from '@angular/core';
 import { MailService, Mail } from '../../mail/mail.service';
 import { Observable } from 'rxjs/Observable';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css'],
-  animations: [
-    trigger('mymail', [
-      state('notDone', style({
-        opacity: 0
-      })),
-      state('done', style({
-        opacity: 1
-      })),
-      transition('notDone => done', animate('400ms'))
-    ])
-
-  ]
+  styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
 

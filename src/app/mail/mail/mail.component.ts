@@ -23,13 +23,14 @@ export type MailLoadData = {
   styleUrls: ['./mail.component.css'],
   animations: [
     trigger('mymail', [
-      state('notDone', style({
+      state('false', style({
         opacity: 0
       })),
-      state('done', style({
+      state('true', style({
         opacity: 1
       })),
-      transition('notDone => done', animate('400ms'))
+      transition('false => true', animate('300ms'))
+
     ])
 
   ]
@@ -39,7 +40,7 @@ export class MailComponent implements OnInit {
 
   public mailList$: Observable<Mail[]>;
   public mailBoxName: string;
-  public isMailListLoaded = 'done';
+  public isMailListLoaded = false;
 
   constructor(private _mailService: MailService, private _activatedRoute: ActivatedRoute, private _router: Router) { }
 
@@ -71,7 +72,8 @@ export class MailComponent implements OnInit {
       })
       .subscribe((mailList: Mail[]) => {
 
-        this.isMailListLoaded = 'done';
+        this.isMailListLoaded = true;
+
       });
 
     this.mailList$ = this._mailService.getMailList();

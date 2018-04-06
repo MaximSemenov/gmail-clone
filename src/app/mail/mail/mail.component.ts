@@ -29,12 +29,10 @@ export type MailLoadData = {
       state('true', style({
         opacity: 1
       })),
-      transition('false => true', animate('300ms'))
+      transition('false => true', animate('400ms'))
 
     ])
-
   ]
-
 })
 export class MailComponent implements OnInit {
 
@@ -48,6 +46,10 @@ export class MailComponent implements OnInit {
   ngOnInit() {
 
     this._router.navigate([], { queryParams: { page: 1 }, relativeTo: this._activatedRoute });
+
+    this._activatedRoute.params.pluck('box').filter(Boolean).subscribe((mailBoxName: string) => {
+      this._mailService.updateCurrentMailBoxName(mailBoxName);
+    });
 
     Observable.combineLatest(
       this._mailService.getLastSearch(),
@@ -64,7 +66,6 @@ export class MailComponent implements OnInit {
     ).do((obj: MailLoadData) => {
 
       this.mailBoxName = obj.mailBoxName;
-      this._mailService.updateCurrentMailBoxName(obj.mailBoxName);
     })
       .switchMap((obj: MailLoadData) => {
 

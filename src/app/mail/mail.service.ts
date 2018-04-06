@@ -120,7 +120,7 @@ export class MailService {
       });
   }
 
-  getCurrentMailBoxLength(mailBoxName: string): Observable<number> {
+  getCurrentMailBoxLength(): Observable<number> {
 
     return this._mailBoxLength$$.asObservable();
   }

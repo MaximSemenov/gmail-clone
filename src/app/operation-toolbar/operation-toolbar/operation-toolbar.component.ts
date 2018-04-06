@@ -18,8 +18,8 @@ export class OperationToolbarComponent implements OnInit {
 
   public currentPage = 1;
   public numberOfLetters: number;
-  public firstLetter = 1;
-  public lastLetter = 10;
+  public firstLetter;
+  public lastLetter;
   public isSelectAllActive = false;
   public isOperationMenuShown = false;
   public isMoveToMenuShown = false;
@@ -33,6 +33,9 @@ export class OperationToolbarComponent implements OnInit {
 
     this._mailService.getCurrentBoxName().subscribe((mailBoxName: string) => {
       this.mailBoxName = mailBoxName;
+      this.firstLetter = 1;
+      this.lastLetter = 10;
+
     });
 
 
@@ -41,25 +44,17 @@ export class OperationToolbarComponent implements OnInit {
     });
 
     this._mailService.getOperationMenuStatus().subscribe((arrayLength: number) => {
-      console.log(arrayLength);
+
       if (!arrayLength) {
         this.isOperationMenuShown = false;
         this.isMoveToMenuShown = false;
       } else {
         this.isOperationMenuShown = true;
       }
-
-
-
     });
 
 
-
-    this._mailService.getCurrentBoxName()
-      .switchMap((mailBoxName: string) => {
-
-        return this._mailService.getCurrentMailBoxLength(mailBoxName);
-      })
+    this._mailService.getCurrentMailBoxLength()
       .filter(Boolean)
       .subscribe((numberOfLetters: number) => {
 

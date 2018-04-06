@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._mailService.getCurrentMailBoxLength('inbox').subscribe((length: number) => {
+    this._mailService.getCurrentMailBoxLength().subscribe((length: number) => {
       this.inboxListLength = length;
 
     });

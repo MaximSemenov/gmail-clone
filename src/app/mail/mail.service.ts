@@ -31,7 +31,7 @@ export class MailService {
 
   private _baseUrl: string = environment.baseUrl;
   private _getMailUrl = 'mail';
-  private _transferMailUrl = 'mailTransfer.php';
+  private _transferMailUrl = 'mailTransfer';
   private _setLetterLabel = 'labelMail.php';
   private _unreadMail = 'getUnreadMail.php';
 
@@ -205,7 +205,7 @@ export class MailService {
       params: {
         'transferFrom': fromBox,
         'transferTo': toBox,
-        'ids[]': this.selectedLetters.map(String)
+        'id[]': this.selectedLetters.map(String)
       }
 
     });

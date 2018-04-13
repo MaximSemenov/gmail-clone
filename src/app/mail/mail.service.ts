@@ -32,8 +32,9 @@ export class MailService {
   private _baseUrl: string = environment.baseUrl;
   private _getMailUrl = 'mail';
   private _transferMailUrl = 'mailTransfer';
+  private _mailUnread = 'mailUnread';
   private _setLetterLabel = 'labelMail.php';
-  private _unreadMail = 'getUnreadMail.php';
+
 
   private _operationMenuStatus$$: Subject<number> = new Subject();
   private _mailList$$: BehaviorSubject<any> = new BehaviorSubject([]);
@@ -129,9 +130,9 @@ export class MailService {
 
   getUnreadMailLength() {
 
-    return this._http.get<any>(this._baseUrl + this._unreadMail, {
+    return this._http.get<any>(this._baseUrl + this._mailUnread, {
       params: {
-        'boxes[]': ['inbox', 'spam', 'drafts']
+        'boxes[]': ['inbox', 'spam']
       }
     });
 

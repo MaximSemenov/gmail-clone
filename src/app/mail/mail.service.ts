@@ -132,7 +132,7 @@ export class MailService {
 
     return this._http.get<any>(this._baseUrl + this._mailUnread, {
       params: {
-        'boxes[]': ['inbox', 'spam']
+        'boxes': JSON.stringify({ inbox: null, spam: null })
       }
     });
 

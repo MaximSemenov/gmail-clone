@@ -4,11 +4,18 @@ import { Component, OnInit } from '@angular/core';
 import { MailService, Mail } from '../../mail/mail.service';
 import { Observable } from 'rxjs/Observable';
 
+type UnreadMail = {
+  inbox: number;
+  spam: number;
+};
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
+
+
 export class ListComponent implements OnInit {
 
   public inboxListLength: number;
@@ -27,9 +34,11 @@ export class ListComponent implements OnInit {
     });
 
 
-    this._mailService.getUnreadMailLength().subscribe(arrayOfLengths => {
-      this.inboxUnreadLength = arrayOfLengths[0]['inbox'];
-      this.spamUnreadLength = arrayOfLengths[1]['inbox'];
+    this._mailService.getUnreadMailLength().subscribe((unreadMailObj: UnreadMail) => {
+
+      console.log(unreadMailObj);
+      this.inboxUnreadLength = unreadMailObj['inbox'];
+      this.spamUnreadLength = unreadMailObj['spam'];
 
     });
 

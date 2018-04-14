@@ -17,8 +17,20 @@ class Mail
     {
         $box = $_GET['box'];
         $result = $this->dataBase->getMail($this->labelId[$box]);
-        return json_encode($result); 
+        return json_encode($result);
 
+    }
+
+    public function getUnreadMail()
+    {
+        $boxes = $_GET['boxes'];
+        $parsedJSON = json_decode($boxes);
+     
+        foreach($parsedJSON as $key => &$value) {
+             $value = $this->dataBase->getUnreadMail($this->labelId[$key])[0][0]; // [0][0] should be changed
+        }
+
+        return json_encode($parsedJSON);
     }
 
     public function transferMail()

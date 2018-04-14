@@ -5,13 +5,14 @@ class Router
 
     protected static $routes = [
         '/mail' => ['controller' => 'Mail', 'action' => 'getMail'],
-        '/mailTransfer' => ['controller' => 'Mail', 'action' => 'transferMail']
+        '/mailTransfer' => ['controller' => 'Mail', 'action' => 'transferMail'],
+        '/mailUnread' => ['controller' => 'Mail', 'action' => 'getUnreadMail']
     ];
     protected static $requestedRoute = [];
 
     function __construct()
     {
-        echo 'Hello World!';
+        
     }
 
     public static function getAllRoutes()

@@ -22,8 +22,16 @@ class QueryBuilder
 
     public function getMailTransferQuery($stringOfIds)
     {
+        return "UPDATE mail 
+        SET box_id = :to 
+        WHERE mail_id IN ($stringOfIds)";
+    }
 
-        return "UPDATE mail SET box_id = :to WHERE mail_id IN ($stringOfIds)";
+    public function getUnreadQuery($stringOfIds)
+    {
+        return "SELECT COUNT(mail_isRead) 
+        FROM mail
+        WHERE mail_isRead = 0 AND box_id = :boxId";
     }
 
 }

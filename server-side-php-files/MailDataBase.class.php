@@ -37,5 +37,16 @@ class MailDataBase extends QueryBuilder
         return true;
     }
 
+    public function getUnreadMail($boxId)
+    {
+         $query = $this->getUnreadQuery($label);
+         $connection = $this->connectToDataBase();
+         $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         $statment = $connection->prepare($query);
+        $statment->bindValue(":boxId", $boxId);
+         $statment->execute();
+        return $statment->fetchAll(PDO::FETCH_NUM);
+    }
+
 
 }

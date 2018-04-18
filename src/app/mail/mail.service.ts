@@ -30,9 +30,9 @@ export type Mail = {
 export class MailService {
 
   private _baseUrl: string = environment.baseUrl;
-  private _getMailUrl = 'mail';
-  private _transferMailUrl = 'mailTransfer';
-  private _mailUnread = 'mailUnread';
+  private _getMailUrl = 'mail/getMail';
+  private _transferMailUrl = 'mail/transferMail';
+  private _mailUnread = 'mail/unreadMail';
   private _setLetterLabel = 'labelMail.php';
 
 

@@ -1,16 +1,21 @@
 <?php 
 header("Access-Control-Allow-Origin: http://localhost:4200");
 
-require './Router.class.php';
-require './Mail.class.php';
+require './php/http/routing/router.php';
+require './php/http/routing/route.php';
+require './php/http/routing/request.php';
 
-$uri = (strtok($_SERVER["REQUEST_URI"], '?'));
+$router = new AppRouter();
+
+ echo $uri = $_SERVER['REQUEST_URI'];
+
+$router->register(new Route('/mail\/(getMail)/', Request::METHOD_GET, 'Mail'));
+$router->register(new Route('/mail\/(transferMail)/', Request::METHOD_GET, 'Mail'));
+$router->register(new Route('/mail\/(unreadMail)/', Request::METHOD_GET, 'Mail'));
 
 
-$route = Router::getRoute($uri);
-$controller = ($route['controller']);
-$action = ($route['action']);
+$route = $router->resolve(Request::createFromGlobals());
 
-$instance = new $controller(new MailDataBase());
-echo $instance->$action();
+echo '<pre>';
+var_dump( $route);
 

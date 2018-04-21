@@ -32,4 +32,9 @@ class Route
         $this->action = $action;
     }
 
+    public function getAction() : string
+    {
+        return $this->action["method"];
+    }
+
 }

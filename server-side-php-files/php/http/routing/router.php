@@ -16,7 +16,9 @@ class AppRouter
 
                 $matches = [];
                 if (preg_match($route->getUri(), $request->getUri(), $matches)) {
-                    var_dump($matches);
+
+                    array_shift($matches);
+                    $route->setAction($matches);
                     $resolved = $route;
                     break;
                 }

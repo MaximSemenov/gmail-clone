@@ -11,29 +11,19 @@ require './php/MailDataBase.php';
 
 $router = new AppRouter();
 
-//  echo $uri = $_SERVER['REQUEST_URI'];
-
 $router->register(new Route('#mail/(?<method>getMail)#', Request::METHOD_GET, 'Mail'));
 $router->register(new Route('#mail/(?<method>transferMail)#', Request::METHOD_GET, 'Mail'));
 $router->register(new Route('#mail/(?<method>unreadMail)#', Request::METHOD_GET, 'Mail'));
 
-
-
-
 $route = $router->resolve(Request::createFromGlobals());
 
 $controller = $route->getTarget();
-$instance = new $controller(new $dependencies[$controller]());
+
+$dependencies = new Dependencies();
+$dependency = $dependencies->getDependencies($controller);
+
+$instance = new $controller(new $dependency);
 $method = $route->getAction();
 $result = $instance->$method();
 
- echo $result;
-
-
-
-// echo '<pre>';
-// var_dump($route);
-// var_dump($controller);
-// var_dump($instance);
-// var_dump(new Mail());
-
+echo $result;

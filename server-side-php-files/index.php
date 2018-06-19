@@ -15,15 +15,15 @@ $router->register(new Route('#mail/(?<method>getMail)#', Request::METHOD_GET, 'M
 $router->register(new Route('#mail/(?<method>transferMail)#', Request::METHOD_GET, 'Mail'));
 $router->register(new Route('#mail/(?<method>unreadMail)#', Request::METHOD_GET, 'Mail'));
 
+
+
+
 $route = $router->resolve(Request::createFromGlobals());
 
 $controller = $route->getTarget();
-
-$dependencies = new Dependencies();
-$dependency = $dependencies->getDependencies($controller);
-
-$instance = new $controller(new $dependency);
+$instance = new $controller(new MailDataBase ());
 $method = $route->getAction();
 $result = $instance->$method();
 
 echo $result;
+

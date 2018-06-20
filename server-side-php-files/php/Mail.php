@@ -8,7 +8,7 @@ class Mail
     private $dataBase;
     private $labelId = array('inbox' => 1, 'trash' => 2, 'spam' => 3, 'social' => 4, 'promotion' => 5, 'forum' => 6, 'update' => 7);
 
-    public function __construct($DataBase)
+    public function __construct(MailDataBase $DataBase)
     {
         $this->dataBase = $DataBase;
     }

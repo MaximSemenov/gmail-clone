@@ -4,9 +4,9 @@ class Container
 {
     private $bindings = [];
 
-    public function bind(string $abstract, $concrete)
+    public function bind(string $abstract, $concrete): void
     {
-        $this->$bindingsp[$abstract] = $concrete;
+        $this->$bindings[$abstract] = $concrete;
     }
 
     public function make(string $abstract)

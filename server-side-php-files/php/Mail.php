@@ -13,7 +13,7 @@ class Mail
         $this->dataBase = $DataBase;
     }
 
-    public function getMail()
+    public function getMail(): string
     {
         $box = $_GET['box'];
         $result = $this->dataBase->getMail($this->labelId[$box]);
@@ -21,7 +21,7 @@ class Mail
 
     }
 
-    public function unreadMail()
+    public function unreadMail(): string
     {
         $boxes = $_GET['boxes'];
         $parsedJSON = json_decode($boxes);
@@ -33,7 +33,7 @@ class Mail
         return json_encode($parsedJSON);
     }
 
-    public function transferMail()
+    public function transferMail(): bool
     {
         $from = $_GET['transferFrom'];
         $to = $_GET['transferTo'];

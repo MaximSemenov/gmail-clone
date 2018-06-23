@@ -1,5 +1,7 @@
 <?php
 
+namespace Http;
+
 class Route
 {
 

@@ -1,5 +1,5 @@
 <?php 
-
+namespace Mail;
 
 class QueryBuilder
 {

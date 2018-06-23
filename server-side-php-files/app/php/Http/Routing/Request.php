@@ -1,5 +1,7 @@
 <?php
 
+namespace Http;
+
 class Request
 {
     public const METHOD_GET = 'GET';

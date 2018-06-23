@@ -1,6 +1,6 @@
 <?php
 
-//require './router-interface.php';
+namespace Http;
 
 class AppRouter
 {

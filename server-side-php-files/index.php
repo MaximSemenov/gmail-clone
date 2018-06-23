@@ -1,14 +1,18 @@
 <?php 
+require 'vendor/autoload.php';
+use Http\AppRouter;
+use Http\Route;
+use Http\Request;
+use Container\Container;
 header("Access-Control-Allow-Origin: http://localhost:4200");
 
 
-require './php/Mail.php';
-require './php/http/routing/router.php';
-require './php/http/routing/route.php';
-require './php/http/routing/request.php';
-require './php/Dependencies.php';
-require './php/MailDataBase.php';
-require './php/Container/Container.php';
+// require './php/Mail.php';
+// require './php/http/routing/router.php';
+// require './php/http/routing/route.php';
+// require './php/http/routing/request.php';
+// require './php/MailDataBase.php';
+// require './php/Container/Container.php';
 
 $router = new AppRouter();
 

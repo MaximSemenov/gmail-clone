@@ -1,11 +1,11 @@
 <?php 
-
+namespace Mail;
 
 class MailDataBase extends QueryBuilder
 {
     private function connectToDataBase()
     {
-        return new PDO('mysql:host=127.0.0.1:3306;dbname=mydb', "root", "-==YOURPASSWORD=--");
+        return new PDO('mysql:host=127.0.0.1:3306;dbname=mydb', "root", "-==YOURPASSWORD==-");
     }
 
     public function __construct()

@@ -1,6 +1,6 @@
 <?php 
-
-require 'MailQueryBuilder.php';
+namespace Mail;
+// require 'MailQueryBuilder.php';
 
 class Mail
 {

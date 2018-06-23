@@ -1,10 +1,12 @@
 <?php
+namespace Container;
+use Mail\Mail;
 
 class Container
 {
     private $bindings = [];
 
-    public function bind(string $abstract, $concrete): void
+    public function bind(string $abstract, $concrete) : void
     {
         $this->$bindings[$abstract] = $concrete;
     }
@@ -21,7 +23,7 @@ class Container
     public function resolve(string $abstract)
     {
 
-        $reflection = new ReflectionClass($abstract);
+        $reflection = new \ReflectionClass($abstract);
         $constructor = $reflection->getConstructor();
         $resolved = [];
         if ($constructor !== null) {

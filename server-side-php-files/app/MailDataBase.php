@@ -1,16 +1,15 @@
-<?php 
-namespace Mail;
+<?php
+declare(strict_types = 1);
+
+namespace App;
+
+use PDO;
 
 class MailDataBase extends QueryBuilder
 {
     private function connectToDataBase()
     {
-        return new PDO('mysql:host=127.0.0.1:3306;dbname=mydb', "root", "Magneto22&");
-    }
-
-    public function __construct()
-    {
-
+        return new PDO('mysql:host=127.0.0.1:3306;dbname=mydb', "root", "-==YOURPASSWORD==-");
     }
 
     public function getMail($label)
@@ -46,6 +45,4 @@ class MailDataBase extends QueryBuilder
          $statment->execute();
         return $statment->fetchAll(PDO::FETCH_NUM);
     }
-
-
 }

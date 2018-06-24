@@ -1,9 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "Mail\\":"app/php/",
-            "Http\\":"app/php/Http/Routing/",
-            "Container\\":"app/php/Container"
+            "App\\": "app"
         }
     }
 }

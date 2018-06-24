@@ -1,21 +1,15 @@
-<?php 
+<?php
+
 require 'vendor/autoload.php';
-use Http\AppRouter;
-use Http\Route;
-use Http\Request;
-use Container\Container;
+
+use App\Http\Routing\Router;
+use App\Http\Routing\Route;
+use App\Http\Request;
+use App\Container\Container;
+
 header("Access-Control-Allow-Origin: http://localhost:4200");
 
-
-// require './php/Mail.php';
-// require './php/http/routing/router.php';
-// require './php/http/routing/route.php';
-// require './php/http/routing/request.php';
-// require './php/MailDataBase.php';
-// require './php/Container/Container.php';
-
-$router = new AppRouter();
-
+$router = new Router();
 
 $router->register(new Route('#mail/(?<method>getMail)#', Request::METHOD_GET, 'Mail'));
 $router->register(new Route('#mail/(?<method>transferMail)#', Request::METHOD_GET, 'Mail'));
@@ -29,6 +23,3 @@ $method = $route->getAction();
 $result = $instance->$method();
 
 echo $result;
-
-
-

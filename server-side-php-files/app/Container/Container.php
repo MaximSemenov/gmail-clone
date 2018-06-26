@@ -2,6 +2,7 @@
 
 namespace App\Container;
 
+
 class Container
 {
     private $bindings = [];

@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 namespace App\Http\Routing;
 
-use Http\Request;
+use App\Http\Request;
 
 class Router
 {

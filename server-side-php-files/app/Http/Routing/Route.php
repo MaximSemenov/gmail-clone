@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 
 namespace App\Http\Routing;
+use App\Container\Target;
 
 class Route
 {
@@ -10,7 +11,7 @@ class Route
     private $target;
     private $action;
 
-    public function __construct(string $uri, string $method, string $target)
+    public function __construct(string $uri, string $method, Target $target)
     {
         $this->uri = $uri;
         $this->method = $method;
@@ -27,18 +28,24 @@ class Route
         return $this->method;
     }
 
-    public function getTarget(): string
+    public function getControllerName(): string
     {
-        return $this->target;
+        return $this->target->getControllerName();
     }
 
-    public function setAction($action): void
+    public function getControllerMethodName(): string
+    {
+        return $this->target->getMethodName();
+    }
+
+    public function setAction(string $action): void
     {
         $this->action = $action;
     }
 
     public function getAction() : string
     {
-        return $this->action["method"];
+        // return $this->action["method"];
+        return $this->action; 
     }
 }

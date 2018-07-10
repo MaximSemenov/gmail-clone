@@ -1,7 +1,7 @@
 <?php
 
+declare(strict_types = 1);
 namespace App\Container;
-
 
 class Container
 {
@@ -36,7 +36,6 @@ class Container
         }
 
         return $reflection->newInstanceArgs($resolved);
-
     }
 
     public function newInstanceIfNeed(string $concrete)
@@ -58,5 +57,15 @@ class Container
         }
 
         return null;
+    }
+
+    public function call($instance, $method)
+    {
+        $reflection = new \ReflectionMethod($instance, $method);
+        $resolved = [];
+        foreach ($reflection->getParameters() as $parameter) {
+            $resolved[] =$this-make($parameter->getType()->getName());
+        }
+        return $reflection->invokeArgs($instance, $resolved);
     }
 }

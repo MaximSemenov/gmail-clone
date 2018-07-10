@@ -11,15 +11,15 @@ class Target
     function __construct(string $controllerName, string $method)
     {
         $this->controllerName = $controllerName;
-        $this->$method = $method;
+        $this->method = $method;
     }
 
-    public function getControllerName()
+    public function getControllerName() : string
     {
         return $this->controllerName;
     }
 
-    public function getMethod()
+    public function getMethodName() : string
     {
         return $this->method;
     }

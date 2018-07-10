@@ -17,11 +17,9 @@ $router->register(new Route('#mail/(?<method>transferMail)#', Request::METHOD_GE
 $router->register(new Route('#mail/(?<method>unreadMail)#', Request::METHOD_GET, new Target(App\Mail::class, 'unreadMail')));
 
 $route = $router->resolve(Request::createFromGlobals());
-$controller = $route->getTarget();
+$controller = $route->getControllerName();
 $container = new Container();
 $instance = $container->make($controller);
-$result = $container->call($controller, $route->getAction());
-// $method = $route->getAction();
-// $result = $instance->$method();
+$result = $container->call($instance, $route->getAction());
 
 echo $result;

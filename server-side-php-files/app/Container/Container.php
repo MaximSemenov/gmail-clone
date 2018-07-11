@@ -59,12 +59,12 @@ class Container
         return null;
     }
 
-    public function call($instance, $method)
+    public function call($instance, string $method)
     {
         $reflection = new \ReflectionMethod($instance, $method);
         $resolved = [];
         foreach ($reflection->getParameters() as $parameter) {
-            $resolved[] =$this-make($parameter->getType()->getName());
+            $resolved[] = $this->make($parameter->getType()->getName());
         }
         return $reflection->invokeArgs($instance, $resolved);
     }

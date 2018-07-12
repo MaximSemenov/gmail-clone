@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 
 namespace App;
+use App\Http\Request;
 
 class Mail
 {
@@ -22,9 +23,10 @@ class Mail
         $this->dataBase = $DataBase;
     }
 
-    public function getMail(): string
+    public function getMail(Request $request): string
     {
-        $box = $_GET['box'];
+        //$box = $_GET['box'];
+       $box = $request->getParameter('box');
         $result = $this->dataBase->getMail($this->labelId[$box]);
         return json_encode($result);
 

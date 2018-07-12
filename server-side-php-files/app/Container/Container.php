@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare (strict_types = 1);
 namespace App\Container;
 
 class Container
@@ -23,6 +23,7 @@ class Container
 
     public function resolve(string $abstract)
     {
+        dump('coming' . $abstract);
         $reflection = new \ReflectionClass($abstract);
         $constructor = $reflection->getConstructor();
         $resolved = [];
@@ -64,6 +65,7 @@ class Container
         $reflection = new \ReflectionMethod($instance, $method);
         $resolved = [];
         foreach ($reflection->getParameters() as $parameter) {
+            dump('here' . $parameter->getType()->getName());
             $resolved[] = $this->make($parameter->getType()->getName());
         }
         return $reflection->invokeArgs($instance, $resolved);

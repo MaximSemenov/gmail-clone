@@ -1,6 +1,6 @@
 <?php
-declare(strict_types = 1);
 
+declare(strict_types = 1);
 namespace App\Http;
 
 class Request
@@ -10,14 +10,15 @@ class Request
 
     private $uri;
     private $method;
-    private $parameters;
+    private $parameters = [];
+    private $routeParameters = [];
 
     public function __construct(string $uri, string $method, array $parameters)
     {
         $this->uri = $uri;
         $this->method = $method;
         $this->parameters = $parameters;
-
+        $this->routeParameters = [];
     }
 
     public static function createFromGlobals(): Request
@@ -43,8 +44,18 @@ class Request
         return $this->parameters;
     }
 
-    public function getParameter(string $parameter): array
+    public function getParameter(string $parameter)
     {
         return $this->parameters[$parameter];
+    }
+
+    public function getRouteParameters(): array
+    {
+        return $this->routeParameters;
+    }
+    
+    public function setRouteParameters($parameters): void
+    {
+      $this->$routeParameters = $parameters;
     }
 }

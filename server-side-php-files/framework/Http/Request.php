@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types = 1);
-namespace App\Http;
+namespace Framework\Http;
 
 class Request
 {
@@ -56,6 +56,6 @@ class Request
     
     public function setRouteParameters($parameters): void
     {
-      $this->$routeParameters = $parameters;
+      $this->routeParameters = $parameters;
     }
 }

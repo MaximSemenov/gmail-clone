@@ -1,8 +1,8 @@
 <?php
-declare(strict_types = 1);
 
-namespace App;
-use App\Http\Request;
+declare (strict_types = 1);
+namespace App\Controllers;
+use Framework\Http\Request;
 
 class Mail
 {
@@ -23,33 +23,33 @@ class Mail
         $this->dataBase = $DataBase;
     }
 
-    public function getMail(Request $request): string
+    public function getMail(Request $request) : string
     {
-        //$box = $_GET['box'];
-       $box = $request->getParameter('box');
+        $box = $request->getParameter('box');
         $result = $this->dataBase->getMail($this->labelId[$box]);
-        return json_encode($result);
 
+        return json_encode($result);
     }
 
-    public function unreadMail(): string
+    public function unreadMail() : string
     {
         $boxes = $_GET['boxes'];
         $parsedJSON = json_decode($boxes);
-     
-        foreach($parsedJSON as $key => &$value) {
-             $value = $this->dataBase->getUnreadMail($this->labelId[$key])[0][0]; // [0][0] should be changed
+
+        foreach ($parsedJSON as $key => &$value) {
+            $value = $this->dataBase->getUnreadMail($this->labelId[$key])[0][0]; // [0][0] should be changed
         }
 
         return json_encode($parsedJSON);
     }
 
-    public function transferMail(): bool
+    public function transferMail() : bool
     {
         $from = $_GET['transferFrom'];
         $to = $_GET['transferTo'];
         $id = $_GET['id'];
         $stringOfIds = implode(",", $id);
+        
         return $this->dataBase->transferMail($this->labelId[$to], $from, $stringOfIds);
     }
 }

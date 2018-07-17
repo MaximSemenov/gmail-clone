@@ -1,7 +1,11 @@
 {
     "autoload": {
         "psr-4": {
-            "App\\": "app"
+            "App\\": "app",
+            "Framework\\": "framework"
         }
+    },
+    "require": {
+        "symfony/var-dumper": "^4.1"
     }
 }

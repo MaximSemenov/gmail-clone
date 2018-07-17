@@ -1,15 +1,14 @@
 <?php
+
 declare(strict_types = 1);
-
-namespace App;
-
+namespace App\Controllers;
 use PDO;
 
 class MailDataBase extends QueryBuilder
 {
     private function connectToDataBase()
     {
-        return new PDO('mysql:host=127.0.0.1:3306;dbname=mydb', "root", "-==YOURPASSWORD==-");
+        return new PDO('mysql:host=127.0.0.1:3306;dbname=mydb', "root", "Magneto22&");
     }
 
     public function getMail($label)

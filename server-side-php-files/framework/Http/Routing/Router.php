@@ -1,8 +1,8 @@
 <?php
 
 declare(strict_types = 1);
-namespace App\Http\Routing;
-use App\Http\Request;
+namespace Framework\Http\Routing;
+use Framework\Http\Request;
 
 class Router
 {

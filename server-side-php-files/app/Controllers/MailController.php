@@ -4,7 +4,7 @@ declare (strict_types = 1);
 namespace App\Controllers;
 use Framework\Http\Request;
 
-class Mail
+class MailController
 {
     private $dataBase;
 
@@ -18,7 +18,7 @@ class Mail
         'update' => 7
     ];
 
-    public function __construct(MailDataBase $DataBase)
+    public function __construct(MailDataBaseController $DataBase)
     {
         $this->dataBase = $DataBase;
     }

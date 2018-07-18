@@ -4,7 +4,7 @@ declare(strict_types = 1);
 namespace App\Controllers;
 use PDO;
 
-class MailDataBase extends QueryBuilder
+class MailDataBaseController extends QueryBuilderController
 {
     private function connectToDataBase()
     {

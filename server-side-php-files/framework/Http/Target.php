@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Container;
+namespace Framework\Http;
 
 class Target
 {

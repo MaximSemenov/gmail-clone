@@ -4,10 +4,11 @@ declare(strict_types = 1);
 require 'vendor/autoload.php';
 
 use App\AppKernel;
+use Framework\Container\SimpleContainer;
+
 use Framework\Http\Target;
 use Framework\Http\Request;
 use Framework\Http\Routing\Route;
-use Framework\Container\Container;
 use Framework\Http\Routing\Router;
 
 // header("Access-Control-Allow-Origin: http://localhost:4200");
@@ -28,6 +29,6 @@ use Framework\Http\Routing\Router;
 // echo $result;
 
 $request = Request::createFromGlobals();
-$kernel = new AppKernel;
+$kernel = new AppKernel(new SimpleContainer);
 $response = $kernel->process($request);
 $response->send();

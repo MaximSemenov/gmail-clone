@@ -1,7 +1,8 @@
 <?php
 
-declare(strict_types = 1);
+declare (strict_types = 1);
 namespace Framework\Http\Routing;
+
 use Framework\Http\Target;
 
 class Route
@@ -18,27 +19,22 @@ class Route
         $this->target = $target;
     }
 
-    public function getUri(): string
+    public function getUri() : string
     {
         return $this->uri;
     }
 
-    public function getMethod(): string
+    public function getMethod() : string
     {
         return $this->method;
     }
-
-    public function getControllerName(): string
+    
+    public function getTarget() : Target
     {
-        return $this->target->getControllerName();
+        return $this->target;
     }
 
-    public function getControllerMethodName(): string
-    {
-        return $this->target->getMethodName();
-    }
-
-    public function setAction(string $action): void
+    public function setAction(string $action) : void
     {
         $this->action = $action;
     }
@@ -46,6 +42,6 @@ class Route
     public function getAction() : string
     {
         // return $this->action["method"];
-        return $this->action; 
+        return $this->action;
     }
 }

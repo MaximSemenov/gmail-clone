@@ -44,9 +44,11 @@ abstract class AbstractKernel implements Kernel
         return $response;
     }
 
-    public function LoadProviders() : void
+    public function loadProviders() : void
     {
-
+        /** @var Repository $config */
+        $config = $this->container->make(Repository::class);
+        $this->providers = $config->get('app.providers');
     }
 
     public function registerDefaultProviders() : void

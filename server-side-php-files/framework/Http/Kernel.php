@@ -8,7 +8,9 @@ use Framework\Http\Responce;
 
 interface Kernel
 {
-    public function process(Request $request): ?Responce;
-    public function getConfigDir(): string;
-    public function getRoutesFile(): string;
+    public function process(Request $request) : ? Responce;
+
+    public function getConfigDir() : string;
+    
+    public function getRoutesFile() : string;
 }

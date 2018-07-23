@@ -24,7 +24,7 @@ abstract class AbstractKernel implements Kernel
         $this->container->bind(Kernel::class, $this);
         $this->registerDefaultProviders();
     }
-    public function process(Request $request) : ? Responce
+    public function process(Request $request) : ? Response
     {
         $this->container->bind(Request::class, $request);
         $this->registerProviders();
@@ -37,7 +37,7 @@ abstract class AbstractKernel implements Kernel
          */
         $route = $router->resolve($request);
         if ($route === null) {
-            return $this->createNotFoundResponce();
+            return $this->createNotFoundresponse();
         }
         $controller = $this->container->make($route->getTarget()->getControllerName());
         $response = $this->container->call($controller, $route->getTarget()->getMethodName());
@@ -72,9 +72,9 @@ abstract class AbstractKernel implements Kernel
         }
     }
 
-    private function createNotFoundResponce() : Response
+    private function createNotFoundresponse() : Response
     {
-        return new PlainResponse('Not Found', Responce::STATUS_NOT_FOUND);
+        return new PlainResponse('Not Found', Response::STATUS_NOT_FOUND);
     }
 
 }

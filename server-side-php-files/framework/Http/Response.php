@@ -5,7 +5,7 @@ namespace Framework\Http;
 
 use Framework\Http\Request;
 
-interface Responce
+interface Response
 {
     public const STATUS_OK = 200;
     public const STATUS_FORBIDDEN = 403;

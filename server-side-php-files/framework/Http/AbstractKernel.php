@@ -15,7 +15,7 @@ abstract class AbstractKernel implements Kernel
      */
     protected $container;
     private $defaultProviders = [];
-    private $provides = [];
+    private $providers = [];
 
     public function __construct(Container $container)
     {
@@ -68,11 +68,11 @@ abstract class AbstractKernel implements Kernel
             if (!($instance instanceof ServiceProvider)) {
                 throw new \Exception("Service provider {$provider} must be an instance of Framework\Container\ServiceProvider");
             }
-            $instance = register($this->container);
+            $instance->register($this->container);
         }
     }
 
-    private function createNotFoundresponse() : Response
+    private function createNotFoundResponse() : Response
     {
         return new PlainResponse('Not Found', Response::STATUS_NOT_FOUND);
     }

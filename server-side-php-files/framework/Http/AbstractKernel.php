@@ -3,10 +3,11 @@ declare (strict_type = 1);
 
 namespace Framework\Http;
 
-use Framework\Http\Kernel;
-use Framework\Http\PlainResponse;
 use Framework\Container\Container;
 use Framework\Container\ServiceProvider;
+use Framework\Config\Repository;
+use Framework\Http\Routing\Router;
+use Framework\Http\Routing\Route;
 
 abstract class AbstractKernel implements Kernel
 {
@@ -24,9 +25,10 @@ abstract class AbstractKernel implements Kernel
         $this->container->bind(Kernel::class, $this);
         $this->registerDefaultProviders();
     }
-    public function process(Request $request) : ? Response
+    public function process(Request $request) : Response
     {
         $this->container->bind(Request::class, $request);
+        $this->loadProviders();
         $this->registerProviders();
         /**
          * @var Router
@@ -46,7 +48,6 @@ abstract class AbstractKernel implements Kernel
 
     public function loadProviders() : void
     {
-        /** @var Repository $config */
         $config = $this->container->make(Repository::class);
         $this->providers = $config->get('app.providers');
     }
@@ -56,9 +57,13 @@ abstract class AbstractKernel implements Kernel
         $this->register($this->defaultProviders);
     }
 
-    private function registerProviders(array $providers) : void
+    private function registerProviders() : void
     {
-        $this->register($this->providers);
+            try {
+                $this->register($this->providers);
+            } catch (\Exception $e) {
+                die($e->getMessage());
+            }
     }
 
     private function register(array $providers)
@@ -68,6 +73,9 @@ abstract class AbstractKernel implements Kernel
             if (!($instance instanceof ServiceProvider)) {
                 throw new \Exception("Service provider {$provider} must be an instance of Framework\Container\ServiceProvider");
             }
+            /**
+             * @var ServiceProvider
+             */
             $instance->register($this->container);
         }
     }

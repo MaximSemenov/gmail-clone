@@ -1,10 +1,12 @@
 <?php
-
 declare (strict_types = 1);
+
 namespace App\Controllers;
+
+use Framework\Http\Controller;
 use Framework\Http\Request;
 
-class MailController
+class MailController extends Controller
 {
     private $dataBase;
 
@@ -18,9 +20,9 @@ class MailController
         'update' => 7
     ];
 
-    public function __construct(MailDataBaseController $DataBase)
+    public function __construct(MailDataBaseController $dataBase)
     {
-        $this->dataBase = $DataBase;
+        $this->dataBase = $dataBase;
     }
 
     public function getMail(Request $request) : string
@@ -52,4 +54,5 @@ class MailController
         
         return $this->dataBase->transferMail($this->labelId[$to], $from, $stringOfIds);
     }
+
 }

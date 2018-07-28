@@ -1,5 +1,5 @@
 <?php
-declare (strict_type = 1);
+declare (strict_type=1);
 
 namespace Framework\Http;
 
@@ -25,18 +25,15 @@ abstract class AbstractKernel implements Kernel
         $this->container->bind(Kernel::class, $this);
         $this->registerDefaultProviders();
     }
-    public function process(Request $request) : Response
+
+    public function process(Request $request): Response
     {
         $this->container->bind(Request::class, $request);
         $this->loadProviders();
         $this->registerProviders();
-        /**
-         * @var Router
-         */
+        /** @var Router $router */
         $router = $this->container->make(Router::class);
-        /**
-         * @var Route
-         */
+        /** @var Route $route */
         $route = $router->resolve($request);
         if ($route === null) {
             return $this->createNotFoundresponse();
@@ -46,24 +43,24 @@ abstract class AbstractKernel implements Kernel
         return $response;
     }
 
-    public function loadProviders() : void
+    public function loadProviders(): void
     {
         $config = $this->container->make(Repository::class);
         $this->providers = $config->get('app.providers');
     }
 
-    public function registerDefaultProviders() : void
+    public function registerDefaultProviders(): void
     {
         $this->register($this->defaultProviders);
     }
 
-    private function registerProviders() : void
+    private function registerProviders(): void
     {
-            try {
-                $this->register($this->providers);
-            } catch (\Exception $e) {
-                die($e->getMessage());
-            }
+        try {
+            $this->register($this->providers);
+        } catch (\Exception $e) {
+            die($e->getMessage());
+        }
     }
 
     private function register(array $providers)
@@ -80,7 +77,7 @@ abstract class AbstractKernel implements Kernel
         }
     }
 
-    private function createNotFoundResponse() : Response
+    private function createNotFoundResponse(): Response
     {
         return new PlainResponse('Not Found', Response::STATUS_NOT_FOUND);
     }

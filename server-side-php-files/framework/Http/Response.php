@@ -3,8 +3,6 @@ declare (strict_type = 1);
 
 namespace Framework\Http;
 
-use Framework\Http\Request;
-
 interface Response
 {
     public const STATUS_OK = 200;

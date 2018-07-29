@@ -1,10 +1,12 @@
 <?php
-declare (strict_types = 1);
+declare (strict_types=1);
 
 namespace App\Controllers;
 
 use Framework\Http\Controller;
+use Framework\Http\PlainResponse;
 use Framework\Http\Request;
+use App\Models\MailHandler;
 
 class MailController extends Controller
 {
@@ -25,15 +27,17 @@ class MailController extends Controller
         $this->dataBase = $dataBase;
     }
 
-    public function getMail(Request $request) : string
+    public function getMail(Request $request, MailHandler $handler)
     {
-        $box = $request->getParameter('box');
-        $result = $this->dataBase->getMail($this->labelId[$box]);
-
-        return json_encode($result);
+        try {
+            $result = $handler->loadMail($request);
+        } catch (\Exception $e) {
+            return new PlainResponse('Error', Response::STATUS_INTERNAL_ERROR);
+        }
+        return new JsonResponse($result);
     }
 
-    public function unreadMail() : string
+    public function unreadMail(): string
     {
         $boxes = $_GET['boxes'];
         $parsedJSON = json_decode($boxes);
@@ -45,13 +49,13 @@ class MailController extends Controller
         return json_encode($parsedJSON);
     }
 
-    public function transferMail() : bool
+    public function transferMail(): bool
     {
         $from = $_GET['transferFrom'];
         $to = $_GET['transferTo'];
         $id = $_GET['id'];
         $stringOfIds = implode(",", $id);
-        
+
         return $this->dataBase->transferMail($this->labelId[$to], $from, $stringOfIds);
     }
 
